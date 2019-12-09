@@ -8,7 +8,11 @@ class Api::SessionsController < ApplicationController
       log_in!(@user)
       render 'api/users/show'
     else
-      render json: ['Invalid username/password combo'], status: 401
+      if User.exists?(email: params[:user][:email])
+        render json: ['Password does not match'], status: 400
+      else
+        render json: ['Email does not exist'], status: 400
+      end
     end
   end
 
