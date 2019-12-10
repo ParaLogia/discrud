@@ -5,7 +5,8 @@ import { register } from '../../actions/session_actions';
 const msp = (state) => {
   return {
     errors: state.errors.session,
-    formType: 'Register'
+    formType: 'register',
+    inputFields: ['email', 'username', 'password']
   }
 };
 
