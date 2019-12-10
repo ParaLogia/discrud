@@ -7,7 +7,26 @@ import { register, login, logout } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
-  const store = configureStore();
+
+  let preloadedState = {};
+  if (window.currentUser) {
+    const { currentUser } = window;
+
+    preloadedState =  {
+      entities: {
+        users: {
+          [currentUser.id]: currentUser
+        }
+      },
+      session: {
+        currentUserId: currentUser.id
+      }
+    }
+
+    delete window.currentUser;
+  }
+    
+  const store = configureStore(preloadedState);
   
   ReactDOM.render(<Root store={store} />, root);
 
