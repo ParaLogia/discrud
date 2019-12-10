@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: 'Catamaran', sans-serif;
+  background-color: #36393f;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+button {
+  padding: 5px 16px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  height: 40px;
+  box-sizing: border-box;
+  color: white;
+  background-color: #7289da;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #677bc4;
+}
+
+a {
+  color: #7289da;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -31,14 +31,14 @@ class SessionForm extends React.Component {
     const { formType, inputFields, errors } = this.props;
 
     const formHeader = (formType === 'login') ? (
-      <div>
-        <h2>Welcome back!</h2>
-        <h3>We&apos;re so excited to see you again!</h3>
-      </div>
+      <>
+        <h1>Welcome back!</h1>
+        <h2>We&apos;re so excited to see you again!</h2>
+      </>
     ) : (
-      <div>
-        <h2>Create an account</h2>
-      </div>
+      <>
+        <h1>Create an account</h1>
+      </>
     );
 
     const errorLis = errors.map((error, idx) => (
@@ -58,7 +58,7 @@ class SessionForm extends React.Component {
 
     const altLink = (formType === 'login') ?  (
       <span>
-        Need an account? 
+        Need an account?&nbsp;
         <Link to="/register">Register</Link>
       </span>
     ) : (
@@ -68,9 +68,10 @@ class SessionForm extends React.Component {
     )
 
     return (
-      <form className='session-form' onSubmit={this.handleSubmit}>
-
-        {formHeader}
+      <form className="session-form" onSubmit={this.handleSubmit}>
+        <header className="session-form-header">
+          {formHeader}
+        </header>
 
         <ul>
           {errorLis}
