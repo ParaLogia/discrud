@@ -52,7 +52,8 @@ class SessionForm extends React.Component {
         {field}
         <input type={field} 
                onChange={this.handleUpdate(field)} 
-               value={this.state[field]}/>
+               value={this.state[field]}
+               required />
       </label>
     ));
 
