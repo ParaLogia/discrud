@@ -56,6 +56,16 @@ label.session-error {
   color: #f04747;
 }
 
+.session-form button {
+  color: white;
+  background-color: #7289da;
+  text-transform: capitalize;
+}
+
+.session-form button:hover {
+  background-color: #677bc4;
+}
+
 .session-error input {
   border: 1px solid rgb(240, 71, 71, 1.0);
 }
