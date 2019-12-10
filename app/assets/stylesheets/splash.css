@@ -1,0 +1,98 @@
+.splash {
+  height: 1000px;
+}
+
+.splash-nav {
+  height: 72px;
+  width: 100%;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.splash-nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.splash-nav li {
+  padding: 10px 15px;
+}
+
+.splash-nav a {
+  color: white;
+  font-weight: 400; 
+  opacity: 0.8;
+}
+
+.splash-nav a:hover {
+  text-decoration: none;
+  opacity: 1.0;
+}
+
+.splash-nav .button {
+  box-sizing: border-box;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 3px 17px;
+  margin-right: 18px;
+}
+
+.splash-content {
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 810px;
+  padding: 72px 50px 0px;
+  color: #737f8d;
+  text-align: center;
+}
+
+.splash-content h1 {
+  color: white;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.splash-content p {
+  margin-bottom: 30px;
+}
+
+.splash-buttons-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+}
+
+.splash-button-container {
+  position: relative;
+  width: 250px;
+  height: 45px;
+}
+
+.splash-content button {
+  width: 250px;
+  height: 45px;
+  padding: 10px;
+  font-size: 15px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.splash-content button:hover {
+  top: 2px;
+}
+
+.download-button {
+  background-color: white;
+  color: black;
+}
+
+.open-app-button {
+  background-color: #7289da;
+  color: white;
+}

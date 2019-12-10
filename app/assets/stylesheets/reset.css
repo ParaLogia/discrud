@@ -1,13 +1,11 @@
 h1, h2, h3, h4, p, span, strong, div, section,
 aside, header, footer, main, body, a, i, nav,
-li, button, form, input, textarea, img {
+li, button, form, input, textarea, img, ol, ul {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-}
-
-ol, ul {
 	list-style: none;
+	text-decoration: none;
 }

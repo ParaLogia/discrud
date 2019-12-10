@@ -16,7 +16,7 @@
 
 body {
   font-family: 'Catamaran', sans-serif;
-  background-color: #36393f;
+  background-color: #262626;
 }
 
 h1 {
@@ -34,14 +34,7 @@ button {
   font-size: 16px;
   height: 40px;
   box-sizing: border-box;
-  color: white;
-  background-color: #7289da;
-  text-transform: capitalize;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #677bc4;
 }
 
 a {
