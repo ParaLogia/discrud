@@ -41,20 +41,30 @@ class SessionForm extends React.Component {
       </>
     );
 
-    const errorLis = errors.map((error, idx) => (
-      <li key={idx}>
-        {error}
-      </li>
-    ));
+    // const errorLis = errors.map((error, idx) => (
+    //   <li key={idx}>
+    //     {error}
+    //   </li>
+    // ));
 
-    const inputs = inputFields.map((field, idx) => (
-      <label key={idx}>
-        {field}
-        <input type={field} 
-               onChange={this.handleUpdate(field)} 
-               value={this.state[field]}/>
-      </label>
-    ));
+    const inputs = inputFields.map((field, idx) => {
+      const isError = Boolean(errors[field]);
+      return (
+        <label key={idx} className={isError ? 'session-error' : ''}>
+          {field}
+          <i>
+            {isError ? ' - ' : ''}
+          </i>
+          <span>
+            {errors[field]}
+          </span>
+          <input type={field} 
+                onChange={this.handleUpdate(field)} 
+                value={this.state[field]}
+                required />
+        </label>
+      )
+    });
 
     const altLink = (formType === 'login') ?  (
       <span>
@@ -73,9 +83,9 @@ class SessionForm extends React.Component {
           {formHeader}
         </header>
 
-        <ul>
+        {/* <ul>
           {errorLis}
-        </ul>
+        </ul> */}
 
         {inputs}
 

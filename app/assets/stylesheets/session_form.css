@@ -51,3 +51,30 @@
 .session-form input:hover {
   border-color: #040405;
 }
+
+label.session-error {
+  color: #f04747;
+}
+
+.session-error input {
+  border: 1px solid rgb(240, 71, 71, 1.0);
+}
+
+.session-error input:hover {
+  border: 1px solid rgb(240, 71, 71, 1.0);
+}
+
+.session-error input:focus {
+  outline: none;
+}
+
+.session-error span {
+  text-transform: none;
+  font-style: italic;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.session-error span::first-letter {
+  text-transform: uppercase;
+}

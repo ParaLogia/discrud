@@ -9,9 +9,9 @@ class Api::SessionsController < ApplicationController
       render 'api/users/show'
     else
       if User.exists?(email: params[:user][:email])
-        render json: ['Password does not match'], status: 400
+        render json: {password: ['password does not match.']}, status: 400
       else
-        render json: ['Email does not exist'], status: 400
+        render json: {email: ['email does not exist.']}, status: 400
       end
     end
   end
@@ -21,7 +21,7 @@ class Api::SessionsController < ApplicationController
       log_out!
       render json: {}
     else
-      render json: ['Invalid session'], status: 404
+      render json: {session: ['invalid session.']}, status: 404
     end    
   end
 end
