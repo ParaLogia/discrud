@@ -27,6 +27,10 @@ class SessionForm extends React.Component {
     this.props.submitForm(formValues);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   render() {
     const { formType, inputFields, errors } = this.props;
 
@@ -40,12 +44,6 @@ class SessionForm extends React.Component {
         <h1>Create an account</h1>
       </>
     );
-
-    // const errorLis = errors.map((error, idx) => (
-    //   <li key={idx}>
-    //     {error}
-    //   </li>
-    // ));
 
     const inputs = inputFields.map((field, idx) => {
       const isError = Boolean(errors[field]);
@@ -82,10 +80,6 @@ class SessionForm extends React.Component {
         <header className="session-form-header">
           {formHeader}
         </header>
-
-        {/* <ul>
-          {errorLis}
-        </ul> */}
 
         {inputs}
 

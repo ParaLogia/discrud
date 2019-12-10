@@ -42,8 +42,9 @@
   border: 1px solid rgba(0,0,0,0.3);
   border-radius: 3px;
   background-color: rgba(0,0,0,0.1);
-  color: white;
+  color: #dcddde;
   font-size: 16px;
+  font-weight: lighter;
   width: 100%;
   border-style: inset;
 }
