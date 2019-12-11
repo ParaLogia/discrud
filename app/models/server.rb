@@ -16,7 +16,6 @@ class Server < ApplicationRecord
   validates :name, :description, :invite_token, presence: true
   validates :is_private, inclusion: { in: [ true, false ] }
   validates :invite_token, uniqueness: true
-  validate :owner_must_be_member
 
   belongs_to :owner,
     class_name: :User
@@ -27,7 +26,6 @@ class Server < ApplicationRecord
     through: :server_memberships
 
   after_initialize :ensure_invite_token
-  before_create :populate_members_with_owner
 
   def self.generate_invite_token
     SecureRandom.urlsafe_base64(4)
@@ -37,15 +35,5 @@ class Server < ApplicationRecord
 
   def ensure_invite_token
     self.invite_token ||= self.class.generate_invite_token
-  end
-
-  def populate_members_with_owner
-    self.member_ids = [self.owner_id]
-  end
-
-  def owner_must_be_member
-    if self.member_ids.exclude?(owner_id)
-      errors.add(:owner, 'must be a member of the server')
-    end
   end
 end
