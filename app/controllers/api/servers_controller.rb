@@ -1,5 +1,5 @@
 class Api::ServersController < ApplicationController
-  before_action :ensure_logged_in, only: [:create, :update, :destroy]
+  before_action :ensure_logged_in, only: [:create, :update, :destroy, :join, :leave]
 
   def show
     @server = Server.find(params[:id])
@@ -8,10 +8,8 @@ class Api::ServersController < ApplicationController
 
   def index
     if logged_in?
-      # TEMPORARY -- REPLACE ONCE MEMBERSHIPS ARE MADE
-      @servers = Server.all
+      @servers = current_user.joined_servers
       render :index
-      ################################################
     else
       @servers = Server.all
       render :index
@@ -48,6 +46,28 @@ class Api::ServersController < ApplicationController
       render :show
     else
       render json: { server: ['No such server'] }, status: 404
+    end
+  end
+
+  def join
+    @server = Server.find_by(id: params[:id])
+    
+    if @server
+      @server.members.push(current_user)
+      render :show
+    else
+      render json: { server: ['No such server'] }, status: 404
+    end
+  end
+
+  def leave
+    @server = current_user.joined_servers.find_by(id: params[:id])
+
+    if @server
+      @server.members.delete(current_user)
+      render :show
+    else
+      render json: { server: ['Unable to leave server'] }, status: 400
     end
   end
 
