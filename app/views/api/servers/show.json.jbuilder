@@ -1,9 +1,9 @@
 json.server do
   json.partial! 'server', server: @server
+  json.memberIds @server.member_ids + [@server.owner_id]
 end
 
-# TEMPORARY -- FIX AFTER ADDING MEMBERSHIPS
-users = [@server.owner]
+users = @server.members + [@server.owner]
 
 json.users do
   json.partial! 'api/users/index', users: users
