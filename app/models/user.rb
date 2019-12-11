@@ -23,6 +23,14 @@ class User < ApplicationRecord
     class_name: :Server,
     foreign_key: :owner_id
 
+  has_many :server_memberships,
+    class_name: :ServerMembership,
+    foreign_key: :member_id
+
+  has_many :joined_servers,
+    through: :server_memberships,
+    source: :server
+
   after_initialize :ensure_session_token, :ensure_tag
 
   attr_reader :password

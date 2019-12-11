@@ -10,5 +10,11 @@
 #
 
 class ServerMembership < ApplicationRecord
-  validates :server_id, uniqueness: { scope: :user_id }
+  validates :server_id, uniqueness: { scope: :member_id }
+
+  belongs_to :server
+  
+  belongs_to :member,
+    class_name: :User,
+    foreign_key: :member_id
 end

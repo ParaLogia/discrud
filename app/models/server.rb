@@ -20,6 +20,11 @@ class Server < ApplicationRecord
   belongs_to :owner,
     class_name: :User
 
+  has_many :server_memberships
+
+  has_many :members,
+    through: :server_memberships
+
   after_initialize :ensure_invite_token
 
   def self.generate_invite_token
