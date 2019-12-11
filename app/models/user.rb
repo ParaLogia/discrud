@@ -24,8 +24,8 @@ class User < ApplicationRecord
     foreign_key: :owner_id
 
   has_many :server_memberships,
-    class_name: :ServerMembership,
-    foreign_key: :member_id
+    foreign_key: :member_id,
+    dependent: :destroy
 
   has_many :joined_servers,
     through: :server_memberships,

@@ -20,7 +20,8 @@ class Server < ApplicationRecord
   belongs_to :owner,
     class_name: :User
 
-  has_many :server_memberships
+  has_many :server_memberships,
+    dependent: :destroy
 
   has_many :members,
     through: :server_memberships

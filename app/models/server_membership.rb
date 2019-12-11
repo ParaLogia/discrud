@@ -13,13 +13,11 @@ class ServerMembership < ApplicationRecord
   validates :member_id, uniqueness: { scope: :server_id, message: 'already part of the server' }
   validate :server_owner_cannot_become_member
 
-  belongs_to :server,
-    dependent: :destroy
+  belongs_to :server
   
   belongs_to :member,
     class_name: :User,
-    foreign_key: :member_id,
-    dependent: :destroy
+    foreign_key: :member_id
 
   def server_owner_cannot_become_member
     # Server owners are implicitly members of their own servers, as reflected in the API
