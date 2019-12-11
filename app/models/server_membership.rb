@@ -25,7 +25,7 @@ class ServerMembership < ApplicationRecord
     # Validating when destroying is much harder than validating when creating
 
     if self.server.owner_id == self.member_id
-      errors.add(server_membership: 'server owner cannot join their own server')
+      errors.add(:server_membership, 'server owner cannot join their own server')
     end
   end
 end

@@ -8,7 +8,7 @@ class Api::ServersController < ApplicationController
 
   def index
     if logged_in?
-      @servers = current_user.joined_servers
+      @servers = current_user.joined_servers + current_user.owned_servers
       render :index
     else
       @servers = Server.all
@@ -53,8 +53,15 @@ class Api::ServersController < ApplicationController
     @server = Server.find_by(id: params[:id])
     
     if @server
-      @server.members.push(current_user)
-      render :show
+      server_membership = ServerMembership.new(
+        server_id: @server.id, 
+        member_id: current_user.id
+      )
+      if server_membership.save
+        render :show
+      else
+        render json: server_membership.errors.messages, status: 400
+      end
     else
       render json: { server: ['No such server'] }, status: 404
     end
