@@ -5,6 +5,10 @@ class User < ApplicationRecord
   validates :tag, presence: { message: 'unavailable for username' }
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :owned_servers,
+    class_name: :Server,
+    foreign_key: :owner_id
+
   after_initialize :ensure_session_token, :ensure_tag
 
   attr_reader :password
