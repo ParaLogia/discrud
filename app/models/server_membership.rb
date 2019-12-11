@@ -10,7 +10,8 @@
 #
 
 class ServerMembership < ApplicationRecord
-  validates :server_id, uniqueness: { scope: :member_id }
+  validates :member_id, uniqueness: { scope: :server_id, message: 'already part of the server' }
+  validate :server_owner_cannot_become_member
 
   belongs_to :server,
     dependent: :destroy
@@ -19,4 +20,14 @@ class ServerMembership < ApplicationRecord
     class_name: :User,
     foreign_key: :member_id,
     dependent: :destroy
+
+  def server_owner_cannot_become_member
+    # Server owners are implicitly members of their own servers, as reflected in the API
+    # This allows us to guarantee that a server owner cannot leave their own server
+    # Validating when destroying is much harder than validating when creating
+
+    if self.server.owner_id == self.member_id
+      errors.add(server_membership: 'server owner cannot join their own server')
+    end
+  end
 end
