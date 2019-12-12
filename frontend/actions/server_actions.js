@@ -33,7 +33,7 @@ export const fetchServers = () => (dispatch) => {
         dispatch(receiveServers(servers));
         dispatch(receiveUsers(users));
       },
-      (errors) => dispatch(receiveErrors(errors))
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
 
@@ -44,7 +44,7 @@ export const fetchServer = (serverId) => (dispatch) => {
         dispatch(receiveServer(server));
         dispatch(receiveUsers(users));
       },
-      (errors) => dispatch(receiveErrors(errors))
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
 
@@ -52,7 +52,7 @@ export const createServer = (server) => (dispatch) => {
   return APIUtil.createServer(server)
     .then(
       ({server}) => dispatch(receiveServer(server)),
-      (errors) => dispatch(receiveErrors(errors))
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
 
@@ -60,7 +60,7 @@ export const updateServer = (server) => (dispatch) => {
   return APIUtil.updateServer(server)
     .then(
       ({ server }) => dispatch(receiveServer(server)),
-      (errors) => dispatch(receiveErrors(errors))
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
 
@@ -68,7 +68,7 @@ export const deleteServer = (serverId) => (dispatch) => {
   return APIUtil.deleteServer(serverId)
     .then(
       ({ server }) => dispatch(removeServer(server.id)),
-      (errors) => dispatch(receiveErrors(errors))
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
 
@@ -79,7 +79,7 @@ export const joinServer = (serverId) => (dispatch) => {
         dispatch(receiveServer(server));
         dispatch(receiveUsers(users));
       },
-      (errors) => dispatch(receiveErrors(errors))
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
 
@@ -87,6 +87,6 @@ export const leaveServer = (serverId) => (dispatch) => {
   return APIUtil.leaveServer(serverId)
     .then(
       ({ server }) => dispatch(removeServer(server.id)),
-      (errors) => dispatch(receiveErrors(errors))
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }

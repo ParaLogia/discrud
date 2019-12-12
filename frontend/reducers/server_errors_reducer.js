@@ -1,4 +1,4 @@
-import { RECEIVE_SERVER_ERRORS, RECEIVE_SERVER, RECEIVE_SERVERS } from '../actions/server_actions';
+import { RECEIVE_SERVER_ERRORS, RECEIVE_SERVER, RECEIVE_SERVERS, REMOVE_SERVER } from '../actions/server_actions';
 
 const serverErrorsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -9,6 +9,7 @@ const serverErrorsReducer = (state = {}, action) => {
 
     case RECEIVE_SERVER:
     case RECEIVE_SERVERS:
+    case REMOVE_SERVER:
       return {};
 
     default:

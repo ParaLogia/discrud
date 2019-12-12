@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import * as APIUtil from './util/server_api.util';
+import { createServer, fetchServer, fetchServers, deleteServer, updateServer, joinServer, leaveServer } from './actions/server_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
-    window.APIUtil = APIUtil;
+    window.createServer = createServer
+    window.deleteServer = deleteServer 
+    window.updateServer = updateServer
+    window.joinServer = joinServer
+    window.leaveServer = leaveServer
+    window.fetchServer = fetchServer
+    window.fetchServers = fetchServers
   }
 });
