@@ -16,7 +16,13 @@ class ServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitForm(Object.assign(this.state));
+
+    const {submitForm, clearModal} = this.props;
+    submitForm(Object.assign(this.state))
+      .then(({server}) => {
+        clearModal();
+        this.props.history.push(`${server.id}`);
+      });
   }
 
   render() {
