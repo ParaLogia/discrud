@@ -4,8 +4,10 @@ import Sidebar from './sidebar';
 
 const msp = (state) => {
   const { currentUserId } = state.session;
+  const { currentServerId } = state.ui;
   return {
-    currentUser: state.entities.users[currentUserId]
+    currentUser: state.entities.users[currentUserId],
+    currentServer: state.entities.servers[currentServerId]
   }
 }
 

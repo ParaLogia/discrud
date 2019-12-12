@@ -1,6 +1,7 @@
 import { merge } from 'lodash';
 import { RECEIVE_SERVER, RECEIVE_SERVERS, REMOVE_SERVER } from '../actions/server_actions';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_SERVER } from '../actions/ui_actions';
 
 const serversReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -8,6 +9,7 @@ const serversReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_SERVER:
+    case RECEIVE_CURRENT_SERVER:
       return Object.assign({}, state, { [action.server.id]: action.server })
 
     case RECEIVE_SERVERS:
