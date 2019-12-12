@@ -3,14 +3,11 @@ import {
   CLEAR_MODAL, 
   START_LOADING, 
   FINISH_LOADING,
-  RECEIVE_CURRENT_SERVER, 
 } from '../actions/ui_actions';
 
 const preloadedState = {
   modal: null,
   loading: false,
-  currentServerId: null,
-  // currentChannelId: null,
   // onlineUsers: []
 }
 
@@ -29,10 +26,6 @@ const uiReducer = (state = preloadedState, action) => {
 
     case FINISH_LOADING:
       return Object.assign({}, state, { loading: null });
-      
-    case RECEIVE_CURRENT_SERVER:
-      return Object.assign({}, state, { currentServerId: action.server.id });
-
     default:
       return state;
   }

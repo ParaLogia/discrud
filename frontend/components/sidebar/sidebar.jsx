@@ -6,7 +6,7 @@ const Sidebar = ({ currentServer, currentUser, logout }) => {
   const header = (currentServer) ? (
     <ServerHeader currentServer={currentServer} />
   ) : (
-    <header></header>
+    <header>DMs</header>
   )
 
   return (

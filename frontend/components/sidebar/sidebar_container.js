@@ -2,12 +2,15 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import Sidebar from './sidebar';
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
   const { currentUserId } = state.session;
-  const { currentServerId } = state.ui;
+  const currentServerId = ownProps.match.params.serverId;
+  const currentServer = (currentServerId !== '@me') ? 
+      state.entities.servers[currentServerId] : null
+
   return {
     currentUser: state.entities.users[currentUserId],
-    currentServer: state.entities.servers[currentServerId]
+    currentServer
   }
 }
 

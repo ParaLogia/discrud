@@ -1,11 +1,10 @@
 import * as APIUtil from '../util/server_api.util';
 import { receiveUsers } from './user_actions';
-import { receiveCurrentServer } from './ui_actions';
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS'; 
 export const RECEIVE_SERVER = 'RECEIVE_SERVER'; 
 export const REMOVE_SERVER = 'REMOVE_SERVER'; 
-export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS'; 
+export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 
 export const receiveServers = (servers) => ({
   type: RECEIVE_SERVERS,
@@ -42,7 +41,7 @@ export const fetchServer = (serverId) => (dispatch) => {
   return APIUtil.fetchServer(serverId)
     .then(
       ({ server, users }) => {
-        dispatch(receiveCurrentServer(server));
+        dispatch(receiveServer(server));
         dispatch(receiveUsers(users));
       },
       (errors) => dispatch(receiveErrors(errors.responseJSON))
@@ -52,7 +51,7 @@ export const fetchServer = (serverId) => (dispatch) => {
 export const createServer = (server) => (dispatch) => {
   return APIUtil.createServer(server)
     .then(
-      ({ server }) => dispatch(receiveCurrentServer(server)),
+      ({ server }) => dispatch(receiveServer(server)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
@@ -77,7 +76,7 @@ export const joinServer = (serverId) => (dispatch) => {
   return APIUtil.joinServer(serverId)
     .then(
       ({ server, users }) => {
-        dispatch(receiveCurrentServer(server));
+        dispatch(receiveServer(server));
         dispatch(receiveUsers(users));
       },
       (errors) => dispatch(receiveErrors(errors.responseJSON))
