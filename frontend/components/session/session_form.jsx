@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const DEMO_USER = {
+  email: 'demo@example.com',
+  password: 'asdfasdf'
+}
+
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +15,7 @@ class SessionForm extends React.Component {
     this.state = Object.fromEntries(inputEntries);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   handleUpdate(field) {
@@ -25,6 +31,11 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const formValues = Object.assign({}, this.state);
     this.props.submitForm(formValues);
+  }
+
+  handleDemoLogin(e) {
+    e.preventDefault();
+    this.setState(DEMO_USER);
   }
 
   componentWillUnmount() {
@@ -64,6 +75,12 @@ class SessionForm extends React.Component {
       )
     });
 
+    const demoBlurb = (formType === 'login') ? (
+      <span onClick={this.handleDemoLogin}>
+        <a>Forgot your password? Use mine!</a>
+      </span>
+    ) : '';
+
     const altLink = (formType === 'login') ?  (
       <span>
         Need an account?&nbsp;
@@ -82,6 +99,8 @@ class SessionForm extends React.Component {
         </header>
 
         {inputs}
+
+        {demoBlurb}
 
         <button>{this.props.formType}</button>
 

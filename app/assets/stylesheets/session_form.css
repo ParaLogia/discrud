@@ -20,7 +20,6 @@
 .session-form-header {
   text-align: center;
   margin-top: 5px;
-  margin-bottom: 20px;
 }
 
 .session-form h1 {
@@ -34,7 +33,7 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .session-form input {
@@ -56,21 +55,25 @@
   border-color: #040405;
 }
 
-label.session-error {
-  color: #f04747;
-}
-
 .session-form button {
   color: white;
   background-color: #7289da;
   text-transform: capitalize;
-  margin-bottom: 8px;
+  margin-top: 24px;
   font-size: 16px;
   height: 44px;
 }
 
 .session-form button:hover {
   background-color: #677bc4;
+}
+
+.session-form span {
+  margin-top: 12px;
+}
+
+label.session-error {
+  color: #f04747;
 }
 
 .session-error input {
