@@ -14,8 +14,10 @@ const ServerIndexItem = ({ server }) => {
       <Link to={`/channels/${server.id}`} className="servers-nav-icon"> 
         {serverIcon}
 
-        <div className="tooltip">
-          {server.name}
+        <div className="tooltip-wrapper">
+          <div className="tooltip">
+            {server.name}
+          </div>
         </div>
       </Link>
     </li>

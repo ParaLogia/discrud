@@ -19,7 +19,7 @@
   height: 48px;
   width: 48px;
   border-radius: 24px;
-  position: relative;
+  /* position: relative; */
   background-color: #36393f;
   color: white;
   display: flex;
@@ -34,20 +34,31 @@
   border-radius: 16px;
 }
 
+.servers-nav .tooltip-wrapper {
+  position: absolute;
+  visibility: hidden;
+}
+
+.servers-nav-icon:hover .tooltip-wrapper {
+  visibility: visible;
+  /* display: block; */
+}
+
 .servers-nav .tooltip {
-  display: none;
+  display: block;
   font-size: 16px;
   font-weight: bold;
   background-color: black;
   color: white;
-  position: absolute;
   z-index: 2;
   border-radius: 4px;
   padding: 10px 10px;
   max-width: 160px;
   width: max-content;
   word-wrap: none;
-  left: 54px;
+  position: relative;
+  left: 30px;
+  transform: translateX(+50%);
 }
 
 .servers-nav .tooltip:before {
@@ -63,10 +74,6 @@
   left: -8px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.servers-nav-icon:hover .tooltip {
-  display: block;
 }
 
 .home-button-container {

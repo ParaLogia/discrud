@@ -21,8 +21,10 @@ class ServerIndex extends React.Component {
         <div className="home-button-container">
           <Link to="/channels/@me" className="servers-nav-icon home-button">
             Hm
-            <div className="tooltip">
-              Home
+            <div className="tooltip-wrapper">
+              <div className="tooltip">
+                Home
+              </div>
             </div>
           </Link>
         </div>
@@ -36,8 +38,10 @@ class ServerIndex extends React.Component {
         <div className="server-add-container">
           <Link to="/channels/@me" className="servers-nav-icon server-add-button">
             +
-            <div className="tooltip">
-              Add a Server
+            <div className="tooltip-wrapper">
+              <div className="tooltip">
+                Add a Server
+              </div>
             </div>
           </Link>
         </div>
