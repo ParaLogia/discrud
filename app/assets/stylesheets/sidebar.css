@@ -53,13 +53,14 @@
 
 .server-header {
   height: 48px;
-  border-bottom: 2px solid #2c2e33;
   background-color: #2f3136;
   color: white;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
   text-shadow: 0 1px 1px rgba(0,0,0,0.4);
   display: flex;
   align-items: center;
   padding: 0px 20px;
+  cursor: pointer;
 }
 
 .server-header h1 {
