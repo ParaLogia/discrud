@@ -6,10 +6,13 @@ import LoginFormContainer from './session/login_form_container';
 import RegistrationFormContainer from './session/registration_form_container';
 import ContentContainer from './content/content_container';
 import ServerIndexContainer from './servers/server_index_container';
+import ModalContainer from './modal/modal_container';
 
 const App = () => {
   return (
     <>
+      <ModalContainer />
+
       <Route exact path="/" component={SplashContainer} />
 
       <AuthRoute path="/login" component={LoginFormContainer} />

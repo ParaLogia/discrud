@@ -1,14 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
+import { CREATE_SERVER } from '../modal/modal';
 
 class ServerIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleAddServer = this.handleAddServer.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchServers();
+  }
+
+  handleAddServer(e) {
+    e.preventDefault();
+    this.props.receiveModal(CREATE_SERVER);
   }
 
   render() {
@@ -36,14 +44,17 @@ class ServerIndex extends React.Component {
         </ul>
 
         <div className="server-add-container">
-          <Link to="/channels/@me" className="servers-nav-icon server-add-button">
+          <button 
+            className="servers-nav-icon server-add-button"
+            onClick={this.handleAddServer}
+          >
             +
             <div className="tooltip-wrapper">
               <div className="tooltip">
                 Add a Server
               </div>
             </div>
-          </Link>
+          </button>
         </div>
       </nav>
     );
