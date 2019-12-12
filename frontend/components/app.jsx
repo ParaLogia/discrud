@@ -4,7 +4,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SplashContainer from './splash/splash_container';
 import LoginFormContainer from './session/login_form_container';
 import RegistrationFormContainer from './session/registration_form_container';
-import SidebarContainer from './sidebar/sidebar_container';
+import ContentContainer from './content/content_container';
 import ServerIndexContainer from './servers/server_index_container';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
       <AuthRoute path="/register" component={RegistrationFormContainer} />
 
       <ProtectedRoute path="/channels" component={ServerIndexContainer} />
-      <ProtectedRoute path="/channels/:serverId" component={SidebarContainer} />
+      <ProtectedRoute path="/channels/:serverId" component={ContentContainer} />
     </>
   )
 }

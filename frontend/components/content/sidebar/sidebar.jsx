@@ -1,5 +1,5 @@
 import React from 'react';
-import ServerHeader from '../servers/server_header';
+import ServerHeader from '../../servers/server_header';
 import UserFooter from './user_footer';
 
 const Sidebar = ({ currentServer, currentUser, logout }) => {
