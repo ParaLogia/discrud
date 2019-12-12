@@ -17,10 +17,12 @@
 body {
   font-family: 'Catamaran', sans-serif;
   background-color: #262626;
+  overflow: hidden;
 }
 
 main {
   display: flex;
+  height: 100vh;
 }
 
 h1 {

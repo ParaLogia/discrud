@@ -1,5 +1,5 @@
 .servers-nav {
-  height: 100vh;
+  height: 100%;
   width: 72px;
   display: flex;
   flex-direction: column;
@@ -98,4 +98,4 @@
 .server-add-button:hover {
   background-color: #43b581;
   color: white;
-}
+}zz
