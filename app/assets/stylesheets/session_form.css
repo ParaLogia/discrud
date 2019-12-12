@@ -19,11 +19,14 @@
 
 .session-form-header {
   text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 .session-form h1 {
   color: white;
   font-weight: lighter;
+  margin-bottom: 10px;
 }
 
 .session-form label {
@@ -61,6 +64,9 @@ label.session-error {
   color: white;
   background-color: #7289da;
   text-transform: capitalize;
+  margin-bottom: 8px;
+  font-size: 16px;
+  height: 44px;
 }
 
 .session-form button:hover {

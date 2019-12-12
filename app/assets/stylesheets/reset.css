@@ -8,4 +8,5 @@ li, button, form, input, textarea, img, ol, ul {
 	font: inherit;
 	list-style: none;
 	text-decoration: none;
+  line-height: 100%;
 }
