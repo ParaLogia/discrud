@@ -9,7 +9,7 @@ import ServerIndexContainer from './servers/server_index_container';
 
 const App = () => {
   return (
-    <section>
+    <>
       <Route exact path="/" component={SplashContainer} />
 
       <AuthRoute path="/login" component={LoginFormContainer} />
@@ -17,7 +17,7 @@ const App = () => {
 
       <ProtectedRoute path="/channels" component={ServerIndexContainer} />
       <ProtectedRoute path="/channels" component={SidebarContainer} />
-    </section>
+    </>
   )
 }
 

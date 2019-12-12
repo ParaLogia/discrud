@@ -19,6 +19,10 @@ body {
   background-color: #262626;
 }
 
+main {
+  display: flex;
+}
+
 h1 {
   font-size: 26px;
 }
