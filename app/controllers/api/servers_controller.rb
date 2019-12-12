@@ -2,8 +2,12 @@ class Api::ServersController < ApplicationController
   before_action :ensure_logged_in, only: [:create, :update, :destroy, :join, :leave]
 
   def show
-    @server = Server.find(params[:id])
-    render :show
+    @server = Server.find_by(id: params[:id])
+    if @server
+      render :show
+    else
+      render json: {server: ['not found']}, status: 404
+    end
   end
 
   def index
@@ -21,7 +25,7 @@ class Api::ServersController < ApplicationController
     if @server.save
       render :show
     else
-      render json: @server.errors.messages
+      render json: @server.errors.messages, status: 422
     end
   end
 
