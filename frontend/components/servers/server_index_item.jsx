@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServerIndexItem = ({ server }) => {
-  // Just render the first letter of the server's name
+  // Placeholder for server image -- first letter
   const serverIcon = (
     <div>
       {server.name[0]}
@@ -11,10 +11,10 @@ const ServerIndexItem = ({ server }) => {
 
   return (
     <li>
-      <Link to={`/channels/${server.id}`} className="server-icon"> 
+      <Link to={`/channels/${server.id}`} className="servers-nav-icon"> 
         {serverIcon}
 
-        <div className="server-icon-tooltip">
+        <div className="tooltip">
           {server.name}
         </div>
       </Link>
