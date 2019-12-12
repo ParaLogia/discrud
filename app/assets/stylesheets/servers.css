@@ -7,6 +7,12 @@
   padding: 5px;
   box-sizing: border-box;
   background-color: #202225;
+  overflow: scroll;
+  overflow: -moz-scrollbars-none;
+}
+
+.servers-nav::-webkit-scrollbar { 
+  width: 0 !important; 
 }
 
 .servers-nav-icon {
