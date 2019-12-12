@@ -1,0 +1,31 @@
+.content-sidebar {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #2f3136;
+}
+
+.user-footer {
+  height: 52px;
+  background-color: #292b2f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 8px;
+}
+
+.username-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-footer .username {
+  font-size: 14px;
+  color: white;
+}
+
+.user-footer .user-tag {
+  font-size: 12px;
+  color: #b9bbbe;
+}

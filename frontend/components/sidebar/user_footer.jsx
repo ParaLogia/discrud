@@ -8,11 +8,11 @@ const UserFooter = ({ currentUser, logout }) => {
 
   return (
     <footer className="user-footer">
-      <div>
-        <strong>
+      <div className="username-container">
+        <strong className="username">
           {currentUser.username}
         </strong>
-        <span>
+        <span className="user-tag">
           #{currentUser.tag}
         </span>
       </div>
