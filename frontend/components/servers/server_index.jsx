@@ -19,7 +19,7 @@ class ServerIndex extends React.Component {
     return (
       <nav className="servers-nav">
         <div className="home-button-container">
-          <Link to="/channels/@me" className="servers-nav-icon">
+          <Link to="/channels/@me" className="servers-nav-icon home-button">
             Hm
             <div className="tooltip">
               Home
@@ -34,7 +34,7 @@ class ServerIndex extends React.Component {
         </ul>
 
         <div className="server-add-container">
-          <Link to="/channels/@me" className="servers-nav-icon server-add-icon">
+          <Link to="/channels/@me" className="servers-nav-icon server-add-button">
             +
             <div className="tooltip">
               Add a Server

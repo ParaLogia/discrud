@@ -12,7 +12,7 @@
 .servers-nav-icon {
   height: 48px;
   width: 48px;
-  border-radius: 48px;
+  border-radius: 24px;
   position: relative;
   background-color: #36393f;
   color: white;
@@ -25,6 +25,7 @@
 
 .servers-nav-icon:hover {
   text-decoration: none;
+  border-radius: 16px;
 }
 
 .servers-nav .tooltip {
@@ -37,8 +38,8 @@
   z-index: 2;
   border-radius: 4px;
   padding: 10px 10px;
-  min-width: 64px;
   max-width: 160px;
+  width: max-content;
   word-wrap: none;
   left: 54px;
 }
@@ -66,13 +67,22 @@
   padding: 5px 0px;
 }
 
+.home-button:hover {
+  background-color: #7289da;
+}
+
 .server-separator {
   width: 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   margin-bottom: 10px;
 }
 
-.server-add-icon {
+.server-add-button {
   color: #43b581;
   font-size: 40px;
+}
+
+.server-add-button:hover {
+  background-color: #43b581;
+  color: white;
 }
