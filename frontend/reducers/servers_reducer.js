@@ -1,5 +1,6 @@
 import { merge } from 'lodash';
 import { RECEIVE_SERVER, RECEIVE_SERVERS, REMOVE_SERVER } from '../actions/server_actions';
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 const serversReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,6 +17,9 @@ const serversReducer = (state = {}, action) => {
       newState = Object.assign({}, state);
       delete newState[action.serverId];
       return newState;
+
+    case LOGOUT_CURRENT_USER:
+      return {};
 
     default:
       return state;
