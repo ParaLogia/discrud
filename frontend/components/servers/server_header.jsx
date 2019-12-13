@@ -25,9 +25,7 @@ class ServerHeader extends React.Component {
   componentDidUpdate(prevProps) {
     const prevServer = prevProps.currentServer;
     const nextServerId = this.props.match.params.serverId;
-    // debugger;
     if (prevServer.id != nextServerId) {
-      // debugger
       this.updateDropdown();
     }
   }
@@ -54,6 +52,7 @@ class ServerHeader extends React.Component {
   handleEditServer(e) {
     e.preventDefault();
     this.props.receiveModal(EDIT_SERVER);
+    this.setState({ dropdown: false })
   }
 
   handleRemoveServer(e) {
