@@ -57,3 +57,7 @@ a:hover {
 div:focus, header:focus {
   outline: none;
 }
+
+input:focus {
+  outline: none;
+}

@@ -25,20 +25,64 @@ class ServerForm extends React.Component {
       });
   }
 
+  componentDidMount() {
+    this.nameInput.focus();
+  }
+
   render() {
     const { formType } = this.props;
 
-    return (
-      <form className="server-form" onSubmit={this.handleSubmit}>
-        <label>
-          Name
-          <input type="text" onChange={this.handleNameUpdate} value={this.state.name}/>
-        </label>
+    const title = <h1>{`${formType} your server`}</h1>
 
-        <button>
-          {formType}
-        </button>
-      </form>
+    const description = (
+      <p className="server-form-description">
+        {
+          (formType === 'create') ? 
+            "By creating a server, you will have access to free voice and text chat to use amongst your friends." :
+            "By editing your server, you will confuse every member of the server, most likely."
+        }
+      </p>
+    )
+      
+
+    return (
+      <div className="server-form-container">
+        <form className="server-form">
+
+          {title}
+          
+          {description}
+
+          <div className="server-form-inner-container">
+            <div className="server-form-input-container">
+              <label htmlFor="name">
+                server name
+              </label>
+              <input
+                type="text"
+                id="name"
+                onChange={this.handleNameUpdate}
+                value={this.state.name}
+                ref={(nameInput) => this.nameInput = nameInput}
+                placeholder="Enter a server name"
+              />
+            </div>
+            <div className="server-photo-preview">
+              {this.state.name[0]}
+            </div>
+          </div>
+        </form>
+
+
+        <div className="server-form-footer">
+          <span>
+            back
+          </span>
+          <button className="server-form-submit" onClick={this.handleSubmit}>
+            {formType}
+          </button>
+        </div>
+      </div>
     )
   }
 }
