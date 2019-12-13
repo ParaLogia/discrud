@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { EDIT_SERVER } from '../modal/modal';
+import { EDIT_SERVER, INVITE_TO_SERVER } from '../modal/modal';
 
 class ServerHeader extends React.Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class ServerHeader extends React.Component {
     this.removeServerAction = this.props.leaveServer;
     this.removeServerText = 'Leave';
 
+    this.handleInviteToServer = this.handleInviteToServer.bind(this);
     this.handleEditServer = this.handleEditServer.bind(this);
     this.handleRemoveServer = this.handleRemoveServer.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -49,6 +50,12 @@ class ServerHeader extends React.Component {
     } 
   }
 
+  handleInviteToServer(e) {
+    e.preventDefault();
+    this.props.receiveModal(INVITE_TO_SERVER);
+    this.setState({ dropdown: false })
+  }
+
   handleEditServer(e) {
     e.preventDefault();
     this.props.receiveModal(EDIT_SERVER);
@@ -69,6 +76,15 @@ class ServerHeader extends React.Component {
   render() {
     const { currentServer } = this.props;
     const { dropdown } = this.state;
+
+    const inviteOption = (
+      <div className="dropdown-option invite-option"
+        onClick={this.handleInviteToServer}>
+        Invite People
+      </div>
+    )
+
+    const editOption = this.editOption;
 
     const removeOption = (
       <div className="dropdown-option destructive"
@@ -91,7 +107,10 @@ class ServerHeader extends React.Component {
         </div>
 
         <div className={`server-dropdown ${dropdown ? '' : 'hidden'}`}>
-          {this.editOption}
+
+          {inviteOption}
+
+          {editOption}
 
           {removeOption}
         </div>

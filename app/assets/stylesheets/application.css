@@ -58,6 +58,6 @@ div:focus, header:focus {
   outline: none;
 }
 
-input:focus {
+input:focus, button:focus {
   outline: none;
 }

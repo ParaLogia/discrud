@@ -1,0 +1,58 @@
+.invite-option {
+  color: #677bc4;;
+}
+
+.invitation-modal {
+  width: 440px;
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #36393f;
+  color: #8e9297;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.invite-container {
+  background-color: #2b2e33;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  border: 1px solid transparent;
+}
+
+.invite-container input {
+  background: transparent;
+  border: transparent;
+  flex-grow: 1;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.copy-button {
+  width: 75px;
+  height: 32px;
+  color: white;
+  background-color: #7289da;
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+.copy-button:hover {
+  background-color: #677bc4;
+}
+
+button.copy-success {
+  background-color: #3ca374;
+}
+
+button.copy-success:hover {
+  background-color: #3ca374;
+}
+
+div.copy-success {
+  border-color: #3ca374;
+}
