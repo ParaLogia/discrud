@@ -32,7 +32,7 @@ class ServerHeader extends React.Component {
   }
 
   updateDropdown() {
-    const { currentServer, currentUser, deleteServer } = this.props;
+    const { currentServer, currentUser, deleteServer, leaveServer } = this.props;
     if (this.state.dropdown) {
       this.setState({ dropdown: false });
     }
@@ -47,7 +47,12 @@ class ServerHeader extends React.Component {
           Edit
         </div>
       )
-    } 
+    } else {
+      this.removeServerAction = leaveServer;
+      this.removeServerText = 'leave';
+
+      delete this.editOption;
+    }
   }
 
   handleInviteToServer(e) {
