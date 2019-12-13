@@ -1,4 +1,5 @@
 import React from 'react';
+import AddServerForm from '../servers/add_server_form';
 import CreateServerContainer from '../servers/create_server_container';
 import EditServerContainer from '../servers/edit_server_container';
 import Invitation from '../servers/invitation';
@@ -18,6 +19,9 @@ function Modal({ modal, clearModal }) {
 
   let component;
   switch (modal) {
+    case ADD_SERVER:
+      component = <AddServerForm />
+      break;
 
     case CREATE_SERVER:
       component = <CreateServerContainer />

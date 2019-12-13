@@ -153,3 +153,87 @@
   align-items: stretch;
 }
 
+.add-server-form {
+  background-color: white;
+  width: 540px;
+  height: 420px;
+  box-sizing: border-box;
+  padding: 28px 40px;
+  border-radius: 5px;
+}
+
+.add-server-form h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #7289da;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 6px 0px 40px;
+}
+
+.choice-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.add-server-choice {
+  width: 218px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.add-server-choice button {
+  padding: 14px 20px;
+  color: white;
+}
+
+.add-server-choice h3 {
+  text-transform: uppercase;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-server-choice p {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #99aab5;
+  text-align: center;
+}
+
+.create-server-box button {
+  background-color: #7289da;
+}
+
+.join-server-box button {
+  background-color: #3ca374;
+}
+
+.create-server-box:hover button {
+  background-color: #677bc4;
+}
+
+.join-server-box:hover button {
+  background-color: #369368
+}
+
+.create-server-box h3 {
+  color: #7289da;
+}
+
+.join-server-box h3 {
+  color: #3ca374;
+}
+
+.create-server-image, .join-server-image {
+  flex-grow: 1;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
-import { CREATE_SERVER } from '../modal/modal';
+import { ADD_SERVER } from '../modal/modal';
 
 class ServerIndex extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class ServerIndex extends React.Component {
 
   handleAddServer(e) {
     e.preventDefault();
-    this.props.receiveModal(CREATE_SERVER);
+    this.props.receiveModal(ADD_SERVER);
   }
 
   render() {
