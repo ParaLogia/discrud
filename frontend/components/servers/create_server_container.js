@@ -14,7 +14,8 @@ const msp = () => {
 const mdp = (dispatch) => {
   return {
     submitForm: (server) => dispatch(createServer(server)),
-    clearModal: () => dispatch(clearModal())
+    clearModal: () => dispatch(clearModal()),
+    backAction: () => dispatch(clearModal())
   }
 }
 

@@ -7,11 +7,17 @@ class ServerForm extends React.Component {
     this.state = this.props.server;
 
     this.handleNameUpdate = this.handleNameUpdate.bind(this);
+    this.handleClickBack = this.handleClickBack.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleNameUpdate(e) {
     this.setState({name: e.target.value});
+  }
+
+  handleClickBack(e) {
+    e.preventDefault();
+    this.props.backAction();
   }
 
   handleSubmit(e) {
@@ -44,7 +50,6 @@ class ServerForm extends React.Component {
       </p>
     )
       
-
     return (
       <div className="server-form-container">
         <form className="server-form">
@@ -75,9 +80,10 @@ class ServerForm extends React.Component {
 
 
         <div className="server-form-footer">
-          <span>
+          <div className="form-back-button" onClick={this.handleClickBack}>
+            <i className="fas fa-arrow-left"></i>
             back
-          </span>
+          </div>
           <button className="server-form-submit" onClick={this.handleSubmit}>
             {formType}
           </button>

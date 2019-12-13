@@ -90,6 +90,26 @@
   align-items: center;
 }
 
+.form-back-button {
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  font-size: 16px;
+  height: 100%;
+  cursor: pointer;
+  color: #99aab5;
+  display: flex;
+  align-items: center;
+}
+
+.form-back-button i {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.form-back-button:hover {
+  border-bottom-color: #949494;
+}
+
 .server-form-submit {
   text-transform: uppercase;
   background-color: #7289da;
