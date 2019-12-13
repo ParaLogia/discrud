@@ -49,3 +49,11 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
+div:focus, header:focus {
+  outline: none;
+}

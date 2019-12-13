@@ -20,12 +20,14 @@ class Content extends React.Component {
   }
 
   render() {
-    const { currentServer, currentUser, logout } = this.props;
+    const { currentServer, currentUser, logout, leaveServer, deleteServer } = this.props;
     return (
       <Sidebar 
         currentServer={currentServer}
         currentUser={currentUser}
         logout={logout}
+        leaveServer={leaveServer}
+        deleteServer={deleteServer}
       />
     )
   }
