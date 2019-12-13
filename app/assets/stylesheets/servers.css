@@ -99,3 +99,7 @@
   background-color: #43b581;
   color: white;
 }
+
+.server-form .invite-error {
+  color: #f04747;
+}

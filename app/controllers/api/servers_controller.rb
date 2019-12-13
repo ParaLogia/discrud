@@ -6,7 +6,7 @@ class Api::ServersController < ApplicationController
     if @server
       render :show
     else
-      render json: {server: ['not found']}, status: 404
+      render json: ['No such server'], status: 404
     end
   end
 
@@ -25,21 +25,21 @@ class Api::ServersController < ApplicationController
     if @server.save
       render :show
     else
-      render json: @server.errors.messages, status: 422
+      render json: @server.errors.full_messages, status: 422
     end
   end
 
   def update
     @server = current_user.owned_servers.find_by(id: params[:id])
     unless @server 
-      render json: { server: ['No such server'] }, status: 404
+      render json: ['No such server'] , status: 404
       return
     end
 
     if @server.update(server_params)
       render :show
     else
-      render json: @server.errors.messages
+      render json: @server.errors.full_messages
     end
   end
 
@@ -49,7 +49,7 @@ class Api::ServersController < ApplicationController
       @server.destroy
       render :show
     else
-      render json: { server: ['No such server'] }, status: 404
+      render json: ['No such server'], status: 404
     end
   end
 
@@ -62,13 +62,10 @@ class Api::ServersController < ApplicationController
         server_id: @server.id, 
         member_id: current_user.id
       )
-      if server_membership.save
-        render :show
-      else
-        render json: server_membership.errors.messages, status: 400
-      end
+      server_membership.save
+      render :show
     else
-      render json: { server: ['No such server'] }, status: 404
+      render json: ['No such server'], status: 404
     end
   end
 
@@ -79,7 +76,7 @@ class Api::ServersController < ApplicationController
       @server.members.delete(current_user)
       render :show
     else
-      render json: { server: ['Unable to leave server'] }, status: 400
+      render json: ['Unable to leave server'], status: 400
     end
   end
 

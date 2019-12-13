@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ServerFormFooter from './server_form_footer';
-import { clearModal } from '../../actions/ui_actions';
+import { clearModal, receiveModal } from '../../actions/ui_actions';
+import { ADD_SERVER } from '../modal/modal';
 import { joinServer } from '../../actions/server_actions';
 
 class JoinServerForm extends React.Component {
@@ -25,7 +26,7 @@ class JoinServerForm extends React.Component {
 
   handleClickBack(e) {
     e.preventDefault();
-    this.props.clearModal();
+    this.props.backAction();
   }
 
   handleSubmit() {
@@ -39,6 +40,8 @@ class JoinServerForm extends React.Component {
   }
 
   render() {
+    const hasErrors = this.props.errors.length > 0;
+
     return (
       <form className="server-form-container join-server-form" onSubmit={this.handleSubmit}>
         <div className="server-form">
@@ -50,14 +53,18 @@ class JoinServerForm extends React.Component {
             The invite will look something like this:
           </p>
           <p className="sample-invite">
-            qJq5C
+            e0jK8w
           </p>
           <div className="invite-input-container">
-            <input type="text"
+            <input className={hasErrors ? 'invite-error' : ''}
+                  type="text"
                   onChange={this.handleUpdateInviteToken}
                   value={this.state.inviteToken} />
             <span className="invite-hint">
-              Enter an invite
+              Enter an invite&nbsp;
+              <span className={`invite-error ${hasErrors ? '' : 'hidden'}`}>
+                  (The invite is invalid or has expired.)
+              </span>
             </span>
           </div>
         </div>
@@ -69,11 +76,18 @@ class JoinServerForm extends React.Component {
   }
 }
 
-const mdp = (dispatch) => {
+const msp = (state) => {
   return {
-    clearModal: () => dispatch(clearModal()),
-    joinServer: (inviteToken) => dispatch(joinServer(inviteToken))
+    errors: state.errors.server
   }
 }
 
-export default connect(null, mdp)(JoinServerForm);
+const mdp = (dispatch) => {
+  return {
+    clearModal: () => dispatch(clearModal()),
+    joinServer: (inviteToken) => dispatch(joinServer(inviteToken)),
+    backAction: () => dispatch(receiveModal(ADD_SERVER))
+  }
+}
+
+export default connect(msp, mdp)(JoinServerForm);
