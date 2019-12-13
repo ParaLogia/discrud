@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { fetchServer, deleteServer, leaveServer } from '../../actions/server_actions';
+import { receiveModal } from '../../actions/ui_actions';
 import Content from './content';
 
 const msp = (state, ownProps) => {
@@ -25,7 +26,8 @@ const mdp = (dispatch) => {
     logout: () => dispatch(logout()),
     fetchServer: (serverId) => dispatch(fetchServer(serverId)),
     deleteServer: (serverId) => dispatch(deleteServer(serverId)),
-    leaveServer: (serverId) => dispatch(leaveServer(serverId))
+    leaveServer: (serverId) => dispatch(leaveServer(serverId)),
+    receiveModal: (modal) => dispatch(receiveModal(modal))
   }
 }
 

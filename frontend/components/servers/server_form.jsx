@@ -12,16 +12,16 @@ class ServerForm extends React.Component {
 
   handleNameUpdate(e) {
     this.setState({name: e.target.value});
-  } 
+  }
 
   handleSubmit(e) {
     e.preventDefault();
 
     const {submitForm, clearModal} = this.props;
-    submitForm(Object.assign(this.state))
+    submitForm(Object.assign({}, this.state))
       .then(({server}) => {
         clearModal();
-        this.props.history.push(`/channels/${server.id}`);
+        this.props.history.push(`${server.id}`);
       });
   }
 
@@ -50,7 +50,7 @@ class ServerForm extends React.Component {
         <form className="server-form">
 
           {title}
-          
+
           {description}
 
           <div className="server-form-inner-container">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { EDIT_SERVER } from '../modal/modal';
 
 class ServerHeader extends React.Component {
   constructor(props) {
@@ -9,9 +10,10 @@ class ServerHeader extends React.Component {
       dropdown: false
     };
 
-    this.removeServerAction = () => {};
-    this.removeServerText = '';
+    this.removeServerAction = this.props.leaveServer;
+    this.removeServerText = 'Leave';
 
+    this.handleEditServer = this.handleEditServer.bind(this);
     this.handleRemoveServer = this.handleRemoveServer.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
@@ -21,22 +23,37 @@ class ServerHeader extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.serverId !== this.props.match.params.serverId) {
+    const prevServer = prevProps.currentServer;
+    const nextServerId = this.props.match.params.serverId;
+    // debugger;
+    if (prevServer.id != nextServerId) {
+      // debugger
       this.updateDropdown();
     }
   }
 
   updateDropdown() {
-    const { currentServer, currentUser, deleteServer, leaveServer } = this.props;
-    this.setState({ dropdown: false });
+    const { currentServer, currentUser, deleteServer } = this.props;
+    if (this.state.dropdown) {
+      this.setState({ dropdown: false });
+    }
 
     if (currentServer.ownerId === currentUser.id) {
       this.removeServerAction = deleteServer;
       this.removeServerText = 'delete';
-    } else {
-      this.removeServerAction = leaveServer;
-      this.removeServerText = 'leave';
-    }
+
+      this.editOption = (
+        <div className="dropdown-option"
+             onClick={this.handleEditServer}>
+          Edit
+        </div>
+      )
+    } 
+  }
+
+  handleEditServer(e) {
+    e.preventDefault();
+    this.props.receiveModal(EDIT_SERVER);
   }
 
   handleRemoveServer(e) {
@@ -54,6 +71,13 @@ class ServerHeader extends React.Component {
     const { currentServer } = this.props;
     const { dropdown } = this.state;
 
+    const removeOption = (
+      <div className="dropdown-option destructive"
+        onClick={this.handleRemoveServer}>
+        {this.removeServerText}
+      </div>
+    )
+
     return (
       <header className="server-header" 
         onClick={this.toggleDropdown}
@@ -68,12 +92,9 @@ class ServerHeader extends React.Component {
         </div>
 
         <div className={`server-dropdown ${dropdown ? '' : 'hidden'}`}>
-          <div 
-            className="dropdown-option destructive" 
-            onClick={this.handleRemoveServer}
-          >
-            {this.removeServerText}
-          </div>
+          {this.editOption}
+
+          {removeOption}
         </div>
       </header>
     )

@@ -20,7 +20,7 @@ class Content extends React.Component {
   }
 
   render() {
-    const { currentServer, currentUser, logout, leaveServer, deleteServer } = this.props;
+    const { currentServer, currentUser, logout, leaveServer, deleteServer, receiveModal } = this.props;
     return (
       <Sidebar 
         currentServer={currentServer}
@@ -28,6 +28,7 @@ class Content extends React.Component {
         logout={logout}
         leaveServer={leaveServer}
         deleteServer={deleteServer}
+        receiveModal={receiveModal}
       />
     )
   }

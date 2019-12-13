@@ -1,5 +1,6 @@
 import React from 'react';
 import CreateServerContainer from '../servers/create_server_container';
+import EditServerContainer from '../servers/edit_server_container';
 
 // Modal names
 export const ADD_SERVER = "ADD_SERVER";
@@ -16,6 +17,10 @@ function Modal({ modal, clearModal }) {
 
     case CREATE_SERVER:
       component = <CreateServerContainer />
+      break;
+
+    case EDIT_SERVER:
+      component = <EditServerContainer />
       break;
 
     default:
