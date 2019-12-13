@@ -11,7 +11,11 @@ const Sidebar = ({ currentServer, currentUser, logout, leaveServer, deleteServer
       deleteServer={deleteServer}
     />
   ) : (
-    <header>DMs</header>
+    <header className="server-header">
+      <div className="server-title-container">
+        DMs
+      </div>
+    </header>
   )
 
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class ServerHeader extends React.Component {
   constructor(props) {
@@ -15,11 +16,19 @@ class ServerHeader extends React.Component {
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
+  componentDidMount() {
+    this.updateDropdown();
+  }
+
   componentDidUpdate(prevProps) {
-    const { currentServer, currentUser, deleteServer, leaveServer } = this.props;
-    if (prevProps.currentServer.id === currentServer) {
-      return;
+    if (prevProps.match.params.serverId !== this.props.match.params.serverId) {
+      this.updateDropdown();
     }
+  }
+
+  updateDropdown() {
+    const { currentServer, currentUser, deleteServer, leaveServer } = this.props;
+    this.setState({ dropdown: false });
 
     if (currentServer.ownerId === currentUser.id) {
       this.removeServerAction = deleteServer;
@@ -32,11 +41,13 @@ class ServerHeader extends React.Component {
 
   handleRemoveServer(e) {
     e.preventDefault();
-    this.removeServerAction(this.props.currentServer.id);
-  } 
+    const serverId = this.props.currentServer.id;
+    this.removeServerAction(serverId)
+      .then(this.props.history.push('/channels/@me'));
+  }
 
   toggleDropdown() {
-    this.setState(({dropdown}) => this.setState({dropdown: !dropdown}));
+    this.setState(({dropdown}) => ({dropdown: !dropdown}));
   }
 
   render() {
@@ -69,4 +80,4 @@ class ServerHeader extends React.Component {
   }
 }
 
-export default ServerHeader;
+export default withRouter(ServerHeader);
