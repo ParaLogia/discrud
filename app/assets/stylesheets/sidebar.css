@@ -56,15 +56,22 @@
   background-color: #2f3136;
   color: white;
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  padding: 0px 20px;
   cursor: pointer;
   position: relative;
 }
 
-.server-header:hover {
+.server-title-container {
+  width: 100%;
+  height: 100%;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  padding: 0px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.server-title-container:hover {
   background-color: #36393f;
 }
 
@@ -84,4 +91,5 @@
   width: calc(100% - 48px);
   padding: 30px 10px;
   background-color: #18191c;
+  cursor: default;
 }

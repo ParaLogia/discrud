@@ -41,23 +41,26 @@ class ServerHeader extends React.Component {
 
   render() {
     const { currentServer } = this.props;
+    const { dropdown } = this.state;
 
     return (
       <header className="server-header" 
         onClick={this.toggleDropdown}
-        // onFocus={this.toggleDropdown}
         onBlur={this.toggleDropdown}
         tabIndex="0"
       >
-        <h1 className="server-title">
-          {currentServer.name}
-        </h1>
+        <div className="server-title-container">          
+          <h1 className="server-title">
+            {currentServer.name}
+          </h1>
+          <i className={dropdown ? "fas fa-times" : "fas fa-angle-down"}></i>
+        </div>
 
-        <div className={`server-dropdown ${this.state.dropdown ? '' : 'hidden'}`}>
+        <div className={`server-dropdown ${dropdown ? '' : 'hidden'}`}>
           <button 
             className="server-remove-button" 
             onClick={this.handleRemoveServer}
-          >
+            >
             {this.removeServerText}
           </button>
         </div>
