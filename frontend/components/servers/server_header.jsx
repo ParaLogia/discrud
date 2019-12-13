@@ -57,16 +57,16 @@ class ServerHeader extends React.Component {
         </div>
 
         <div className={`server-dropdown ${dropdown ? '' : 'hidden'}`}>
-          <button 
-            className="server-remove-button" 
+          <div 
+            className="dropdown-option destructive" 
             onClick={this.handleRemoveServer}
-            >
+          >
             {this.removeServerText}
-          </button>
+          </div>
         </div>
       </header>
     )
   }
-};
+}
 
 export default ServerHeader;

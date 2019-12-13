@@ -88,8 +88,28 @@
   top: 56px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 48px);
-  padding: 30px 10px;
+  width: calc(100% - 24px);
+  padding: 6px 4px;
   background-color: #18191c;
   cursor: default;
+}
+
+.dropdown-option {
+  width: 100%;
+  box-sizing: border-box;
+  height: 32px;
+  margin: 2px 4px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.dropdown-option:hover {
+  background-color: rgba(79, 84, 92, 0.16);
+}
+
+.destructive {
+  color: #f04747;
 }
