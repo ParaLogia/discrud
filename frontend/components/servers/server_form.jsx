@@ -1,4 +1,5 @@
 import React from 'react';
+import ServerFormFooter from './server_form_footer';
 
 class ServerForm extends React.Component {
   constructor(props) {
@@ -51,8 +52,8 @@ class ServerForm extends React.Component {
     )
       
     return (
-      <div className="server-form-container">
-        <form className="server-form">
+      <form className="server-form-container" onSubmit={this.handleSubmit}>
+        <div className="server-form">
 
           {title}
 
@@ -76,21 +77,15 @@ class ServerForm extends React.Component {
               {this.state.name[0]}
             </div>
           </div>
-        </form>
-
-
-        <div className="server-form-footer">
-          <div className="form-back-button" onClick={this.handleClickBack}>
-            <i className="fas fa-arrow-left"></i>
-            back
-          </div>
-          <button className="server-form-submit" onClick={this.handleSubmit}>
-            {formType}
-          </button>
         </div>
-      </div>
+
+        <ServerFormFooter 
+          submitText={formType} 
+          handleClickBack={this.handleClickBack} />
+          
+      </form>
     )
   }
 }
 
-export default ServerForm
+export default ServerForm;

@@ -78,6 +78,7 @@ export const joinServer = (inviteToken) => (dispatch) => {
       ({ server, users }) => {
         dispatch(receiveServer(server));
         dispatch(receiveUsers(users));
+        return { server, users }
       },
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )

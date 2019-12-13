@@ -121,3 +121,35 @@
 .server-form-submit:hover {
   background-color: #677bc4;
 }
+
+.sample-invite {
+  color: #7289da;
+  text-align: center;
+  margin: 35px;
+}
+
+.join-server-form .server-form {
+  padding: 28px 75px 0px;
+}
+
+.join-server-form h1{
+  color: #43b581;
+  margin-bottom: 20px;
+}
+
+.join-server-form .server-form-submit {
+  background-color: #43b581;
+}
+
+.invite-hint {
+  font-size: 11px;
+  color: #99aab5;
+  margin-top: 5px;
+}
+
+.invite-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
