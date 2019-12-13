@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import { createServer, fetchServer, fetchServers, deleteServer, updateServer, joinServer, leaveServer } from './actions/server_actions';
+import { joinServer } from './actions/server_actions';
+import { receiveModal } from './actions/ui_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -35,12 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
-    window.createServer = createServer
-    window.deleteServer = deleteServer 
-    window.updateServer = updateServer
-    window.joinServer = joinServer
-    window.leaveServer = leaveServer
-    window.fetchServer = fetchServer
-    window.fetchServers = fetchServers
+    window.joinServer = joinServer;
+    window.receiveModal = receiveModal;
   }
 });

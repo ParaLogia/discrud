@@ -54,7 +54,8 @@ class Api::ServersController < ApplicationController
   end
 
   def join
-    @server = Server.find_by(id: params[:id])
+    # @server = Server.find_by(id: params[:id])
+    @server = Server.find_by(invite_token: params[:invite_token])
     
     if @server
       server_membership = ServerMembership.new(

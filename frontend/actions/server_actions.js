@@ -72,8 +72,8 @@ export const deleteServer = (serverId) => (dispatch) => {
     )
 }
 
-export const joinServer = (serverId) => (dispatch) => {
-  return APIUtil.joinServer(serverId)
+export const joinServer = (inviteToken) => (dispatch) => {
+  return APIUtil.joinServer(inviteToken)
     .then(
       ({ server, users }) => {
         dispatch(receiveServer(server));

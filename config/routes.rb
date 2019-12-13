@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :servers, only: [:show, :index, :create, :update, :destroy] do
       member do
-        post 'join'
         delete 'leave'
+      end
+
+      collection do
+        post 'join'
       end
     end
   end

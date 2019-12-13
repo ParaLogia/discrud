@@ -36,10 +36,11 @@ export const deleteServer = (serverId) => {
   });
 }
 
-export const joinServer = (serverId) => {
+export const joinServer = (inviteToken) => {
   return $.ajax({
     method: "POST",
-    url: `/api/servers/${serverId}/join`
+    url: `/api/servers/join`,
+    data: { invite_token: inviteToken }
   });
 }
 
