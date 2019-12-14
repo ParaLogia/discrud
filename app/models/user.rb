@@ -23,6 +23,10 @@ class User < ApplicationRecord
     class_name: :Server,
     foreign_key: :owner_id
 
+  has_many :owned_channels,
+    through: :owned_servers,
+    source: :channels
+
   has_many :server_memberships,
     foreign_key: :member_id,
     dependent: :destroy

@@ -29,11 +29,28 @@ class Api::ChannelsController < ApplicationController
   end
 
   def update
-    
+    @channel = current_user.owned_channels.find_by(id: params[:id])
+
+    if @channel
+      if @channel.update(channel_params)
+        render :show
+      else
+        render json: @channel.errors.full_messages, status: 422
+      end
+    else
+      render json: ['Channel not found'], status: 404
+    end
   end
 
   def destroy
-    
+    @channel = current_user.owned_channels.find_by(id: params[:id])
+
+    if @channel
+      @channel.destroy
+      render :show
+    else
+      render json: ['Channel not found'], status: 404
+    end
   end
 
   private
