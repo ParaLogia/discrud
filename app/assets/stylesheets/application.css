@@ -53,11 +53,3 @@ a:hover {
 .hidden {
   visibility: hidden;
 }
-
-div:focus, header:focus {
-  outline: none;
-}
-
-input:focus, button:focus {
-  outline: none;
-}

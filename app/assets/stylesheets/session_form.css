@@ -55,6 +55,10 @@
   border-color: #040405;
 }
 
+.session-form input:focus {
+  border: 1px solid #7289da;
+}
+
 .session-form button {
   color: white;
   background-color: #7289da;

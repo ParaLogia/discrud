@@ -10,3 +10,7 @@ li, button, form, input, textarea, img, ol, ul {
 	text-decoration: none;
   line-height: 100%;
 }
+
+div:focus, header:focus, input:focus, button:focus {
+  outline: none;
+}
