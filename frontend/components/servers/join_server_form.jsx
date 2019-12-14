@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import ServerFormFooter from './server_form_footer';
 import { clearModal, receiveModal } from '../../actions/ui_actions';
 import { ADD_SERVER } from '../modal/modal';
@@ -90,4 +91,4 @@ const mdp = (dispatch) => {
   }
 }
 
-export default connect(msp, mdp)(JoinServerForm);
+export default withRouter(connect(msp, mdp)(JoinServerForm));
