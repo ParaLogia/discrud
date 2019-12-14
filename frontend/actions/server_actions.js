@@ -29,10 +29,7 @@ export const receiveErrors = (errors) => ({
 export const fetchServers = () => (dispatch) => {
   return APIUtil.fetchServers()
     .then(
-      ({ servers, users }) => {
-        dispatch(receiveServers(servers));
-        dispatch(receiveUsers(users));
-      },
+      (servers) => dispatch(receiveServers(servers)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
