@@ -25,7 +25,8 @@ class Server < ApplicationRecord
   has_many :members,
     through: :server_memberships
 
-  has_many :channels
+  has_many :channels,
+    dependent: :destroy
 
   # Custom association: union of owner and members
   def users
