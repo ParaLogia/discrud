@@ -25,6 +25,8 @@ class Server < ApplicationRecord
   has_many :members,
     through: :server_memberships
 
+  has_many :channels
+
   after_initialize :ensure_invite_token
 
   def self.generate_invite_token
