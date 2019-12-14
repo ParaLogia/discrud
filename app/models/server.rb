@@ -27,6 +27,21 @@ class Server < ApplicationRecord
 
   has_many :channels
 
+  # Custom association: union of owner and members
+  def users
+    @users ||= User.left_outer_joins(:server_memberships)
+      .where(
+        'server_id = :server_id OR users.id = :owner_id',
+        server_id: self.id,
+        owner_id: self.owner_id
+      )
+      .distinct
+  end
+
+  def user_ids
+    users.pluck(:id)
+  end
+
   after_initialize :ensure_invite_token
 
   def self.generate_invite_token

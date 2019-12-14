@@ -4,7 +4,7 @@ json.servers do
     json.set! server.id do
       json.partial! 'server', server: server
       if idx == 0
-        json.memberIds server.member_ids + [server.owner_id]
+        json.memberIds server.user_ids
       end
     end
   end
@@ -12,10 +12,6 @@ end
 
 json.users({})
 json.users do
-  unless @servers.empty? 
-    users = @servers.first.members + [@servers.first.owner]
-  else
-    users = []
-  end
+  users = @servers.first.try(:users) || []
   json.partial! 'api/users/index', users: users
 end

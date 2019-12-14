@@ -6,13 +6,13 @@ class Api::ServersController < ApplicationController
     if @server
       render :show
     else
-      render json: ['No such server'], status: 404
+      render json: ['Server not found'], status: 404
     end
   end
 
   def index
     if logged_in?
-      @servers = current_user.joined_servers + current_user.owned_servers
+      @servers = current_user.servers
       render :index
     else
       @servers = Server.all
@@ -32,7 +32,7 @@ class Api::ServersController < ApplicationController
   def update
     @server = current_user.owned_servers.find_by(id: params[:id])
     unless @server 
-      render json: ['No such server'] , status: 404
+      render json: ['Server not found'] , status: 404
       return
     end
 
@@ -49,12 +49,11 @@ class Api::ServersController < ApplicationController
       @server.destroy
       render :show
     else
-      render json: ['No such server'], status: 404
+      render json: ['Server not found'], status: 404
     end
   end
 
   def join
-    # @server = Server.find_by(id: params[:id])
     @server = Server.find_by(invite_token: params[:invite_token])
     
     if @server
@@ -65,7 +64,7 @@ class Api::ServersController < ApplicationController
       server_membership.save
       render :show
     else
-      render json: ['No such server'], status: 404
+      render json: ['Server not found'], status: 404
     end
   end
 

@@ -37,6 +37,16 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token, :ensure_tag
 
+  # Custom association: union of joined_servers and owned_servers
+  def servers
+    @servers ||= Server.left_outer_joins(:server_memberships)
+      .where(
+        'member_id = :user_id OR owner_id = :user_id', 
+        user_id: self.id
+      )
+      .distinct
+  end
+
   attr_reader :password
 
   TAG_RANGE = (0000..9999)

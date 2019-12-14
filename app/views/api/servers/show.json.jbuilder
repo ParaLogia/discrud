@@ -1,9 +1,8 @@
 json.server do
   json.partial! 'server', server: @server
-  json.memberIds @server.member_ids + [@server.owner_id]
+  json.memberIds @server.user_ids
 end
 
 json.users do
-  users = @server.members + [@server.owner]
-  json.partial! 'api/users/index', users: users
+  json.partial! 'api/users/index', users: @server.users
 end
