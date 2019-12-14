@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api,  defaults: {format: :json} do
     resources :users, only: [:create]
+    
     resource :session, only: [:create, :destroy]
+
     resources :servers, only: [:show, :index, :create, :update, :destroy] do
       member do
         delete 'leave'
@@ -12,6 +14,10 @@ Rails.application.routes.draw do
       collection do
         post 'join'
       end
+
+      resources :channels, only: [:create]
     end
+
+    resources :channels, only: [:show, :update, :destroy]
   end
 end
