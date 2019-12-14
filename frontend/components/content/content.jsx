@@ -8,7 +8,9 @@ class Content extends React.Component {
 
   componentDidMount() {
     const { serverId } = this.props.match.params;
-    this.props.fetchServer(serverId);
+    if (serverId !== '@me') {
+      this.props.fetchServer(serverId);
+    }
   }
 
   componentDidUpdate(prevProps) {
