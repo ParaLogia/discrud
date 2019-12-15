@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import { joinServer } from './actions/server_actions';
+import * as ChannelAPIUtil from './util/channel_api_util';
 import { receiveModal } from './actions/ui_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
-    window.joinServer = joinServer;
+    window.ChannelAPIUtil = ChannelAPIUtil;
     window.receiveModal = receiveModal;
   }
 });
