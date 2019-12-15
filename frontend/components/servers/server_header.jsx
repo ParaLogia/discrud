@@ -17,6 +17,7 @@ class ServerHeader extends React.Component {
     this.handleEditServer = this.handleEditServer.bind(this);
     this.handleRemoveServer = this.handleRemoveServer.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +35,7 @@ class ServerHeader extends React.Component {
   updateDropdown() {
     const { currentServer, currentUser, deleteServer, leaveServer } = this.props;
     if (this.state.dropdown) {
-      this.setState({ dropdown: false });
+      this.hideDropdown();
     }
 
     if (currentServer.ownerId === currentUser.id) {
@@ -58,13 +59,13 @@ class ServerHeader extends React.Component {
   handleInviteToServer(e) {
     e.preventDefault();
     this.props.receiveModal(INVITE_TO_SERVER);
-    this.setState({ dropdown: false })
+    this.hideDropdown();
   }
 
   handleEditServer(e) {
     e.preventDefault();
     this.props.receiveModal(EDIT_SERVER);
-    this.setState({ dropdown: false })
+    this.hideDropdown();
   }
 
   handleRemoveServer(e) {
@@ -76,6 +77,10 @@ class ServerHeader extends React.Component {
 
   toggleDropdown() {
     this.setState(({dropdown}) => ({dropdown: !dropdown}));
+  }
+
+  hideDropdown() {
+    this.setState({ dropdown: false })
   }
 
   render() {
@@ -101,7 +106,7 @@ class ServerHeader extends React.Component {
     return (
       <header className="server-header" 
         onClick={this.toggleDropdown}
-        onBlur={this.toggleDropdown}
+        onBlur={this.hideDropdown}
         tabIndex="0"
       >
         <div className="server-title-container">          
