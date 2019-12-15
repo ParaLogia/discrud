@@ -1,6 +1,6 @@
 import React from 'react';
-import ServerHeader from '../../servers/server_header';
-import UserFooter from './user_footer';
+import ServerHeader from '../servers/server_header';
+import SessionFooter from '../session/session_footer';
 
 const Sidebar = ({ currentServer, currentUser, logout, leaveServer, deleteServer, receiveModal }) => {
   const header = (currentServer) ? (
@@ -22,7 +22,7 @@ const Sidebar = ({ currentServer, currentUser, logout, leaveServer, deleteServer
   return (
     <aside className="content-sidebar">
       {header}
-      <UserFooter currentUser={currentUser} logout={logout} />
+      <SessionFooter currentUser={currentUser} logout={logout} />
     </aside>
   )
 }
