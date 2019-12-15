@@ -1,5 +1,4 @@
 import * as APIUtil from '../util/server_api.util';
-import { receiveUsers } from './user_actions';
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS'; 
 export const RECEIVE_SERVER = 'RECEIVE_SERVER'; 
@@ -11,9 +10,11 @@ export const receiveServers = (servers) => ({
   servers
 })
 
-export const receiveServer = (server) => ({
+export const receiveServer = ({ server, users = {}, channels = {} }) => ({
   type: RECEIVE_SERVER,
-  server
+  server,
+  users,
+  channels
 })
 
 export const removeServer = (serverId) => ({
@@ -37,10 +38,7 @@ export const fetchServers = () => (dispatch) => {
 export const fetchServer = (serverId) => (dispatch) => {
   return APIUtil.fetchServer(serverId)
     .then(
-      ({ server, users }) => {
-        dispatch(receiveServer(server));
-        dispatch(receiveUsers(users));
-      },
+      (resp) => dispatch(receiveServer(resp)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
@@ -48,7 +46,7 @@ export const fetchServer = (serverId) => (dispatch) => {
 export const createServer = (server) => (dispatch) => {
   return APIUtil.createServer(server)
     .then(
-      ({ server }) => dispatch(receiveServer(server)),
+      ({ server }) => dispatch(receiveServer({ server })),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
@@ -56,7 +54,7 @@ export const createServer = (server) => (dispatch) => {
 export const updateServer = (server) => (dispatch) => {
   return APIUtil.updateServer(server)
     .then(
-      ({ server }) => dispatch(receiveServer(server)),
+      ({ server }) => dispatch(receiveServer({ server })),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
@@ -72,11 +70,7 @@ export const deleteServer = (serverId) => (dispatch) => {
 export const joinServer = (inviteToken) => (dispatch) => {
   return APIUtil.joinServer(inviteToken)
     .then(
-      ({ server, users }) => {
-        dispatch(receiveServer(server));
-        dispatch(receiveUsers(users));
-        return { server, users }
-      },
+      (resp) => dispatch(receiveServer(resp)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
