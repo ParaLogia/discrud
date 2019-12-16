@@ -28,7 +28,7 @@ class ServerForm extends React.Component {
     submitForm(Object.assign({}, this.state))
       .then(({server}) => {
         clearModal();
-        this.props.history.push(`${server.id}`);
+        this.props.history.push(`/channels/${server.id}`);
       });
   }
 

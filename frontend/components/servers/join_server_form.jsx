@@ -36,7 +36,7 @@ class JoinServerForm extends React.Component {
     joinServer(this.state.inviteToken)
       .then(({ server }) => {
         clearModal();
-        this.props.history.push(`${server.id}`);
+        this.props.history.push(`/channels/${server.id}`);
       });
   }
 
