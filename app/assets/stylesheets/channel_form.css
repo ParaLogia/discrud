@@ -1,5 +1,96 @@
+.channel-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .channel-form {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 440px;
   background-color: #36393f;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.channel-form h2 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.channel-form label {
+  color: #8e9297;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.channel-form input, .channel-form textarea {
+  box-sizing: border-box;
+  padding: 10px;
+  height: 40px;
+  margin-top: 8px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0.1);
+  color: #dcddde;
+  font-size: 16px;
+  font-weight: lighter;
+  width: 100%;
+  border-style: inset;
+}
+
+.channel-form textarea {
+  height: 90px;
+}
+
+.channel-form input:hover {
+  border-color: #040405;
+}
+
+.channel-form input:focus {
+  border: 1px solid #7289da;
+}
+
+.channel-form .button-container {
+  height: 78px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #2f3136;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container button {
+  text-transform: capitalize;
+  font-size: 14px;
+  height: 38px;
+  color: white;
+}
+
+.delete-button {
+  background-color: #f04747;
+}
+.delete-button:hover {
+  background-color: #d84040;
+}
+
+.cancel-button {
+  background-color: transparent;
+}
+
+.cancel-button:hover {
+  text-decoration: underline;
+}
+
+.button-container button[type="submit"] {
+  background-color: #7289da;
 }

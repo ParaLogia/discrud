@@ -52,13 +52,13 @@ class ChannelForm extends React.Component {
               onClick={this.handleDelete}>
         Delete
       </button>
-    ) : null;
+    ) : <div></div>;
 
     return (
-      <div className="channel-form-container">
-        <form className="channel-form" onSubmit={this.handleSubmit}>
+      <form className="channel-form" onSubmit={this.handleSubmit}>
+        <div className="channel-form-wrapper">
           <h2>
-            Create Text Channel
+            {formType} Text Channel
           </h2>
 
           <label>
@@ -74,10 +74,12 @@ class ChannelForm extends React.Component {
                       onChange={this.handleUpdate('topic')}/>
           </label>
 
-          <div className="button-container">
+        </div>
+        <div className="button-container">
 
-            {deleteButton}
+          {deleteButton}
 
+          <div>
             <button type="button" 
                     className="cancel-button" 
                     onClick={this.handleCancel}>
@@ -85,11 +87,11 @@ class ChannelForm extends React.Component {
             </button>
 
             <button type="submit">
-              {formType}&nbsp;channel
+              {formType} channel
             </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     )
   }
 }

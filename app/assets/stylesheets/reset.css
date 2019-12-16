@@ -14,3 +14,11 @@ li, button, form, input, textarea, img, ol, ul {
 div:focus, header:focus, input:focus, button:focus {
   outline: none;
 }
+
+textarea {
+	resize: none;
+}
+
+textarea::-webkit-scrollbar { 
+  width: 0 !important; 
+}
