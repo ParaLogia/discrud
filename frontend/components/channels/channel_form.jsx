@@ -43,6 +43,10 @@ class ChannelForm extends React.Component {
       });
   }
 
+  componentDidMount() {
+    this.nameInput.focus();
+  }
+
   render() {
     const { formType } = this.props;
 
@@ -64,6 +68,7 @@ class ChannelForm extends React.Component {
           <label>
             Channel Name
             <input type="text" 
+                   ref={(nameInput) => this.nameInput = nameInput}
                    value={this.state.name}
                    onChange={this.handleUpdate('name')}/>
           </label>
