@@ -1,4 +1,4 @@
-import { RECEIVE_SERVER_ERRORS, RECEIVE_SERVER, RECEIVE_SERVERS, REMOVE_SERVER } from '../actions/server_actions';
+import { RECEIVE_SERVER_ERRORS, RECEIVE_SERVER, RECEIVE_SERVERS, REMOVE_SERVER, CLEAR_SERVER_ERRORS } from '../actions/server_actions';
 import { CLEAR_MODAL } from '../actions/modal_actions'
 
 const serverErrorsReducer = (state = [], action) => {
@@ -8,6 +8,7 @@ const serverErrorsReducer = (state = [], action) => {
     case RECEIVE_SERVER_ERRORS:
       return action.errors;
 
+    case CLEAR_SERVER_ERRORS:
     case RECEIVE_SERVER:
     case RECEIVE_SERVERS:
     case REMOVE_SERVER:

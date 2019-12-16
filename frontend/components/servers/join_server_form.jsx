@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ServerFormFooter from './server_form_footer';
 import { clearModal, addServerModal } from '../../actions/modal_actions';
-import { joinServer } from '../../actions/server_actions';
+import { joinServer, clearErrors } from '../../actions/server_actions';
 
 class JoinServerForm extends React.Component {
   constructor(props) {
@@ -19,6 +19,9 @@ class JoinServerForm extends React.Component {
   }
 
   handleUpdateInviteToken(e) {
+    if (this.props.errors.length) {
+      this.props.clearErrors();
+    }
     this.setState({
       inviteToken: e.target.value
     });
@@ -85,6 +88,7 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     clearModal: () => dispatch(clearModal()),
+    clearErrors: () => dispatch(clearErrors()),
     joinServer: (inviteToken) => dispatch(joinServer(inviteToken)),
     backAction: () => dispatch(addServerModal())
   }
