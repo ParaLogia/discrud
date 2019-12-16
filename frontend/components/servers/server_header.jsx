@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { EDIT_SERVER, INVITE_TO_SERVER } from '../modal/modal';
+import { EDIT_SERVER, INVITE_TO_SERVER, CREATE_CHANNEL } from '../modal/modal';
 
 class ServerHeader extends React.Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class ServerHeader extends React.Component {
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
     this.handleInviteToServer = this.handleInviteToServer.bind(this);
+    this.handleCreateChannel = this.handleCreateChannel.bind(this);
     this.handleEditServer = this.handleEditServer.bind(this);
     this.handleRemoveServer = this.handleRemoveServer.bind(this);
   }
@@ -63,14 +64,20 @@ class ServerHeader extends React.Component {
 
   handleInviteToServer(e) {
     e.preventDefault();
-    this.props.receiveModal(INVITE_TO_SERVER);
     this.hideDropdown();
+    this.props.receiveModal(INVITE_TO_SERVER);
+  }
+
+  handleCreateChannel(e) {
+    e.preventDefault();
+    this.hideDropdown();
+    this.props.receiveModal(CREATE_CHANNEL);
   }
 
   handleEditServer(e) {
     e.preventDefault();
-    this.props.receiveModal(EDIT_SERVER);
     this.hideDropdown();
+    this.props.receiveModal(EDIT_SERVER);
   }
 
   handleRemoveServer(e) {
@@ -90,6 +97,13 @@ class ServerHeader extends React.Component {
         Invite People
       </div>
     )
+
+    const createChannelOption = (this._currentUserIsOwner()) ? (
+      <div className="dropdown-option"
+           onClick={this.handleCreateChannel}>
+        Create Channel
+      </div>
+    ) : null;
 
     const editOption = (this._currentUserIsOwner()) ? (
       <div className="dropdown-option"
@@ -121,6 +135,8 @@ class ServerHeader extends React.Component {
         <div className={`server-dropdown ${dropdown ? '' : 'hidden'}`}>
 
           {inviteOption}
+
+          {createChannelOption}
 
           {editOption}
 
