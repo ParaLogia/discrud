@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const ServerIndexItem = ({ server }) => {
   // Placeholder for server image -- first letter
@@ -11,7 +11,7 @@ const ServerIndexItem = ({ server }) => {
 
   return (
     <li>
-      <Link to={`/channels/${server.id}`} className="servers-nav-icon"> 
+      <NavLink to={`/channels/${server.id}`} className="servers-nav-icon"> 
         {serverIcon}
 
         <div className="tooltip-wrapper">
@@ -19,7 +19,7 @@ const ServerIndexItem = ({ server }) => {
             {server.name}
           </div>
         </div>
-      </Link>
+      </NavLink>
     </li>
   )
 }

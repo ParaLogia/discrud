@@ -29,9 +29,10 @@
   margin-bottom: 8px;
 }
 
-.servers-nav-icon:hover {
+.servers-nav-icon:hover, .servers-nav-icon.active {
   text-decoration: none;
   border-radius: 16px;
+  background-color: #7289da;
 }
 
 .servers-nav .tooltip-wrapper {
@@ -80,7 +81,7 @@
   padding: 5px 0px;
 }
 
-.home-button:hover {
+.home-button:hover, .home-button.active {
   background-color: #7289da;
 }
 

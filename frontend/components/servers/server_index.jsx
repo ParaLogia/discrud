@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
 import { ADD_SERVER } from '../modal/modal';
 
@@ -27,14 +27,14 @@ class ServerIndex extends React.Component {
     return (
       <nav className="servers-nav">
         <div className="home-button-container">
-          <Link to="/channels/@me" className="servers-nav-icon home-button">
-            Hm
+          <NavLink to="/channels/@me" className="servers-nav-icon home-button">
+            <i className="fas fa-home"></i>
             <div className="tooltip-wrapper">
               <div className="tooltip">
                 Home
               </div>
             </div>
-          </Link>
+          </NavLink>
         </div>
 
         <div className="server-separator"></div>
