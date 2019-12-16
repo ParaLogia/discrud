@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 import { fetchChannel } from './actions/channel_actions';
-import * as MessageAPIUtil from './util/message_api_util';
+import { createChannelMessage, updateMessage, deleteMessage } from './actions/message_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatch = store.dispatch;
 
     window.fetchChannel = fetchChannel;
-    window.MessageAPIUtil = MessageAPIUtil;
+    window.createChannelMessage = createChannelMessage;
+    window.updateMessage = updateMessage;
+    window.deleteMessage = deleteMessage;
   }
 });
