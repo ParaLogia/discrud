@@ -18,7 +18,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def update
-    @message = Message.find_by(id: params[:id])
+    @message = current_user.messages.find_by(id: params[:id])
     if @message
       if @message.update(message_params)
         render :show
@@ -31,7 +31,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find_by(id: params[:id])
+    @message = current_user.messages.find_by(id: params[:id])
     if @message
       @message.destroy
       render :show
