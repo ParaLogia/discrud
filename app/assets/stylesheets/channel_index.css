@@ -16,7 +16,7 @@
 
 .channel-link {
   height: 100%;
-  width: 100%;
+  width: 224px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -60,12 +60,13 @@
   color: #8e9297;
 }
 
-.channel-link p {
+.channel-name {
   text-align: left;
   text-overflow: ellipsis;
   overflow: hidden;
   padding-right: 8px;
-  width: 168px;
+  flex: 1 1 auto;
+  white-space: nowrap;
 }
 
 .channel-settings-button {
@@ -76,6 +77,14 @@
   text-align: center;
   background-color: transparent;
   justify-self: flex-end;
+  /* visibility: hidden; */
+  display: none;
+}
+
+.channel-link:hover .channel-settings-button,
+.channel-link.active .channel-settings-button {
+  /* visibility: visible; */
+  display: inline-block;
 }
 
 .channel-settings-button:hover i {

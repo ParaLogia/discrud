@@ -1,23 +1,28 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ChannelIndexItem = ({ channel, editChannelModal }) => {
+const ChannelIndexItem = ({ channel, editChannelModal, isOwner }) => {
   const handleSettings = (e) => {
     e.stopPropagation();
     editChannelModal(channel.id);
   }
+
+  const settingsButton = isOwner ? (
+    <button className="channel-settings-button" onClick={handleSettings}>
+      <i className="fas fa-cog"></i>
+    </button>
+  ) : null;
 
   return (
     <li className="channel-index-item">
       <NavLink to={`/channels/${channel.serverId}/${channel.id}`}
                className="channel-link">
         <i className="fas fa-hashtag"></i>
-        <p>
+        <div className="channel-name">
           {channel.name}
-        </p>
-        <button className="channel-settings-button" onClick={handleSettings}>
-          <i className="fas fa-cog"></i>
-        </button>
+        </div>
+
+        {settingsButton}
       </NavLink>
     </li>
   )

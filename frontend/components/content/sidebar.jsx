@@ -13,17 +13,21 @@ const Sidebar = ({
 }) => {
   let header, channelIndex;
 
-  if (currentServer) {   
+  const isOwner = !currentServer || currentServer.ownerId === currentUser.id;
+
+  if (currentServer) {
     header = (
       <ServerHeader 
-      currentServer={currentServer} 
-      currentUser={currentUser} 
-      leaveServer={leaveServer}
-      deleteServer={deleteServer} />
+        currentServer={currentServer} 
+        currentUser={currentUser} 
+        leaveServer={leaveServer}
+        deleteServer={deleteServer} />
     )
 
     channelIndex = (
-      <ChannelIndex channels={channels} />
+      <ChannelIndex 
+        channels={channels} 
+        isOwner={isOwner} />
     )
   } 
   else {  

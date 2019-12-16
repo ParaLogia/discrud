@@ -9,11 +9,12 @@ class ChannelIndex extends React.Component {
   }
 
   render() {
-    const { channels, editChannelModal } = this.props;
+    const { channels, editChannelModal, isOwner } = this.props;
     const channelItems = channels.map(channel => (
       <ChannelIndexItem key={channel.id} 
                         channel={channel}
-                        editChannelModal={editChannelModal} />
+                        editChannelModal={editChannelModal}
+                        isOwner={isOwner} />
     ));
 
     return (
