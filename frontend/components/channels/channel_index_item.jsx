@@ -12,7 +12,9 @@ const ChannelIndexItem = ({ channel, editChannelModal }) => {
       <NavLink to={`/channels/${channel.serverId}/${channel.id}`}
                className="channel-link">
         <i className="fas fa-hashtag"></i>
-        {channel.name}
+        <p>
+          {channel.name}
+        </p>
         <button className="channel-settings-button" onClick={handleSettings}>
           <i className="fas fa-cog"></i>
         </button>

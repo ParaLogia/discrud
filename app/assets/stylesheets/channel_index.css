@@ -50,6 +50,31 @@
   color: white;
 }
 
+.channel-link.active:hover {
+  background-color: #3a3d43;
+  color: white;
+  cursor: default;
+}
+
 .channel-link i {
   color: #8e9297;
+}
+
+.channel-link p {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.channel-settings-button {
+  padding: 2px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+  justify-self: flex-end;
+}
+
+.channel-settings-button:hover i {
+  color: #dcddde;
 }
