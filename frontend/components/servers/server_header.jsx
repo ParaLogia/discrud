@@ -13,47 +13,52 @@ class ServerHeader extends React.Component {
     this.removeServerAction = this.props.leaveServer;
     this.removeServerText = 'Leave';
 
+    this._currentUserIsOwner = this._currentUserIsOwner.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
     this.handleInviteToServer = this.handleInviteToServer.bind(this);
     this.handleEditServer = this.handleEditServer.bind(this);
     this.handleRemoveServer = this.handleRemoveServer.bind(this);
-    this.toggleDropdown = this.toggleDropdown.bind(this);
-    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   componentDidMount() {
-    this.updateDropdown();
+    this._updateDropdown();
   }
 
   componentDidUpdate(prevProps) {
     const prevServer = prevProps.currentServer;
     const nextServerId = this.props.match.params.serverId;
     if (prevServer.id != nextServerId) {
-      this.updateDropdown();
+      this._updateDropdown();
     }
   }
 
-  updateDropdown() {
-    const { currentServer, currentUser, deleteServer, leaveServer } = this.props;
+  _currentUserIsOwner() {
+    const { currentServer, currentUser } = this.props;
+    return currentServer.ownerId === currentUser.id;
+  }
+
+  _updateDropdown() {
+    const { deleteServer, leaveServer } = this.props;
     if (this.state.dropdown) {
       this.hideDropdown();
     }
 
-    if (currentServer.ownerId === currentUser.id) {
+    if (this._currentUserIsOwner()) {
       this.removeServerAction = deleteServer;
       this.removeServerText = 'delete';
-
-      this.editOption = (
-        <div className="dropdown-option"
-             onClick={this.handleEditServer}>
-          Edit
-        </div>
-      )
     } else {
       this.removeServerAction = leaveServer;
       this.removeServerText = 'leave';
-
-      delete this.editOption;
     }
+  }
+
+  toggleDropdown() {
+    this.setState(({ dropdown }) => ({ dropdown: !dropdown }));
+  }
+
+  hideDropdown() {
+    this.setState({ dropdown: false })
   }
 
   handleInviteToServer(e) {
@@ -75,30 +80,27 @@ class ServerHeader extends React.Component {
       .then(this.props.history.push('/channels/@me'));
   }
 
-  toggleDropdown() {
-    this.setState(({dropdown}) => ({dropdown: !dropdown}));
-  }
-
-  hideDropdown() {
-    this.setState({ dropdown: false })
-  }
-
   render() {
     const { currentServer } = this.props;
     const { dropdown } = this.state;
 
     const inviteOption = (
       <div className="dropdown-option invite-option"
-        onClick={this.handleInviteToServer}>
+           onClick={this.handleInviteToServer}>
         Invite People
       </div>
     )
 
-    const editOption = this.editOption;
+    const editOption = (this._currentUserIsOwner()) ? (
+      <div className="dropdown-option"
+           onClick={this.handleEditServer}>
+        Edit
+      </div>
+    ) : null;
 
     const removeOption = (
       <div className="dropdown-option destructive"
-        onClick={this.handleRemoveServer}>
+           onClick={this.handleRemoveServer}>
         {this.removeServerText}
       </div>
     )
