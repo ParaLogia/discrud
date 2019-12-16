@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveModal } from '../../actions/ui_actions';
-import { CREATE_SERVER, JOIN_SERVER } from '../modal/modal';
+import { createServerModal, joinServerModal } from '../../actions/modal_actions';
 
-const AddServerForm = ({ receiveModal }) => {
-  const handleCreateServer = () => receiveModal(CREATE_SERVER);
-  const handleJoinServer = () => receiveModal(JOIN_SERVER);
+const AddServerForm = ({ createServerModal, joinServerModal }) => {
+  const handleCreateServer = createServerModal;
+  const handleJoinServer = joinServerModal;
 
   return (
     <div className="add-server-form">
@@ -43,7 +42,8 @@ const AddServerForm = ({ receiveModal }) => {
 
 const mdp = (dispatch) => {
   return {
-    receiveModal: (modal) => dispatch(receiveModal(modal))
+    createServerModal: () => dispatch(createServerModal()),
+    joinServerModal: () => dispatch(joinServerModal())
   }
 } 
 

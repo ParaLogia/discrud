@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ServerFormFooter from './server_form_footer';
-import { clearModal, receiveModal } from '../../actions/ui_actions';
-import { ADD_SERVER } from '../modal/modal';
+import { clearModal, addServerModal } from '../../actions/modal_actions';
 import { joinServer } from '../../actions/server_actions';
 
 class JoinServerForm extends React.Component {
@@ -87,7 +86,7 @@ const mdp = (dispatch) => {
   return {
     clearModal: () => dispatch(clearModal()),
     joinServer: (inviteToken) => dispatch(joinServer(inviteToken)),
-    backAction: () => dispatch(receiveModal(ADD_SERVER))
+    backAction: () => dispatch(addServerModal())
   }
 }
 

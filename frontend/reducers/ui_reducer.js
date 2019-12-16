@@ -1,34 +1,23 @@
-import { 
-  RECEIVE_MODAL, 
-  CLEAR_MODAL, 
-  START_LOADING, 
-  FINISH_LOADING,
-} from '../actions/ui_actions';
+import { combineReducers } from 'redux';
+import { START_LOADING, FINISH_LOADING } from '../actions/ui_actions';
+import modalReducer from './modal_reducer';
 
-const preloadedState = {
-  modal: null,
-  loading: false,
-  // onlineUsers: []
-}
-
-const uiReducer = (state = preloadedState, action) => {
-  Object.freeze(state);
-
+const loadingReducer = (state = false, action) => {
   switch (action.type) {
-    case RECEIVE_MODAL:
-      return Object.assign({}, state, { modal: action.modal });
-      
-    case CLEAR_MODAL:
-      return Object.assign({}, state, { modal: null });
-
     case START_LOADING:
-      return Object.assign({}, state, { loading: true });
+      return true;
 
     case FINISH_LOADING:
-      return Object.assign({}, state, { loading: null });
+      return false;
+
     default:
       return state;
   }
 }
+
+const uiReducer = combineReducers({
+  modal: modalReducer,
+  loading: loadingReducer
+})
 
 export default uiReducer;

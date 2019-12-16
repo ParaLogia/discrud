@@ -5,15 +5,16 @@ import EditServerContainer from '../servers/edit_server_container';
 import Invitation from '../servers/invitation';
 import JoinServerForm from '../servers/join_server_form';
 import CreateChannelContainer from '../channels/create_channel_container';
-
-// Modal names
-export const ADD_SERVER = "ADD_SERVER";
-export const CREATE_SERVER = "CREATE_SERVER";
-export const EDIT_SERVER = "EDIT_SERVER";
-export const INVITE_TO_SERVER = "INVITE_TO_SERVER";
-export const JOIN_SERVER = "JOIN_SERVER";
-export const CREATE_CHANNEL = "CREATE_CHANNEL";
-export const EDIT_CHANNEL = "EDIT_CHANNEL";
+import EditChannelContainer from '../channels/edit_channel_container';
+import {
+  ADD_SERVER_MODAL,
+  CREATE_SERVER_MODAL,
+  EDIT_SERVER_MODAL,
+  INVITE_TO_SERVER_MODAL,
+  JOIN_SERVER_MODAL,
+  CREATE_CHANNEL_MODAL,
+  EDIT_CHANNEL_MODAL
+} from '../../actions/modal_actions';
 
 function Modal({ modal, clearModal }) {
   if (!modal) {
@@ -21,29 +22,33 @@ function Modal({ modal, clearModal }) {
   }
 
   let component;
-  switch (modal) {
-    case ADD_SERVER:
+  switch (modal.type) {
+    case ADD_SERVER_MODAL:
       component = <AddServerForm />
       break;
 
-    case CREATE_SERVER:
+    case CREATE_SERVER_MODAL:
       component = <CreateServerContainer />
       break;
 
-    case EDIT_SERVER:
+    case EDIT_SERVER_MODAL:
       component = <EditServerContainer />
       break;
 
-    case INVITE_TO_SERVER:
+    case INVITE_TO_SERVER_MODAL:
       component = <Invitation />
       break;
 
-    case JOIN_SERVER:
+    case JOIN_SERVER_MODAL:
       component = <JoinServerForm />
       break;
 
-    case CREATE_CHANNEL:
+    case CREATE_CHANNEL_MODAL:
       component = <CreateChannelContainer />
+      break;
+
+    case EDIT_CHANNEL_MODAL:
+      component = < EditChannelContainer channelId={modal.channelId}/>
       break;
 
     default:

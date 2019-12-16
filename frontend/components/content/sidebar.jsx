@@ -9,7 +9,6 @@ const Sidebar = ({
   logout,
   leaveServer,
   deleteServer,
-  receiveModal,
   channels
 }) => {
   let header, channelIndex;
@@ -20,8 +19,7 @@ const Sidebar = ({
       currentServer={currentServer} 
       currentUser={currentUser} 
       leaveServer={leaveServer}
-      deleteServer={deleteServer}
-      receiveModal={receiveModal} />
+      deleteServer={deleteServer} />
     )
 
     channelIndex = (

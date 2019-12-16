@@ -16,7 +16,7 @@ class ServerIndex extends React.Component {
 
   handleAddServer(e) {
     e.preventDefault();
-    this.props.receiveModal(ADD_SERVER);
+    this.props.addServerModal();
   }
 
   render() {

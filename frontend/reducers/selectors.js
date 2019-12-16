@@ -20,3 +20,7 @@ export const selectChannelsOfServer = (state, serverId) => {
     state.entities.channels[channelId]
   ))
 }
+
+export const selectChannel = (state, channelId) => {
+  return state.entities.channels[channelId];
+}

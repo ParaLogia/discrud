@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { EDIT_SERVER, INVITE_TO_SERVER, CREATE_CHANNEL } from '../modal/modal';
+import { connect } from 'react-redux';
+import { inviteToServerModal, createChannelModal, editServerModal } from '../../actions/modal_actions';
 
 class ServerHeader extends React.Component {
   constructor(props) {
@@ -65,19 +66,19 @@ class ServerHeader extends React.Component {
   handleInviteToServer(e) {
     e.preventDefault();
     this.hideDropdown();
-    this.props.receiveModal(INVITE_TO_SERVER);
+    this.props.inviteToServerModal();
   }
 
   handleCreateChannel(e) {
     e.preventDefault();
     this.hideDropdown();
-    this.props.receiveModal(CREATE_CHANNEL);
+    this.props.createChannelModal();
   }
 
   handleEditServer(e) {
     e.preventDefault();
     this.hideDropdown();
-    this.props.receiveModal(EDIT_SERVER);
+    this.props.editServerModal();
   }
 
   handleRemoveServer(e) {
@@ -147,4 +148,21 @@ class ServerHeader extends React.Component {
   }
 }
 
-export default withRouter(ServerHeader);
+const msp = (state, ownProps) => {
+  return { 
+    currentServer: ownProps.currentServer,
+    currentUser: ownProps.currentUser
+  }
+}
+
+const mdp = (dispatch, ownProps) => {
+  return {
+    inviteToServerModal: () => dispatch(inviteToServerModal()),
+    createChannelModal: () => dispatch(createChannelModal()),
+    editServerModal: () => dispatch(editServerModal()),
+    deleteServer: ownProps.deleteServer,
+    leaveServer: ownProps.leaveServer
+  }
+}
+
+export default withRouter(connect(msp, mdp)(ServerHeader));

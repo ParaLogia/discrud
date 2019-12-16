@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { clearModal } from '../../actions/ui_actions';
+import { clearModal } from '../../actions/modal_actions';
 import Modal from './modal';
 
 const mapStateToProps = (state) => {

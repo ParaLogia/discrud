@@ -28,7 +28,6 @@ class Content extends React.Component {
       logout,
       leaveServer,
       deleteServer,
-      receiveModal,
       channels
     } = this.props;
     
@@ -39,7 +38,6 @@ class Content extends React.Component {
         logout={logout}
         leaveServer={leaveServer}
         deleteServer={deleteServer}
-        receiveModal={receiveModal}
         channels={channels} />
     )
   }

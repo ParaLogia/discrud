@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import { receiveModal } from './actions/ui_actions';
 import { fetchChannel, createChannel, updateChannel, deleteChannel } from './actions/channel_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
-    window.receiveModal = receiveModal;
     window.fetchChannel = fetchChannel;
     window.createChannel = createChannel;
     window.updateChannel = updateChannel;
