@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 const ChannelIndexItem = ({ channel, editChannelModal, isOwner }) => {
   const handleSettings = (e) => {
     e.stopPropagation();
+    e.preventDefault();
     editChannelModal(channel.id);
   }
 
