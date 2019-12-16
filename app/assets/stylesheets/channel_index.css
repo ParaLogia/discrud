@@ -1,0 +1,55 @@
+.channel-index-container {
+  flex-grow: 1;
+  padding-top: 16px;
+}
+
+.channel-index {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-index-item {
+  margin: 1px 8px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.channel-link {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 0px 8px;
+  color: #8e9297;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-transform: lowercase;
+}
+
+.channel-link i {
+  margin-right: 6px;
+}
+
+.channel-index-item:hover .channel-link {
+  text-decoration: none;
+  color: #dcddde;
+}
+
+.channel-index-item:hover {
+  background-color: rgba(79, 84, 92, 0.161);  
+}
+
+.channel-link.active {
+  background-color: #3a3d43;
+  color: white;
+}
+
+.channel-link i {
+  color: #8e9297;
+}

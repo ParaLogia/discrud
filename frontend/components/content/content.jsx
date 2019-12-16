@@ -22,7 +22,16 @@ class Content extends React.Component {
   }
 
   render() {
-    const { currentServer, currentUser, logout, leaveServer, deleteServer, receiveModal } = this.props;
+    const { 
+      currentServer,
+      currentUser,
+      logout,
+      leaveServer,
+      deleteServer,
+      receiveModal,
+      channels
+    } = this.props;
+    
     return (
       <Sidebar 
         currentServer={currentServer}
@@ -31,7 +40,7 @@ class Content extends React.Component {
         leaveServer={leaveServer}
         deleteServer={deleteServer}
         receiveModal={receiveModal}
-      />
+        channels={channels} />
     )
   }
  }

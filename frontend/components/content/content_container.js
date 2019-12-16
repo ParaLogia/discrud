@@ -2,22 +2,26 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { fetchServer, deleteServer, leaveServer } from '../../actions/server_actions';
 import { receiveModal } from '../../actions/ui_actions';
+import { selectUser, selectServer, selectChannelsOfServer } from '../../reducers/selectors';
 import Content from './content';
 
 const msp = (state, ownProps) => {
   const { currentUserId } = state.session;
-  const currentUser = state.entities.users[currentUserId];
+  const currentUser = selectUser(state, currentUserId);
 
-  const currentServerId = ownProps.match.params.serverId;
-  const dummyServer = { name: 'Loading...' }
   let currentServer = null;
+  const dummyServer = { name: 'Loading...' }
+  const currentServerId = ownProps.match.params.serverId;
   if (currentServerId !== '@me') {
-    currentServer = state.entities.servers[currentServerId] || dummyServer;
+    currentServer = selectServer(state, currentServerId) || dummyServer;
   }
+
+  const channels = selectChannelsOfServer(state, currentServerId);
 
   return {
     currentUser,
-    currentServer
+    currentServer,
+    channels
   }
 }
 

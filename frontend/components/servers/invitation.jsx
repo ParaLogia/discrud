@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { selectServer } from "../../reducers/selectors";
 
 const Invitation = ({ server }) => {
   const handleCopy = (e) => {
@@ -41,7 +42,7 @@ const Invitation = ({ server }) => {
 const msp = (state, ownProps) => {
   const { serverId } = ownProps.match.params;
   return {
-    server: state.entities.servers[serverId]
+    server: selectServer(state, serverId)
   }
 }
 
