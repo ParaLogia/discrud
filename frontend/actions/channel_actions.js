@@ -27,8 +27,8 @@ export const fetchChannel = (channelId) => (dispatch) => {
     );
 }
 
-export const createChannel = (serverId, channel) => (dispatch) => {
-  return APIUtil.createChannel(serverId, channel)
+export const createChannel = (channel) => (dispatch) => {
+  return APIUtil.createChannel(channel)
     .then(
       (channel) => dispatch(receiveChannel(channel)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
