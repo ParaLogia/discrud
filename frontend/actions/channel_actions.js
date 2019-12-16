@@ -9,9 +9,9 @@ export const receiveChannel = (channel) => ({
   channel
 })
 
-export const removeChannel = (channelId) => ({
+export const removeChannel = (channel) => ({
   type: REMOVE_CHANNEL,
-  channelId
+  channel
 })
 
 export const receiveErrors = (errors) => ({
@@ -46,7 +46,7 @@ export const updateChannel = (channel) => (dispatch) => {
 export const deleteChannel = (channelId) => (dispatch) => {
   return APIUtil.deleteChannel(channelId)
     .then(
-      (channel) => dispatch(removeChannel(channel.id)),
+      (channel) => dispatch(removeChannel(channel)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     );
 }

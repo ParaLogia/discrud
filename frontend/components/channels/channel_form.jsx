@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; 
 
 class ChannelForm extends React.Component {
   constructor(props) {
@@ -6,6 +6,7 @@ class ChannelForm extends React.Component {
 
     this.state = this.props.channel;
 
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -17,6 +18,13 @@ class ChannelForm extends React.Component {
         [field]: e.target.value
       });
     }
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+    const channelId = this.props.channel.id;
+    this.props.deleteChannel(channelId)
+      .then(this.props.clearModal());
   }
 
   handleCancel(e) {
@@ -37,6 +45,14 @@ class ChannelForm extends React.Component {
 
   render() {
     const { formType } = this.props;
+
+    const deleteButton = formType === 'edit' ? (
+      <button type="button" 
+              className="delete-button"
+              onClick={this.handleDelete}>
+        Delete
+      </button>
+    ) : null;
 
     return (
       <div className="channel-form-container">
@@ -59,11 +75,17 @@ class ChannelForm extends React.Component {
           </label>
 
           <div className="button-container">
-            <button className="cancel-button" onClick={this.handleCancel}>
+
+            {deleteButton}
+
+            <button type="button" 
+                    className="cancel-button" 
+                    onClick={this.handleCancel}>
               Cancel
             </button>
-            <button>
-              {formType}&nbsp;Channel
+
+            <button type="submit">
+              {formType}&nbsp;channel
             </button>
           </div>
         </form>
