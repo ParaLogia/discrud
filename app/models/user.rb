@@ -51,6 +51,10 @@ class User < ApplicationRecord
       .distinct
   end
 
+  def channels
+    @channels ||= Channel.where(server_id: self.servers.pluck(:id))
+  end
+
   attr_reader :password
 
   TAG_RANGE = (0000..9999)
