@@ -1,0 +1,40 @@
+.channel-show {
+  width: 100%;
+}
+
+.channel-header {
+  height: 48px;
+  width: 100%;
+  background-color: #2f3136;
+  color: white;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.channel-title {
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.channel-title i {
+  color: #72767d;
+  margin-right: 8px;
+  font-size: 20px;
+  font-size: 22px;
+}
+
+.vertical-divider {
+  margin: 0px 8px;
+  border-left: 1px solid rgba(255, 255, 255, 0.059);
+  height: 24px;
+}
+
+.channel-topic {
+  margin-left: 8px;
+  color: #b9bbbe;
+  font-size: 14px;
+}

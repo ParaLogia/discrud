@@ -36,7 +36,6 @@
 .channel-form input, .channel-form textarea {
   box-sizing: border-box;
   padding: 10px;
-  height: 40px;
   margin-top: 8px;
   border: 1px solid rgba(0,0,0,0.3);
   border-radius: 3px;
@@ -46,6 +45,11 @@
   font-weight: lighter;
   width: 100%;
   border-style: inset;
+}
+
+.channel-form input {
+  height: 40px;
+  text-transform: lowercase;
 }
 
 .channel-form textarea {

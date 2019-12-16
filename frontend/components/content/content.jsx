@@ -1,5 +1,7 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import Sidebar from './sidebar';
+import ChannelShow from '../channels/channel_show';
 
 class Content extends React.Component {
   constructor(props) {
@@ -32,13 +34,17 @@ class Content extends React.Component {
     } = this.props;
     
     return (
-      <Sidebar 
-        currentServer={currentServer}
-        currentUser={currentUser}
-        logout={logout}
-        leaveServer={leaveServer}
-        deleteServer={deleteServer}
-        channels={channels} />
+      <div className="content-container">
+        <Sidebar 
+          currentServer={currentServer}
+          currentUser={currentUser}
+          logout={logout}
+          leaveServer={leaveServer}
+          deleteServer={deleteServer}
+          channels={channels} />
+
+        <Route path="/channels/:serverId/:channelId" component={ChannelShow} />
+      </div>
     )
   }
  }

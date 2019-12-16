@@ -61,8 +61,11 @@
 }
 
 .channel-link p {
-  flex-grow: 1;
   text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 8px;
+  width: 168px;
 }
 
 .channel-settings-button {
