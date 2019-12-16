@@ -46,7 +46,7 @@ export const fetchServer = (serverId) => (dispatch) => {
 export const createServer = (server) => (dispatch) => {
   return APIUtil.createServer(server)
     .then(
-      ({ server }) => dispatch(receiveServer({ server })),
+      ({ server, channels }) => dispatch(receiveServer({ server, channels })),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }

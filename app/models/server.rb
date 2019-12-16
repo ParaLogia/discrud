@@ -44,6 +44,7 @@ class Server < ApplicationRecord
   end
 
   after_initialize :ensure_invite_token
+  after_create :ensure_text_channel
 
   def self.generate_invite_token
     SecureRandom.urlsafe_base64(4)
@@ -53,5 +54,9 @@ class Server < ApplicationRecord
 
   def ensure_invite_token
     self.invite_token ||= self.class.generate_invite_token
+  end
+
+  def ensure_text_channel
+    self.channels.create(name: 'general')
   end
 end

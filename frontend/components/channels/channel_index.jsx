@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { editChannelModal } from '../../actions/modal_actions';
-import { deleteChannel } from '../../actions/channel_actions';
 import ChannelIndexItem from './channel_index_item';
 
 class ChannelIndex extends React.Component {
