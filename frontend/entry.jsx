@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import { fetchChannel, createChannel, updateChannel, deleteChannel } from './actions/channel_actions';
+import { fetchChannel } from './actions/channel_actions';
+import * as MessageAPIUtil from './util/message_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -36,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatch = store.dispatch;
 
     window.fetchChannel = fetchChannel;
-    window.createChannel = createChannel;
-    window.updateChannel = updateChannel;
-    window.deleteChannel = deleteChannel;
+    window.MessageAPIUtil = MessageAPIUtil;
   }
 });

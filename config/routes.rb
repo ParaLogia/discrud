@@ -22,6 +22,6 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
 
-    resource :messages, only: [:update, :destroy]
+    resources :messages, only: [:update, :destroy]
   end
 end

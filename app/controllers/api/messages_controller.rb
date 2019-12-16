@@ -5,6 +5,7 @@ class Api::MessagesController < ApplicationController
     channel = current_user.channels.find_by(id: params[:channel_id])
     if channel
       @message = channel.messages.new(message_params)
+      @message.author = current_user
 
       if @message.save
         render :show
