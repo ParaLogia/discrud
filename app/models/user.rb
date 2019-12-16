@@ -36,6 +36,9 @@ class User < ApplicationRecord
     through: :server_memberships,
     source: :server
 
+  has_many :messages,
+    foreign_key: :author_id
+
   after_initialize :ensure_session_token, :ensure_tag
 
   # Custom association: union of joined_servers and owned_servers

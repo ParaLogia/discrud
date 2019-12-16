@@ -15,4 +15,7 @@ class Channel < ApplicationRecord
   validates :topic, exclusion: { in: [nil], message: "must not be null" }
 
   belongs_to :server
+
+  has_many :messages, 
+    as: :thread
 end
