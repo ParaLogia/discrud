@@ -1,5 +1,9 @@
 .dropdown-option.invite-option {
-  color: #677bc4;;
+  color: #7289da;
+}
+
+.dropdown-option.invite-option:hover {
+  color: #677bc4;
 }
 
 .invitation-modal {

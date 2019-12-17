@@ -42,22 +42,32 @@
 }
 
 .dropdown-option {
-  width: 100%;
   box-sizing: border-box;
   height: 32px;
   margin: 2px 4px;
   padding: 4px 8px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
-  color: #dcddde;
+  color: #b9bbbe;
   text-transform: capitalize;
 }
 
 .dropdown-option:hover {
   background-color: rgba(79, 84, 92, 0.16);
+  color: #dcddde;
+}
+
+.icon-container {
+  min-width: 24px;
+  text-align: center;
 }
 
 .destructive {
+  color: #f04747;
+}
+
+.destructive:hover {
   color: #f04747;
 }

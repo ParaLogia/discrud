@@ -13,6 +13,7 @@ class ServerHeader extends React.Component {
 
     this.removeServerAction = this.props.leaveServer;
     this.removeServerText = 'Leave';
+    this.removeServerIcon = <i className="fas fa-arrow-alt-circle-left"></i>
 
     this._currentUserIsOwner = this._currentUserIsOwner.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -49,9 +50,12 @@ class ServerHeader extends React.Component {
     if (this._currentUserIsOwner()) {
       this.removeServerAction = deleteServer;
       this.removeServerText = 'delete';
+      this.removeServerIcon = <i className="fas fa-trash"></i>
     } else {
       this.removeServerAction = leaveServer;
       this.removeServerText = 'leave';
+      this.removeServerIcon = <i className="fas fa-arrow-alt-circle-left"></i>
+
     }
   }
 
@@ -96,6 +100,9 @@ class ServerHeader extends React.Component {
       <div className="dropdown-option invite-option"
            onClick={this.handleInviteToServer}>
         Invite People
+        <div className="icon-container">
+          <i className="fas fa-user-plus"></i>
+        </div>
       </div>
     )
 
@@ -103,6 +110,9 @@ class ServerHeader extends React.Component {
       <div className="dropdown-option"
            onClick={this.handleCreateChannel}>
         Create Channel
+        <div className="icon-container">
+          <i className="fas fa-plus-circle"></i>
+        </div>
       </div>
     ) : null;
 
@@ -110,6 +120,9 @@ class ServerHeader extends React.Component {
       <div className="dropdown-option"
            onClick={this.handleEditServer}>
         Edit
+        <div className="icon-container">
+          <i className="fas fa-edit"></i>
+        </div>
       </div>
     ) : null;
 
@@ -117,6 +130,9 @@ class ServerHeader extends React.Component {
       <div className="dropdown-option destructive"
            onClick={this.handleRemoveServer}>
         {this.removeServerText}
+        <div className="icon-container">
+          {this.removeServerIcon}          
+        </div>
       </div>
     )
 

@@ -94,7 +94,8 @@
 
 .server-add-button {
   color: #43b581;
-  font-size: 40px;
+  font-size: 38px;
+  font-family: none;
 }
 
 .server-add-button:hover {
