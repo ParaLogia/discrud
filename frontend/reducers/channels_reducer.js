@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { RECEIVE_CHANNEL, REMOVE_CHANNEL } from '../actions/channel_actions';
+import { RECEIVE_CHANNEL, REMOVE_CHANNEL, RECEIVE_NEW_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_SERVER } from '../actions/server_actions';
 
 const channelsReducer = (state = {}, action) => {
@@ -8,6 +8,7 @@ const channelsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CHANNEL:
+    case RECEIVE_NEW_CHANNEL:
       return Object.assign({}, state, {
         [action.channel.id]: action.channel
       })

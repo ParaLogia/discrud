@@ -24,3 +24,13 @@ export const selectChannelsOfServer = (state, serverId) => {
 export const selectChannel = (state, channelId) => {
   return state.entities.channels[channelId];
 }
+
+export const selectMessagesOfChannel = (state, channelId) => {
+  const channel =  state.entities.channels[channelId];
+  if (!channel || !channel.messageIds) return [];
+
+  const { messageIds } = channel;
+  return messageIds.map(messageId => (
+    state.entities.messages[messageId]
+  ))
+}

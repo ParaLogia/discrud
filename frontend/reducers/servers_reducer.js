@@ -1,8 +1,8 @@
 import { merge } from 'lodash';
-import { mergeWithUniqueArray } from '../util/reducer_util';
+import { mergeWithConcat } from '../util/reducer_util';
 import { RECEIVE_SERVER, RECEIVE_SERVERS, REMOVE_SERVER } from '../actions/server_actions';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_CHANNEL, REMOVE_CHANNEL } from '../actions/channel_actions';
+import { RECEIVE_NEW_CHANNEL, REMOVE_CHANNEL } from '../actions/channel_actions';
 
 const serversReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -23,10 +23,10 @@ const serversReducer = (state = {}, action) => {
     case LOGOUT_CURRENT_USER:
       return {};
 
-    case RECEIVE_CHANNEL:
-      return mergeWithUniqueArray({}, state, {
+    case RECEIVE_NEW_CHANNEL:
+      return mergeWithConcat({}, state, {
         [action.channel.serverId]: {
-          channelIds: action.channel.id
+          channelIds: [action.channel.id]
         }
       })
 
