@@ -1,11 +1,17 @@
 import * as APIUtil from '../util/message_api_util';
 
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+export const RECEIVE_NEW_MESSAGE = 'RECEIVE_NEW_MESSAGE';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 export const REMOVE_MESSAGE_ERRORS = 'REMOVE_MESSAGE_ERRORS';
 
 export const receiveMessage = (message) => ({
   type: RECEIVE_MESSAGE,
+  message
+})
+
+export const receiveNewMessage = (message) => ({
+  type: RECEIVE_NEW_MESSAGE,
   message
 })
 
@@ -22,7 +28,7 @@ export const receiveErrors = (errors) => ({
 export const createChannelMessage = (message) => (dispatch) => {
   return APIUtil.createChannelMessage(message)
     .then(
-      (message) => dispatch(receiveMessage(message)),
+      (message) => dispatch(receiveNewMessage(message)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }

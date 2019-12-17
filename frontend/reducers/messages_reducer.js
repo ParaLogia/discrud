@@ -1,5 +1,6 @@
-import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from '../actions/message_actions';
-import { RECEIVE_CHANNEL, RECEIVE_NEW_CHANNEL } from '../actions/channel_actions';
+import { RECEIVE_MESSAGE, REMOVE_MESSAGE, RECEIVE_NEW_MESSAGE } from '../actions/message_actions';
+import { RECEIVE_CHANNEL } from '../actions/channel_actions';
+// import { RECEIVE_SERVER } from '../actions/server_actions';
 
 const messagesReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -7,6 +8,7 @@ const messagesReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_MESSAGE:
+    case RECEIVE_NEW_MESSAGE:
       return Object.assign({}, state, {
         [action.message.id]: action.message
       })
@@ -17,10 +19,10 @@ const messagesReducer = (state = {}, action) => {
       return newState;
 
     case RECEIVE_CHANNEL:
-      return action.messages;
+      return Object.assign({}, state, action.messages);
 
-    case RECEIVE_NEW_CHANNEL:
-      return {};
+    // case RECEIVE_SERVER:
+      // return {};
 
     default:
       return state;
