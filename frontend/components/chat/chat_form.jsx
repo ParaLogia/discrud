@@ -36,7 +36,7 @@ class ChatForm extends React.Component {
                onChange={this.handleUpdate}
                value={this.state.body}/>
 
-        <input type="submit"/>
+        <input type="submit" className="hidden"/>
       </form>
     )
   }

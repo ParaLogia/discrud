@@ -1,13 +1,15 @@
 .channel-show {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .channel-header {
   height: 48px;
   width: 100%;
-  background-color: #2f3136;
+  background-color: #36393f;
   color: white;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   padding: 0px 20px;
