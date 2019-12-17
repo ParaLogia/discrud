@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { selectMessagesOfChannel } from '../../reducers/selectors';
 import ChatForm from './chat_form';
+import MessageShow from './message_show';
 
 class Chat extends React.Component {
   constructor(props) {
     super(props);
 
-    this.lastMessage = React.createRef();
+    this.bottom = React.createRef();
   }
 
   componentDidMount() {
@@ -44,7 +45,7 @@ class Chat extends React.Component {
   }
 
   scrollToBottom() {
-    const { current } = this.lastMessage;
+    const { current } = this.bottom;
     if (current) {
       current.scrollIntoView({
         behavior: 'smooth',
@@ -55,15 +56,10 @@ class Chat extends React.Component {
 
   render() {
     const { messages, threadId, submitMessage } = this.props;
-    const chatMessages = messages.map((message) => {
-      if (message) {
-        return (
-          <div key={message.id} className="chat-message" ref={this.lastMessage}>
-            {message.body}
-          </div>
-        )
-      }
-    });
+    const chatMessages = messages.map((message) => (
+      <MessageShow key={message.id} 
+                   message={message} />
+    ));
 
     return (
       <div className="chat-content-wrapper">
@@ -71,7 +67,13 @@ class Chat extends React.Component {
           <section className="messages-container">
             <div className="scroller-wrapper">
               <div className="scroller">
+                <div className="chat-header">
+                </div>
+
                 {chatMessages}
+
+                <div className="chat-bottom" ref={this.bottom}>
+                </div>
               </div>
             </div>
           </section>

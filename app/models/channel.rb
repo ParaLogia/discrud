@@ -18,4 +18,9 @@ class Channel < ApplicationRecord
 
   has_many :messages, 
     as: :thread
+
+  has_many :contributors, 
+    -> { distinct },
+    through: :messages,
+    source: :author
 end

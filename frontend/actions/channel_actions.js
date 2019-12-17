@@ -5,10 +5,11 @@ export const RECEIVE_NEW_CHANNEL = "RECEIVE_NEW_CHANNEL";
 export const REMOVE_CHANNEL = "REMOVE_CHANNEL";
 export const RECEIVE_CHANNEL_ERRORS = "RECEIVE_CHANNEL_ERRORS";
 
-export const receiveChannel = ({ channel, messages = {} }) => ({
+export const receiveChannel = ({ channel, messages = {}, users = {} }) => ({
   type: RECEIVE_CHANNEL,
   channel,
-  messages
+  messages,
+  users
 })
 
 export const receiveNewChannel = ({ channel }) => ({

@@ -8,3 +8,7 @@ end
 json.messages do
   json.partial! 'api/messages/index', messages: @channel.messages
 end
+
+json.users do
+  json.partial! 'api/users/index', users: @channel.contributors
+end
