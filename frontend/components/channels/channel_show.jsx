@@ -33,7 +33,7 @@ class ChannelShow extends React.Component {
       <div className="channel-show">
         <ChannelHeader channel={channel} />
 
-        <Chat thread={channel} submitMessage={createChannelMessage}/>
+        <Chat threadId={channel.id} submitMessage={createChannelMessage}/>
       </div>
     )
   }

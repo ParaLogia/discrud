@@ -10,7 +10,7 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { messages, thread, submitMessage } = this.props;
+    const { messages, threadId, submitMessage } = this.props;
     const chatMessages = messages.map(message => message ? (
       <div key={message.id}>
         {message.body}
@@ -23,18 +23,18 @@ class Chat extends React.Component {
           {chatMessages}
         </section>
 
-        <ChatForm threadId={thread.id} submitMessage={submitMessage} />
+        <ChatForm threadId={threadId} submitMessage={submitMessage} />
       </section>
     )
   }
 }
 
 const msp = (state, ownProps) => {
-  const channelId = ownProps.match.params.channelId;
-  const messages = selectMessagesOfChannel(state, channelId);
+  const { threadId } = ownProps;
+  const messages = selectMessagesOfChannel(state, threadId);
 
   return {
-    thread: ownProps.thread,
+    threadId,
     messages
   }
 }

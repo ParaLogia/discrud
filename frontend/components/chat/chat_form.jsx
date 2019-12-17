@@ -5,7 +5,6 @@ class ChatForm extends React.Component {
     super(props);
 
     this.state = {
-      threadId: this.props.threadId,
       body: ''
     }
     
@@ -22,7 +21,8 @@ class ChatForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitMessage(this.state)
+    const { submitMessage, threadId } = this.props;
+    submitMessage(Object.assign({}, this.state, { threadId }))
       .then(() => this.setState({
         body: ''
       }));
