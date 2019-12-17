@@ -66,6 +66,17 @@
   margin: 0px 20px;
 }
 
+.chat-input-container {
+  position: relative;
+}
+
+.chat-input-placeholder {
+  color: #72767d;
+  position: absolute;
+  top: 35px;
+  left: 11px;
+}
+
 .chat-input {
   background-color: #40444b;
   padding: 11px;

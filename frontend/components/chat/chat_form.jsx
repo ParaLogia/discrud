@@ -29,14 +29,27 @@ class ChatForm extends React.Component {
   }
 
   render() {
+    const placeholder = (this.state.body.length === 0) ? (
+      <div className="chat-input-placeholder"
+        aria-hidden="true">
+        Type your message here, then hit enter
+      </div>
+    ) : null;
+
     return (
       <form className="chat-form" onSubmit={this.handleSubmit}>
-        <input type="text" 
-               className="chat-input" 
-               onChange={this.handleUpdate}
-               value={this.state.body}/>
+        <div className="chat-input-container">
+          {placeholder}
 
-        <input type="submit" className="hidden"/>
+          <input type="text" 
+                className="chat-input" 
+                onChange={this.handleUpdate}
+                value={this.state.body}
+                tabIndex="0"/>
+        </div>
+
+        <input type="submit" 
+               className="hidden" />
       </form>
     )
   }
