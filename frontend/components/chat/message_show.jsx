@@ -9,7 +9,7 @@ const MessageShow = ({ message, author }) => {
 
   return (
     <div className="chat-message">
-      {author.username}: {message.body}
+      {author ? author.username : `user#${message.authorId}`}: {message.body}
     </div>
   )
 }
