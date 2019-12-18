@@ -9,13 +9,17 @@
   position: relative;
 }
 
-.chat-options-button.selected {
+.chat-message:hover .chat-options-button {
   visibility: visible;
 }
 
-.chat-message:hover .chat-options-button {
-  visibility: visible;
+.chat-options-button:hover {
   color: #dcddde;
+}
+
+.chat-options-button.selected {
+  visibility: visible;
+  color: white;
 }
 
 .message-dropdown {
