@@ -75,6 +75,7 @@
   position: absolute;
   top: 35px;
   left: 11px;
+  pointer-events:none;
 }
 
 .chat-input {

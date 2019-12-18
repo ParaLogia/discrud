@@ -30,10 +30,12 @@ class ChatForm extends React.Component {
 
   render() {
     const placeholder = (this.state.body.length === 0) ? (
-      <div className="chat-input-placeholder"
-        aria-hidden="true">
-        Type your message here, then hit enter
-      </div>
+      <span>
+        <div className="chat-input-placeholder"
+          aria-hidden="true">
+          Type your message here, then hit enter
+        </div>
+      </span>
     ) : null;
 
     return (
