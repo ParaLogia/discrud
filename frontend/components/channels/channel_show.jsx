@@ -25,7 +25,13 @@ class ChannelShow extends React.Component {
   }
   
   render() {
-    const { channel, createChannelMessage, receiveNewMessage } = this.props;
+    const { 
+      channel, 
+      createChannelMessage, 
+      receiveNewMessage,
+      currentServer,
+      currentUser
+    } = this.props;
 
     if (!channel) return null;
 
@@ -35,7 +41,9 @@ class ChannelShow extends React.Component {
 
         <Chat threadId={channel.id} 
               submitMessage={createChannelMessage}
-              receiveNewMessage={receiveNewMessage}/>
+              receiveNewMessage={receiveNewMessage}
+              currentServer={currentServer} 
+              currentUser={currentUser} />
       </div>
     )
   }

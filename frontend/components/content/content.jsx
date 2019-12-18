@@ -43,7 +43,14 @@ class Content extends React.Component {
           deleteServer={deleteServer}
           channels={channels} />
 
-        <Route path="/channels/:serverId/:channelId" component={ChannelShow} />
+        <Route 
+          path="/channels/:serverId/:channelId" 
+          render={(props) => (
+            <ChannelShow
+              {...props} 
+              currentServer={currentServer}
+              currentUser={currentUser} />
+          )} />
       </div>
     )
   }

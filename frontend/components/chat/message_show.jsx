@@ -16,7 +16,19 @@ class MessageShow extends React.Component {
   }
 
   render() {
-    const { message } = this.props;
+    const { message, canEdit, canDelete } = this.props;
+
+    const editOption = canEdit ? (
+      <div className="message-dropdown-option">
+        Edit
+      </div>
+    ) : null;
+
+    const deleteOption = canDelete ? (
+      <div className="message-dropdown-option">
+        Delete
+      </div>
+    ) : null;
 
     return (
       <div className="chat-message">
@@ -28,11 +40,13 @@ class MessageShow extends React.Component {
 
           <div className={`message-dropdown ${this.state.dropdown ? '' : 'hidden'}`}>
             <div className="message-dropdown-option">
-              Edit
+              ID: {message.id}
             </div>
-            <div className="message-dropdown-option">
-              Delete
-            </div>
+
+            {editOption}
+
+            {deleteOption}
+
           </div>
         </div>
         {message.body}

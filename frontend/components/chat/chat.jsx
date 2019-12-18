@@ -87,7 +87,14 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { messages, threadId, submitMessage } = this.props;
+    const { 
+      messages, 
+      threadId, 
+      submitMessage,
+      currentServer,
+      currentUser
+    } = this.props;
+    
     let messageGroups = [];
 
     let prevMsg = { createdAt: 0 };
@@ -102,8 +109,11 @@ class Chat extends React.Component {
     })
 
     messageGroups = messageGroups.map((messages, idx) => (
-      <MessageGroup key={idx} 
-                   messages={messages} />
+      <MessageGroup 
+        key={idx} 
+        messages={messages}
+        currentServer={currentServer}
+        currentUser={currentUser} />
     ));
 
     return (
