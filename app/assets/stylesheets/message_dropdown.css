@@ -1,0 +1,48 @@
+.chat-options-button {
+  float: right;
+  text-align: right;
+  padding: 2px 4px 2px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  visibility: hidden;
+  color: #b9bbbe;
+  position: relative;
+}
+
+.chat-options-button.selected {
+  visibility: visible;
+}
+
+.chat-message:hover .chat-options-button {
+  visibility: visible;
+  color: #dcddde;
+}
+
+.message-dropdown {
+  position: absolute;
+  right: -10px;
+  top: 25px;
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #18191c;
+  border-radius: 5px;
+  padding: 2px 0px;
+  z-index: 3;
+}
+
+.message-dropdown-option {
+  text-align: center;
+  margin: 2px 4px;
+  padding: 2px 8px;
+  color: #b9bbbe;
+  font-size: 12px;
+  text-transform: capitalize;
+  line-height: 1rem;
+}
+
+.message-dropdown-option:hover {
+  color: #dcddde;
+  background-color: rgba(79, 84, 92, 0.161);
+}
