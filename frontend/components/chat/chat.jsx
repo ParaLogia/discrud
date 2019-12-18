@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { selectMessagesOfChannel } from '../../reducers/selectors';
 import ChatForm from './chat_form';
-import MessageShow from './message_show';
+import MessageGroup from './message_group';
 
 class Chat extends React.Component {
   constructor(props) {
@@ -54,11 +54,36 @@ class Chat extends React.Component {
     }
   }
 
+  shouldGroupMessages(prevMsg, currMsg) {
+    if (currMsg.authorId !== prevMsg.authorId) {
+      return false;
+    }
+    const currMsgDate = new Date(currMsg.createdAt);
+    const prevMsgDate = new Date(prevMsg.createdAt);
+    const timeDiff = currMsgDate.getTime() - prevMsgDate.getTime();
+    
+    // Five minutes
+    return timeDiff < (5 * 60 * 1000);
+  }
+
   render() {
     const { messages, threadId, submitMessage } = this.props;
-    const chatMessages = messages.map((message) => (
-      <MessageShow key={message.id} 
-                   message={message} />
+    let messageGroups = [];
+
+    let prevMsg = { createdAt: 0 };
+    messages.forEach((msg) => {
+      if (this.shouldGroupMessages(prevMsg, msg)) {
+        const lastGroup = messageGroups[messageGroups.length-1];
+        lastGroup.push(msg);
+      } else {
+        messageGroups.push([msg]);
+      }
+      prevMsg = msg;
+    })
+
+    messageGroups = messageGroups.map((messages, idx) => (
+      <MessageGroup key={idx} 
+                   messages={messages} />
     ));
 
     return (
@@ -70,7 +95,7 @@ class Chat extends React.Component {
                 <div className="chat-header">
                 </div>
 
-                {chatMessages}
+                {messageGroups}
 
                 <div className="chat-bottom" ref={this.bottom}>
                 </div>

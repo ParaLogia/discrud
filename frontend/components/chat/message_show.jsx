@@ -1,26 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { selectUser } from '../../reducers/selectors';
 
-const MessageShow = ({ message, author }) => {
+class MessageShow extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  // const date = new Date(message.createdAt)
-  // const time = date.toLocaleTimeString();
+  render() {
+    const { message } = this.props;
 
-  return (
-    <div className="chat-message">
-      {author ? author.username : `user#${message.authorId}`}: {message.body}
-    </div>
-  )
-}
-
-const msp = (state, ownProps) => {
-  const { message } = ownProps;
-  const author = selectUser(state, message.authorId)
-
-  return {
-    author
+    return (
+      <div className="chat-message">
+        <div className="chat-options-button">
+          <i className="fas fa-ellipsis-v"></i>
+        </div>
+        {message.body}
+      </div>
+    )
   }
 }
 
-export default connect(msp)(MessageShow);
+export default MessageShow;
