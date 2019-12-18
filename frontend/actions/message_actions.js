@@ -28,7 +28,7 @@ export const receiveErrors = (errors) => ({
 export const createChannelMessage = (message) => (dispatch) => {
   return APIUtil.createChannelMessage(message)
     .then(
-      (message) => dispatch(receiveNewMessage(message)),
+      () => {},
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }

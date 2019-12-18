@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { selectMessagesOfChannel } from '../../reducers/selectors';
 import ChatForm from './chat_form';
 import MessageGroup from './message_group';
+import { createSubscription } from '../../util/chat_util'
 
 class Chat extends React.Component {
   constructor(props) {
@@ -14,11 +15,30 @@ class Chat extends React.Component {
 
   componentDidMount() {
     this.scrollToBottom();
+
+    const { threadId, receiveNewMessage } = this.props;
+    this.subscription = createSubscription(threadId, receiveNewMessage);
   }
 
   componentDidUpdate(prevProps) {
+    const { threadId, receiveNewMessage } = this.props;
+
+    if (!prevProps.threadId || prevProps.threadId !== threadId) {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      } 
+      this.subscription = createSubscription(threadId, receiveNewMessage);
+    }
+
     if (this._shouldScroll(prevProps)) {
       this.scrollToBottom();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
     }
   }
 

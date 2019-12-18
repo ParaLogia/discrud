@@ -11,7 +11,9 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
         "$": "readonly",
-        "process": "readonly"
+        "process": "readonly",
+        "App": "readonly",
+        "ActionCable": "readonly"
     },
     "parserOptions": {
         "ecmaFeatures": {

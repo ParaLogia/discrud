@@ -8,7 +8,9 @@ class Api::MessagesController < ApplicationController
       @message.author = current_user
 
       if @message.save
-        render :show
+        messageJSON = render :show
+        response = { type: 'RECEIVE_MESSAGE', message: messageJSON }
+        ChatChannel.broadcast_to(channel, response)
       else
         render json: @message.errors.full_messages, status: 422
       end

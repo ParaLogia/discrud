@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
     resources :messages, only: [:update, :destroy]
   end
+
+  mount ActionCable.server, at: '/cable'
 end
