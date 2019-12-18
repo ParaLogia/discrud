@@ -27,14 +27,10 @@ class ChannelIndex extends React.Component {
   }
 }
 
-const msp = (state, ownProps) => {
-  return ownProps;
-}
-
 const mdp = (dispatch) => {
   return {
     editChannelModal: (channelId) => dispatch(editChannelModal(channelId))
   }
 }
 
-export default connect(msp, mdp)(ChannelIndex);
+export default connect(null, mdp)(ChannelIndex);
