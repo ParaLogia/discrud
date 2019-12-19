@@ -5,6 +5,7 @@ import { clearModal } from "../../actions/modal_actions";
 import ChannelForm from './channel_form';
 
 const msp = (state, ownProps) => {
+  const currentChannelId = ownProps.match.params.channelId;
   const serverId = ownProps.match.params.serverId;
   return {
     formType: 'create',
@@ -12,7 +13,8 @@ const msp = (state, ownProps) => {
       name: '',
       topic: '',
       serverId
-    }
+    },
+    currentChannelId
   }
 }
 

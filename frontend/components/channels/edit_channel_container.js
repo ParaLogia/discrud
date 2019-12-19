@@ -6,10 +6,12 @@ import { selectChannel } from '../../reducers/selectors';
 import ChannelForm from './channel_form';
 
 const msp = (state, ownProps) => {
+  const currentChannelId = ownProps.match.params.channelId;
   const channelId = ownProps.channelId;
   return {
     formType: 'edit',
-    channel: selectChannel(state, channelId)
+    channel: selectChannel(state, channelId),
+    currentChannelId
   }
 }
 

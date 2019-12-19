@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ServerIndexItem from './server_index_item';
-import { ADD_SERVER } from '../modal/modal';
 
 class ServerIndex extends React.Component {
   constructor(props) {

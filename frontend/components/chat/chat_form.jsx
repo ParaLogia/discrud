@@ -29,6 +29,14 @@ class ChatForm extends React.Component {
   }
 
   render() {
+    if (!this.props.threadId) {
+      return <div className="chat-form">
+        <div className="chat-input-container">
+          <div className="chat-input"></div>
+        </div>
+      </div>
+    }
+
     const placeholder = (this.state.body.length === 0) ? (
       <span>
         <div className="chat-input-placeholder"
@@ -47,7 +55,7 @@ class ChatForm extends React.Component {
                 className="chat-input" 
                 onChange={this.handleUpdate}
                 value={this.state.body}
-                tabIndex="0"/>
+                tabIndex="0" />
         </div>
 
         <input type="submit" 

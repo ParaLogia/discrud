@@ -6,6 +6,7 @@
 .channel-index {
   display: flex;
   flex-direction: column;
+  min-width: 240px;
 }
 
 .channel-index-item {

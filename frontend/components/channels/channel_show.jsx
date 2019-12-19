@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { selectChannel } from "../../reducers/selectors";
 import { fetchChannel } from '../../actions/channel_actions';
 import { createChannelMessage, receiveNewMessage, removeMessage } from '../../actions/message_actions';
@@ -25,8 +26,8 @@ class ChannelShow extends React.Component {
   }
   
   render() {
+    let { channel } = this.props;
     const { 
-      channel, 
       createChannelMessage, 
       receiveNewMessage,
       removeMessage,
@@ -34,7 +35,24 @@ class ChannelShow extends React.Component {
       currentUser
     } = this.props;
 
-    if (!channel) return null;
+    if (!channel) {
+      if (!currentServer || !currentServer.channelIds || !currentServer.channelIds[0]) {
+        const dummyChannel = {
+          name: '',
+          messageIds: []
+        }
+
+        channel = dummyChannel;
+      }
+      else {
+        const firstChannelId = currentServer.channelIds[0];
+
+        return (
+          <Redirect to={`/channels/${currentServer.id}/${firstChannelId}`} />
+        );
+      }
+
+    }
 
     return (
       <div className="channel-show">

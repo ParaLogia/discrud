@@ -22,9 +22,15 @@ class ChannelForm extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    const channelId = this.props.channel.id;
-    this.props.deleteChannel(channelId)
-      .then(this.props.clearModal());
+    const { channel, deleteChannel, clearModal, history, currentChannelId } = this.props;
+    const deletedChannelId = channel.id;
+    deleteChannel(deletedChannelId)
+      .then(() => {
+        clearModal();
+        if (currentChannelId == deletedChannelId) {
+          history.push(`/channels/${channel.serverId}`);
+        }
+      });
   }
 
   handleCancel(e) {

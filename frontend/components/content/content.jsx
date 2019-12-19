@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Sidebar from './sidebar';
 import ChannelShow from '../channels/channel_show';
 
@@ -43,14 +43,23 @@ class Content extends React.Component {
           deleteServer={deleteServer}
           channels={channels} />
 
-        <Route 
-          path="/channels/:serverId/:channelId" 
-          render={(props) => (
-            <ChannelShow
-              {...props} 
-              currentServer={currentServer}
-              currentUser={currentUser} />
-          )} />
+        <Switch>
+          <Route
+            path="/channels/@me/:channelId?"
+            render={() => (
+              null
+            )}
+            /> 
+          
+          <Route 
+            path="/channels/:serverId/:channelId?" 
+            render={(props) => (
+              <ChannelShow
+                {...props} 
+                currentServer={currentServer}
+                currentUser={currentUser} />
+            )} />
+        </Switch>
       </div>
     )
   }
