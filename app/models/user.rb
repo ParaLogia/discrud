@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :username, :email, :session_token, :password_digest, presence: true
   validates :email, :session_token, uniqueness: true
   validates :username, uniqueness: { scope: :tag, message: 'combo with tag already taken' }
+  validates :username, length: { maximum: 32 }
   validates :tag, presence: { message: 'unavailable for username' }
   validates :password, length: { minimum: 6, allow_nil: true }
 

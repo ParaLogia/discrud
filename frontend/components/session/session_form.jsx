@@ -76,18 +76,18 @@ class SessionForm extends React.Component {
     });
 
     const demoBlurb = (formType === 'login') ? (
-      <span onClick={this.handleDemoLogin}>
+      <span onClick={this.handleDemoLogin} className="demo-blurb">
         <a>Forgot your password? Use mine!</a>
       </span>
     ) : '';
 
     const altLink = (formType === 'login') ?  (
-      <span>
+      <span className="alt-link">
         Need an account?&nbsp;
         <Link to="/register">Register</Link>
       </span>
     ) : (
-      <span>
+      <span className="alt-link">
         <Link to="/login">Already have an account?</Link>
       </span>
     )
