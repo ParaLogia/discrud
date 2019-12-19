@@ -12,7 +12,7 @@
   background-color: #2f3136;
 }
 
-.user-footer {
+.session-footer {
   min-height: 52px;
   background-color: #292b2f;
   display: flex;
@@ -26,15 +26,19 @@
   flex-direction: column;
   cursor: pointer;
   flex-grow: 1;
+  max-width: 98px;
 }
 
-.user-footer .username {
+.session-footer .username {
   font-size: 14px;
   color: white;
   font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.user-footer .user-tag {
+.session-footer .user-tag {
   font-size: 12px;
   color: #b9bbbe;
 }
@@ -55,4 +59,19 @@
 
 .avatar-mini:hover {
   background-color: #677bc4;
+}
+
+.logout-button {
+  font-size: 14px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  background-color: #2f3136;
+  width: auto;
+  color: #f04747;
+  border: 1px solid rgba(240, 71, 71, 0.5);
+}
+
+.logout-button:hover {
+  background-color: rgba(240, 71, 71, 0.1);
+  border-color: rgba(240, 71, 71, 0.7);
 }

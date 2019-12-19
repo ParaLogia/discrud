@@ -13,7 +13,7 @@ const UserFooter = ({ currentUser, logout }) => {
   )
 
   return (
-    <footer className="user-footer">
+    <footer className="session-footer">
       {avatarIcon}
       <div className="username-container">
 
@@ -25,7 +25,9 @@ const UserFooter = ({ currentUser, logout }) => {
         </span>
       </div>
       
-      <button onClick={handleLogout}>Log Out</button>
+      <button className="logout-button" onClick={handleLogout}>
+        Log Out
+      </button>
     </footer>
   )
 };
