@@ -44,7 +44,7 @@ class MessageShow extends React.Component {
              tabIndex="0">
           <i className="fas fa-ellipsis-v"></i>
 
-          <div className={`message-dropdown ${this.state.dropdown ? '' : 'hidden'}`}>
+          <div className={`message-dropdown ${this.state.dropdown ? 'active' : 'hidden'}`}>
             <div className="message-dropdown-option">
               ID: {message.id}
             </div>
