@@ -23,4 +23,8 @@ class Channel < ApplicationRecord
     -> { distinct },
     through: :messages,
     source: :author
+
+  def message_ids
+    self.messages.order(:created_at).pluck(:id)
+  end
 end
