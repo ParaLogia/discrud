@@ -36,6 +36,18 @@
   z-index: 3;
 }
 
+.chat-message-group:last-of-type .message-dropdown {
+  bottom: 20px;
+  top: initial;
+}
+
+/* Don't judge me for this */
+.chat-message-group:first-of-type .chat-message:nth-of-type(1) .message-dropdown,
+.chat-message-group:first-of-type .chat-message:nth-of-type(2) .message-dropdown {
+  bottom: initial;
+  top: 25px;
+}
+
 .message-dropdown-option {
   text-align: center;
   margin: 2px 4px;

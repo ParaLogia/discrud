@@ -23,16 +23,16 @@ const MessageGroup = ({ messages, author, currentServer, currentUser, deleteMess
 
   return (
     <>
-      <div className="chat-message-group-divider"></div>
+      <hr className="chat-message-group-divider"></hr>
       <div className="chat-message-group">
-        <div className="chat-message-header">
+        <h3 className="chat-message-header">
           <span className="chat-username">
             {author ? author.username : `user#${firstMessage.authorId}`}
           </span>
           <span className="chat-timestamp">
             {time}
           </span>
-        </div>
+        </h3>
 
         {messageShows}
 

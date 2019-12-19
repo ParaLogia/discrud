@@ -122,13 +122,10 @@ class Chat extends React.Component {
           <section className="messages-container">
             <div className="scroller-wrapper">
               <div className="scroller">
-                <div className="chat-header">
-                </div>
 
                 {messageGroups}
 
-                <div className="chat-bottom" ref={this.bottom}>
-                </div>
+                <mark className="chat-bottom" ref={this.bottom}></mark>
               </div>
             </div>
           </section>
