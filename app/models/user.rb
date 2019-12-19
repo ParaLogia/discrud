@@ -28,6 +28,10 @@ class User < ApplicationRecord
     through: :owned_servers,
     source: :channels
 
+  has_many :owned_channel_messages,
+    through: :owned_channels,
+    source: :messages
+
   has_many :server_memberships,
     foreign_key: :member_id,
     dependent: :destroy

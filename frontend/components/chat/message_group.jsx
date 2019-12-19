@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectUser } from '../../reducers/selectors';
+import { deleteMessage } from '../../actions/message_actions';
 import MessageShow from './message_show';
 
-const MessageGroup = ({ messages, author, currentServer, currentUser }) => {
+const MessageGroup = ({ messages, author, currentServer, currentUser, deleteMessage }) => {
   const canEdit = (author.id === currentUser.id);
   const canDelete = canEdit || (currentUser.id === currentServer.ownerId);
 
@@ -16,7 +17,8 @@ const MessageGroup = ({ messages, author, currentServer, currentUser }) => {
       key={message.id} 
       message={message} 
       canEdit={canEdit}
-      canDelete={canDelete} />
+      canDelete={canDelete}
+      deleteMessage={deleteMessage} />
   ));
 
   return (
@@ -48,4 +50,10 @@ const msp = (state, ownProps) => {
   }
 }
 
-export default connect(msp)(MessageGroup);
+const mdp = (dispatch) => {
+  return {
+    deleteMessage: (messageId) => dispatch(deleteMessage(messageId))
+  }
+}
+
+export default connect(msp, mdp)(MessageGroup);

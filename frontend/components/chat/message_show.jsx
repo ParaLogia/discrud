@@ -16,7 +16,12 @@ class MessageShow extends React.Component {
   }
 
   render() {
-    const { message, canEdit, canDelete } = this.props;
+    const { message, canEdit, canDelete, deleteMessage } = this.props;
+
+    const handleDelete = (e) => {
+      e.preventDefault();
+      deleteMessage(message.id);
+    }
 
     const editOption = canEdit ? (
       <div className="message-dropdown-option">
@@ -25,7 +30,8 @@ class MessageShow extends React.Component {
     ) : null;
 
     const deleteOption = canDelete ? (
-      <div className="message-dropdown-option">
+      <div className="message-dropdown-option"
+           onClick={handleDelete}>
         Delete
       </div>
     ) : null;

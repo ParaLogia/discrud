@@ -2,7 +2,7 @@ import { merge } from 'lodash';
 import { mergeWithConcat } from '../util/reducer_util';
 import { RECEIVE_CHANNEL, REMOVE_CHANNEL, RECEIVE_NEW_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_SERVER } from '../actions/server_actions';
-import { RECEIVE_NEW_MESSAGE } from '../actions/message_actions';
+import { RECEIVE_NEW_MESSAGE, REMOVE_MESSAGE } from '../actions/message_actions';
 
 const channelsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -29,6 +29,18 @@ const channelsReducer = (state = {}, action) => {
           messageIds: [action.message.id]
         }
       });
+
+    case REMOVE_MESSAGE: {
+      const { message } = action;
+      const channel = state[message.threadId];
+      const newMessageIds = channel.messageIds.filter(id => id !== message.id);
+      return Object.assign({}, state, {
+        [channel.id]: {
+          ...channel,
+          messageIds: newMessageIds
+        }
+      })
+    }      
 
     default:
       return state;

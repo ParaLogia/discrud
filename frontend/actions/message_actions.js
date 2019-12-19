@@ -15,9 +15,9 @@ export const receiveNewMessage = (message) => ({
   message
 })
 
-export const removeMessage = (messageId) => ({
+export const removeMessage = (message) => ({
   type: REMOVE_MESSAGE,
-  messageId
+  message
 })
 
 export const receiveErrors = (errors) => ({
@@ -44,7 +44,7 @@ export const updateMessage = (message) => (dispatch) => {
 export const deleteMessage = (messageId) => (dispatch) => {
   return APIUtil.deleteMessage(messageId)
     .then(
-      (message) => dispatch(removeMessage(message.id)),
+      (message) => dispatch(removeMessage(message)),
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }
