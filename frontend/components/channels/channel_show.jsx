@@ -15,19 +15,21 @@ class ChannelShow extends React.Component {
 
   componentDidMount() {
     const { channelId } = this.props.match.params;
-    const { receiveNewMessage, removeMessage } = this.props;
-    this.props.fetchChannel(channelId)
-      .then(() => {
-        this.subscription = createThreadSubscription(channelId, receiveNewMessage, removeMessage);
-      });
+    const { currentServer, receiveNewMessage, removeMessage } = this.props;
+    if (currentServer && channelId) {
+      this.props.fetchChannel(channelId)
+        .then(() => {
+          this.subscription = createThreadSubscription(channelId, receiveNewMessage, removeMessage);
+        });
+    }
   }
 
   componentDidUpdate(prevProps) {
     const { channelId } = this.props.match.params;
     const prevChannelId = prevProps.match.params.channelId;
-    const { receiveNewMessage, removeMessage } = this.props;
+    const { currentServer, receiveNewMessage, removeMessage } = this.props;
 
-    if (channelId !== prevChannelId) {
+    if (currentServer && channelId && channelId !== prevChannelId) {
       this.props.fetchChannel(channelId)
         .then(() => {          
           if (this.subscription) {

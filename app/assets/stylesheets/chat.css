@@ -72,6 +72,7 @@
   font-weight: bold;
   margin-left: 80px;
   line-height: 1.375;
+  white-space: nowrap;
 }
 
 .chat-username {
@@ -107,7 +108,10 @@
   position: absolute;
   top: 35px;
   left: 11px;
-  pointer-events:none;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: calc(100% - 12px);
+  overflow: hidden;
 }
 
 .chat-input {

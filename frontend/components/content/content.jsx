@@ -30,7 +30,8 @@ class Content extends React.Component {
       logout,
       leaveServer,
       deleteServer,
-      channels
+      channels,
+      addServerModal
     } = this.props;
     
     return (
@@ -41,7 +42,8 @@ class Content extends React.Component {
           logout={logout}
           leaveServer={leaveServer}
           deleteServer={deleteServer}
-          channels={channels} />
+          channels={channels} 
+          addServerModal={addServerModal} />
 
         <Switch>
           <Route

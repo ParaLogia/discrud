@@ -9,7 +9,8 @@ const Sidebar = ({
   logout,
   leaveServer,
   deleteServer,
-  channels
+  channels,
+  addServerModal
 }) => {
   let header, channelIndex;
 
@@ -34,14 +35,34 @@ const Sidebar = ({
     header = (
       <header className="server-header">
         <div className="server-title-container">
-          DMs
+          Direct Messages
         </div>
       </header>
     )
 
+    const dmPlaceholderStyle = { 
+      textTransform: 'inherit',
+      cursor: 'pointer'
+    }
+
+    const handleClick = () => {
+      addServerModal();
+    }
+
     channelIndex = (
-      <div>
-        No DMs yet...
+      <div className="channel-index-container">
+        <ul className="channel-index">
+          <li className="channel-index-item">
+            <div className="channel-link" style={dmPlaceholderStyle} onClick={handleClick}>
+              DMs are under construction.
+            </div>
+          </li>
+          <li className="channel-index-item">
+            <div className="channel-link" style={dmPlaceholderStyle} onClick={handleClick}>
+              Check out servers instead!
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }
