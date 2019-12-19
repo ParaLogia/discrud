@@ -46,10 +46,12 @@ class Content extends React.Component {
         <Switch>
           <Route
             path="/channels/@me/:channelId?"
-            render={() => (
-              null
-            )}
-            /> 
+            render={(props) => (
+              <ChannelShow
+                {...props}
+                currentServer={currentServer}
+                currentUser={currentUser} />
+            )} /> 
           
           <Route 
             path="/channels/:serverId/:channelId?" 
