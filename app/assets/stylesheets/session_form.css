@@ -15,6 +15,9 @@
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  animation-name: bounce-in;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
 }
 
 .session-form-header {
@@ -66,10 +69,12 @@
   margin-top: 24px;
   font-size: 16px;
   height: 44px;
+  transition: background-color 0.2s;
 }
 
 .session-form button:hover {
   background-color: #677bc4;
+  transition: background-color 0.2s;
 }
 
 .alt-link, .demo-blurb {
@@ -102,4 +107,26 @@ label.session-error {
 
 .session-error span::first-letter {
   text-transform: uppercase;
+}
+
+@keyframes bounce-in {
+  0%   {
+    transform: translateX(-50%) translateY(-90%);
+    width: 540px;
+    opacity: 0%;
+  }
+  60%  {
+    transform: translateX(-50%) translateY(-45%);
+    width: 477px;
+    opacity: 80%;
+  }
+  75% {
+    transform: translateX(-50%) translateY(-51%);
+    width: 480px;
+    opacity: 95%;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 100%;
+  }
 }
