@@ -19,19 +19,32 @@
   justify-content: space-around;
 }
 
-.splash-nav li {
-  padding: 10px 15px;
+.splash-logo {
+  font-size: 36px;
+  color: white;
+  margin: 4px 12px 0 0;
 }
 
-.splash-nav a {
+.splash-nav li {
+  padding: 15px 10px;
+  margin-right: 8px;
+}
+
+.splash-nav li i {
+  font-size: 10px;
+}
+
+.splash-nav li a {
   color: white;
   font-weight: 400; 
   opacity: 0.8;
+  transition: opacity 0.2s;
 }
 
-.splash-nav a:hover {
+.splash-nav li a:hover {
   text-decoration: none;
   opacity: 1.0;
+  transition: opacity 0.2s;
 }
 
 .splash-nav .button {
@@ -76,7 +89,7 @@
   height: 45px;
 }
 
-.splash-content button {
+.splash-content a {
   width: 250px;
   height: 45px;
   padding: 10px;
@@ -84,10 +97,20 @@
   position: absolute;
   left: 0;
   top: 0;
+  padding: 5px 16px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: top 0.2s;
 }
 
-.splash-content button:hover {
+.splash-content a:hover {
   top: 2px;
+  text-decoration: none;
+  transition: top 0.2s;
 }
 
 .download-button {

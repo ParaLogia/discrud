@@ -15,9 +15,9 @@ const Splash = ({ loggedIn }) => {
     <div className="splash">
       <nav className="splash-nav">
         <ul>
-          <li>
-            <Link to="/">Discrud</Link>
-          </li>
+          <Link to="/">
+            <i className="fab fa-discord splash-logo"></i>
+          </Link>
           <li>
             <Link to="/">Download</Link>
           </li>
@@ -28,13 +28,13 @@ const Splash = ({ loggedIn }) => {
             <Link to="/">Jobs</Link>
           </li>
           <li>
-            <Link to="/">Developers</Link>
+            <Link to="/">Developers <i className="fas fa-angle-down"></i></Link>
           </li>
           <li>
-            <Link to="/">Community</Link>
+            <Link to="/">Community <i className="fas fa-angle-down"></i></Link>
           </li>
           <li>
-            <Link to="/">Support</Link>
+            <Link to="/">Support <i className="fas fa-angle-down"></i></Link>
           </li>
         </ul>
         <ul>
@@ -50,14 +50,14 @@ const Splash = ({ loggedIn }) => {
         </p>
         <div className="splash-buttons-container">
           <div className="splash-button-container">
-            <button className="download-button">
-              Download for your OS
-            </button>
+            <Link to="/register" className="download-button">
+              Register for an account
+            </Link>
           </div>
           <div className="splash-button-container">
-            <button className="open-app-button">
+            <Link to={loggedIn ? "/channels/@me" : "/login"} className="open-app-button">
               Open Discrud in your browser
-            </button>
+            </Link>
           </div>
         </div>
       </section>
