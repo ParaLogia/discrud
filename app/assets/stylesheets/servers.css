@@ -34,6 +34,7 @@
   text-decoration: none;
   border-radius: 16px;
   background-color: #7289da;
+  transition: border-radius 0.2s, background-color 0.2s;
 }
 
 .servers-nav .tooltip-wrapper {
@@ -85,6 +86,7 @@
 
 .home-button:hover, .home-button.active {
   background-color: #7289da;
+  transition: border-radius 0.2s, background-color 0.2s;
 }
 
 .server-separator {
@@ -102,6 +104,7 @@
 .server-add-button:hover {
   background-color: #43b581;
   color: white;
+  transition: border-radius 0.2s, background-color 0.2s;
 }
 
 .server-form .invite-error {
