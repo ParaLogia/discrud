@@ -47,7 +47,7 @@ class User < ApplicationRecord
 
   # Custom association: union of joined_servers and owned_servers
   def servers
-    @servers ||= Server.left_outer_joins(:server_memberships)
+    Server.left_outer_joins(:server_memberships)
       .where(
         'member_id = :user_id OR owner_id = :user_id', 
         user_id: self.id
@@ -56,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def channels
-    @channels ||= Channel.where(server_id: self.servers.pluck(:id))
+    Channel.where(server_id: self.servers.pluck(:id))
   end
 
   attr_reader :password

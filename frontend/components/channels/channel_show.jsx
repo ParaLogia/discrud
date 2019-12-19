@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { selectChannel } from "../../reducers/selectors";
 import { fetchChannel } from '../../actions/channel_actions';
 import { createChannelMessage, receiveNewMessage, removeMessage } from '../../actions/message_actions';
+import { createThreadSubscription } from '../../util/chat_util'
 import ChannelHeader from './channel_header';
 import Chat from '../chat/chat';
 
@@ -14,14 +15,34 @@ class ChannelShow extends React.Component {
 
   componentDidMount() {
     const { channelId } = this.props.match.params;
-    this.props.fetchChannel(channelId);
+    const { receiveNewMessage, removeMessage } = this.props;
+    this.props.fetchChannel(channelId)
+      .then(() => {
+        this.subscription = createThreadSubscription(channelId, receiveNewMessage, removeMessage);
+      });
   }
 
   componentDidUpdate(prevProps) {
     const { channelId } = this.props.match.params;
     const prevChannelId = prevProps.match.params.channelId;
+    const { receiveNewMessage, removeMessage } = this.props;
+
     if (channelId !== prevChannelId) {
-      this.props.fetchChannel(channelId);
+      this.props.fetchChannel(channelId)
+        .then(() => {          
+          if (this.subscription) {
+            this.subscription.unsubscribe();
+            this.subscription = null;
+          }
+          this.subscription = createThreadSubscription(channelId, receiveNewMessage, removeMessage);
+        })
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
     }
   }
   
@@ -63,7 +84,8 @@ class ChannelShow extends React.Component {
               receiveNewMessage={receiveNewMessage}
               removeMessage={removeMessage}
               currentServer={currentServer} 
-              currentUser={currentUser} />
+              currentUser={currentUser}
+              subscription={this.subscription} />
       </div>
     )
   }

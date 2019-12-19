@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { selectMessagesOfChannel } from '../../reducers/selectors';
 import ChatForm from './chat_form';
 import MessageGroup from './message_group';
-import { createThreadSubscription } from '../../util/chat_util'
+// import { createThreadSubscription } from '../../util/chat_util'
 
 class Chat extends React.Component {
   constructor(props) {
@@ -16,29 +16,22 @@ class Chat extends React.Component {
   componentDidMount() {
     this.scrollToBottom();
 
-    const { threadId, receiveNewMessage, removeMessage } = this.props;
-    this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
+    // const { threadId, receiveNewMessage, removeMessage } = this.props;
+    // this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
   }
 
   componentDidUpdate(prevProps) {
-    const { threadId, receiveNewMessage, removeMessage } = this.props;
+    // const { threadId, receiveNewMessage, removeMessage } = this.props;
 
-    if (!prevProps.threadId || prevProps.threadId !== threadId) {
-      if (this.subscription) {
-        this.subscription.unsubscribe();
-      } 
-      this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
-    }
+    // if (!prevProps.threadId || prevProps.threadId !== threadId) {
+    //   if (this.subscription) {
+    //     this.subscription.unsubscribe();
+    //   } 
+    //   this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
+    // }
 
     if (this._shouldScroll(prevProps)) {
       this.scrollToBottom();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-      this.subscription = null;
     }
   }
 

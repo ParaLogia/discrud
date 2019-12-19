@@ -1,6 +1,7 @@
 .content-container {
   display: flex;
   flex-grow: 1;
+  max-width: calc(100% - 72px);
 }
 
 .content-sidebar {
@@ -12,7 +13,7 @@
 }
 
 .user-footer {
-  height: 52px;
+  min-height: 52px;
   background-color: #292b2f;
   display: flex;
   align-items: center;

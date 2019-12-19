@@ -1,6 +1,6 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    @channel = current_user.channels.find(params[:id])
+    @channel = current_user.channels.find_by(id: params[:id])
     reject unless @channel
     stream_for @channel
   end

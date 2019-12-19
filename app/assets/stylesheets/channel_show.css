@@ -3,11 +3,15 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  max-width: calc(100% - 240px);
+  overflow: hidden;
 }
 
 .channel-header {
   height: 48px;
   width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   background-color: #36393f;
   color: white;
   display: flex;
@@ -21,6 +25,7 @@
   align-items: center;
   margin-right: 8px;
   text-transform: lowercase;
+  white-space: nowrap;
 }
 
 .channel-title i {
@@ -40,4 +45,8 @@
   margin-left: 8px;
   color: #b9bbbe;
   font-size: 14px;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
