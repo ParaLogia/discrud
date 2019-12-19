@@ -9,7 +9,7 @@ class Api::MessagesController < ApplicationController
 
       if @message.save
         messageJSON = render :show
-        response = { type: 'RECEIVE_MESSAGE', message: messageJSON }
+        response = { type: 'RECEIVE_NEW_MESSAGE', message: messageJSON }
         ChatChannel.broadcast_to(channel, response)
       else
         render json: @message.errors.full_messages, status: 422
@@ -37,7 +37,9 @@ class Api::MessagesController < ApplicationController
     @message ||= current_user.owned_channel_messages.find_by(id: params[:id])
     if @message
       @message.destroy
-      render :show
+      messageJSON = render :show
+      response = { type: 'REMOVE_MESSAGE', message: messageJSON }
+      ChatChannel.broadcast_to(@message.thread, response)
     else
       render json: ['Message not found'], status: 404
     end

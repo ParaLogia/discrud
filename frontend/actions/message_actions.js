@@ -44,7 +44,7 @@ export const updateMessage = (message) => (dispatch) => {
 export const deleteMessage = (messageId) => (dispatch) => {
   return APIUtil.deleteMessage(messageId)
     .then(
-      (message) => dispatch(removeMessage(message)),
+      () => {},
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     )
 }

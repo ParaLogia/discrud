@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectChannel } from "../../reducers/selectors";
 import { fetchChannel } from '../../actions/channel_actions';
-import { createChannelMessage, receiveNewMessage } from '../../actions/message_actions';
+import { createChannelMessage, receiveNewMessage, removeMessage } from '../../actions/message_actions';
 import ChannelHeader from './channel_header';
 import Chat from '../chat/chat';
 
@@ -29,6 +29,7 @@ class ChannelShow extends React.Component {
       channel, 
       createChannelMessage, 
       receiveNewMessage,
+      removeMessage,
       currentServer,
       currentUser
     } = this.props;
@@ -42,6 +43,7 @@ class ChannelShow extends React.Component {
         <Chat threadId={channel.id} 
               submitMessage={createChannelMessage}
               receiveNewMessage={receiveNewMessage}
+              removeMessage={removeMessage}
               currentServer={currentServer} 
               currentUser={currentUser} />
       </div>
@@ -62,7 +64,8 @@ const mdp = (dispatch) => {
   return {
     fetchChannel: (channelId) => dispatch(fetchChannel(channelId)),
     createChannelMessage: (message) => dispatch(createChannelMessage(message)),
-    receiveNewMessage: (message) => dispatch(receiveNewMessage(message))
+    receiveNewMessage: (message) => dispatch(receiveNewMessage(message)),
+    removeMessage: (message) => dispatch(removeMessage(message))
   }
 }
 

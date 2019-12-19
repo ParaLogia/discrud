@@ -1,14 +1,20 @@
-import { RECEIVE_MESSAGE } from '../actions/message_actions';
+import { RECEIVE_NEW_MESSAGE, REMOVE_MESSAGE } from '../actions/message_actions';
 
-export const createSubscription = (threadId, receiveMessage) => {
+export const createThreadSubscription = (threadId, receiveNewMessage, removeMessage) => {
   const received = (data) => {
+    const message = JSON.parse(data.message);
+
     switch (data.type) {
-      case RECEIVE_MESSAGE:
-        receiveMessage(JSON.parse(data.message));
+      case RECEIVE_NEW_MESSAGE:
+        receiveNewMessage(message);
+        break;
+
+      case REMOVE_MESSAGE:
+        removeMessage(message);
         break;
 
       default:
-        break;
+        console.warn('Unknown socket response to thread subscription: ', data);
     }
   }
 
