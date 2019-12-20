@@ -5,7 +5,7 @@ import { deleteMessage } from '../../actions/message_actions';
 import MessageShow from './message_show';
 
 const MessageGroup = ({ messages, author, currentServer, currentUser, deleteMessage }) => {
-  const canEdit = (author.id === currentUser.id);
+  const canEdit = author && (author.id === currentUser.id);
   const canDelete = canEdit || (currentUser.id === currentServer.ownerId);
 
   const firstMessage = messages[0];
@@ -27,7 +27,7 @@ const MessageGroup = ({ messages, author, currentServer, currentUser, deleteMess
       <div className="chat-message-group">
         <h3 className="chat-message-header">
           <span className="chat-username">
-            {author ? author.username : `user#${firstMessage.authorId}`}
+            {author ? author.username : `User#${firstMessage.authorId}`}
           </span>
           <span className="chat-timestamp">
             {time}
