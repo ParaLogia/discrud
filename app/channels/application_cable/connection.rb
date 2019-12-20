@@ -9,7 +9,7 @@ module ApplicationCable
     private
     
     def find_verified_user
-      verified_user = User.find_by(session_token: request.session.fetch(:session_token, nil))
+      verified_user = User.find_by(session_token: request.session[:session_token])
       verified_user || reject_unauthorized_connection
     end
   end
