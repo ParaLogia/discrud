@@ -149,7 +149,7 @@ class ServerHeader extends React.Component {
           <i className={dropdown ? "fas fa-times" : "fas fa-angle-down"}></i>
         </div>
 
-        <div className={`server-dropdown ${dropdown ? '' : 'hidden'}`}>
+        <div className={`server-dropdown ${dropdown ? 'active' : 'hidden'}`}>
 
           {inviteOption}
 

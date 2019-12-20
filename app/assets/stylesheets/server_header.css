@@ -71,3 +71,18 @@
 .destructive:hover {
   color: #f04747;
 }
+
+.server-dropdown.active {
+  animation: drop-down 0.1s linear;
+}
+
+@keyframes drop-down {
+  0% {
+    opacity: 60%;
+    transform-origin: top;
+    transform: scale(0.5, 0.5) translate(-100%, -5%);
+  }
+  100% {
+    opacity: 100%;
+  }
+}
