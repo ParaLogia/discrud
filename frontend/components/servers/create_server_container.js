@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { createServer } from '../../actions/server_actions';
 import { clearModal, addServerModal } from '../../actions/modal_actions';
-import { ADD_SERVER } from '../modal/modal';
 import ServerForm from './server_form';
 import { withRouter } from 'react-router-dom';
 

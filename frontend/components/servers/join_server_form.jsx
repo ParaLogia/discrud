@@ -32,7 +32,8 @@ class JoinServerForm extends React.Component {
     this.props.backAction();
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     const { joinServer, clearModal } = this.props;
 
     joinServer(this.state.inviteToken)
