@@ -1,37 +1,60 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { selectMessagesOfChannel } from '../../reducers/selectors';
 import ChatForm from './chat_form';
 import MessageGroup from './message_group';
-// import { createThreadSubscription } from '../../util/chat_util'
+import { receiveNewMessage, removeMessage, deleteMessage } from '../../actions/message_actions';
+import { fetchUser } from "../../actions/user_actions";
+import { createThreadSubscription } from '../../util/chat_util';
 
 class Chat extends React.Component {
   constructor(props) {
     super(props);
 
     this.bottom = React.createRef();
+    this.subscription = null;
   }
 
   componentDidMount() {
     this.scrollToBottom();
 
-    // const { threadId, receiveNewMessage, removeMessage } = this.props;
-    // this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
+    const { threadId, receiveNewMessage, removeMessage, fetchThread } = this.props;
+
+    fetchThread(threadId)
+      .then(() => {
+        this.subscription = createThreadSubscription(
+          threadId,
+          receiveNewMessage,
+          removeMessage
+        );
+      })
   }
 
   componentDidUpdate(prevProps) {
-    // const { threadId, receiveNewMessage, removeMessage } = this.props;
+    const { threadId, receiveNewMessage, removeMessage, fetchThread } = this.props;
 
-    // if (!prevProps.threadId || prevProps.threadId !== threadId) {
-    //   if (this.subscription) {
-    //     this.subscription.unsubscribe();
-    //   } 
-    //   this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
-    // }
+    if (!threadId) 
+      return;
 
     if (this._shouldScroll(prevProps)) {
       this.scrollToBottom();
+    }
+
+    if (!prevProps.threadId || prevProps.threadId !== threadId) {
+      fetchThread(threadId)
+        .then(() => {
+          if (this.subscription) {
+            this.subscription.unsubscribe();
+          } 
+          this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
+        })
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = null;    
     }
   }
 
@@ -85,7 +108,9 @@ class Chat extends React.Component {
       threadId, 
       submitMessage,
       currentServer,
-      currentUser
+      currentUser,
+      deleteMessage,
+      fetchUser
     } = this.props;
     
     let messageGroups = [];
@@ -106,7 +131,9 @@ class Chat extends React.Component {
         key={idx} 
         messages={messages}
         currentServer={currentServer}
-        currentUser={currentUser} />
+        currentUser={currentUser} 
+        deleteMessage={deleteMessage}
+        fetchUser={fetchUser} />
     ));
 
     return (
@@ -132,12 +159,19 @@ class Chat extends React.Component {
 
 const msp = (state, ownProps) => {
   const { threadId } = ownProps;
-  const messages = selectMessagesOfChannel(state, threadId);
 
   return {
-    threadId,
-    messages
+    threadId
   }
 }
 
-export default withRouter(connect(msp)(Chat));
+const mdp = (dispatch) => {
+  return {
+    receiveNewMessage: (message) => dispatch(receiveNewMessage(message)),
+    removeMessage: (message) => dispatch(removeMessage(message)),
+    deleteMessage: (messageId) => dispatch(deleteMessage(messageId)),
+    fetchUser: (userId) => dispatch(fetchUser(userId))
+  }
+}
+
+export default withRouter(connect(msp, mdp)(Chat));

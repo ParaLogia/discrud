@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectUser } from '../../reducers/selectors';
-import { deleteMessage } from '../../actions/message_actions';
-import { fetchUser } from "../../actions/user_actions";
 import MessageShow from './message_show';
 
 class MessageGroup extends React.Component {
@@ -62,11 +60,4 @@ const msp = (state, ownProps) => {
   }
 }
 
-const mdp = (dispatch) => {
-  return {
-    deleteMessage: (messageId) => dispatch(deleteMessage(messageId)),
-    fetchUser: (userId) => dispatch(fetchUser(userId))
-  }
-}
-
-export default connect(msp, mdp)(MessageGroup);
+export default connect(msp)(MessageGroup);

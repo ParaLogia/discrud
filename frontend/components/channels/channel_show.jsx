@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { selectChannel } from "../../reducers/selectors";
+import { selectChannel, selectMessagesOfChannel } from "../../reducers/selectors";
 import { fetchChannel } from '../../actions/channel_actions';
-import { createChannelMessage, receiveNewMessage, removeMessage } from '../../actions/message_actions';
-import { createThreadSubscription } from '../../util/chat_util'
+import { createChannelMessage } from '../../actions/message_actions';
 import ChannelHeader from './channel_header';
 import Chat from '../chat/chat';
 
@@ -13,54 +12,23 @@ class ChannelShow extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    const { channelId } = this.props.match.params;
-    const { currentServer, receiveNewMessage, removeMessage } = this.props;
-    if (currentServer && channelId) {
-      this.props.fetchChannel(channelId)
-        .then(() => {
-          this.subscription = createThreadSubscription(channelId, receiveNewMessage, removeMessage);
-        });
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { channelId } = this.props.match.params;
-    const prevChannelId = prevProps.match.params.channelId;
-    const { currentServer, receiveNewMessage, removeMessage } = this.props;
-
-    if (currentServer && channelId && channelId !== prevChannelId) {
-      this.props.fetchChannel(channelId)
-        .then(() => {          
-          if (this.subscription) {
-            this.subscription.unsubscribe();
-            this.subscription = null;
-          }
-          this.subscription = createThreadSubscription(channelId, receiveNewMessage, removeMessage);
-        })
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-      this.subscription = null;
-    }
-  }
-  
   render() {
     let { channel } = this.props;
     const { 
+      messages,
+      fetchChannel,
       createChannelMessage, 
       receiveNewMessage,
       removeMessage,
       currentServer,
-      currentUser
+      currentUser,
+      match
     } = this.props;
 
     if (!channel) {
       if (!currentServer || !currentServer.channelIds || !currentServer.channelIds[0]) {
         const dummyChannel = {
+          id: match.params.channelId,
           name: '',
           messageIds: []
         }
@@ -81,13 +49,15 @@ class ChannelShow extends React.Component {
       <div className="channel-show">
         <ChannelHeader channel={channel} />
 
-        <Chat threadId={channel.id} 
-              submitMessage={createChannelMessage}
-              receiveNewMessage={receiveNewMessage}
-              removeMessage={removeMessage}
-              currentServer={currentServer} 
-              currentUser={currentUser}
-              subscription={this.subscription} />
+        <Chat 
+          threadId={channel.id}
+          fetchThread={fetchChannel}
+          messages={messages}
+          submitMessage={createChannelMessage}
+          receiveNewMessage={receiveNewMessage}
+          removeMessage={removeMessage}
+          currentServer={currentServer} 
+          currentUser={currentUser} />
       </div>
     )
   }
@@ -96,18 +66,18 @@ class ChannelShow extends React.Component {
 const msp = (state, ownProps) => {
   const { channelId } = ownProps.match.params;
   const channel = selectChannel(state, channelId);
+  const messages = selectMessagesOfChannel(state, channelId);
 
   return {
-    channel
+    channel,
+    messages
   };
 }
 
 const mdp = (dispatch) => {
   return {
     fetchChannel: (channelId) => dispatch(fetchChannel(channelId)),
-    createChannelMessage: (message) => dispatch(createChannelMessage(message)),
-    receiveNewMessage: (message) => dispatch(receiveNewMessage(message)),
-    removeMessage: (message) => dispatch(removeMessage(message))
+    createChannelMessage: (message) => dispatch(createChannelMessage(message))
   }
 }
 

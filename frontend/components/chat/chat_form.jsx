@@ -22,10 +22,8 @@ class ChatForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { submitMessage, threadId } = this.props;
-    submitMessage(Object.assign({}, this.state, { threadId }))
-      .then(() => this.setState({
-        body: ''
-      }));
+    submitMessage({ body: this.state.body, threadId })
+      .then(() => this.setState({ body: '' }));
   }
 
   render() {
