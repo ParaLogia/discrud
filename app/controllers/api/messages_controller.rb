@@ -23,7 +23,9 @@ class Api::MessagesController < ApplicationController
     @message = current_user.messages.find_by(id: params[:id])
     if @message
       if @message.update(message_params)
-        render :show
+        messageJSON = render :show
+        response = { type: 'RECEIVE_MESSAGE', message: messageJSON }
+        ChatChannel.broadcast_to(@message.thread, response)
       else
         render json: @message.errors.full_messages, status: 422
       end

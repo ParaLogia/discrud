@@ -1,12 +1,16 @@
-import { RECEIVE_NEW_MESSAGE, REMOVE_MESSAGE } from '../actions/message_actions';
+import { RECEIVE_NEW_MESSAGE, RECEIVE_MESSAGE, REMOVE_MESSAGE } from '../actions/message_actions';
 
-export const createThreadSubscription = (threadId, receiveNewMessage, removeMessage) => {
+export const createThreadSubscription = (threadId, receiveNewMessage, receiveMessage, removeMessage) => {
   const received = (data) => {
     const message = JSON.parse(data.message);
 
     switch (data.type) {
       case RECEIVE_NEW_MESSAGE:
         receiveNewMessage(message);
+        break;
+
+      case RECEIVE_MESSAGE:
+        receiveMessage(message);
         break;
 
       case REMOVE_MESSAGE:

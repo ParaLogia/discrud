@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ChatForm from './chat_form';
 import MessageGroup from './message_group';
-import { receiveNewMessage, removeMessage, deleteMessage, updateMessage } from '../../actions/message_actions';
+import { receiveNewMessage, receiveMessage, removeMessage, deleteMessage, updateMessage } from '../../actions/message_actions';
 import { fetchUser } from "../../actions/user_actions";
 import { createThreadSubscription } from '../../util/chat_util';
 
@@ -24,20 +24,33 @@ class Chat extends React.Component {
   componentDidMount() {
     this.scrollToBottom();
 
-    const { threadId, receiveNewMessage, removeMessage, fetchThread } = this.props;
+    const { 
+      threadId, 
+      receiveNewMessage, 
+      receiveMessage, 
+      removeMessage, 
+      fetchThread 
+    } = this.props;
 
     fetchThread(threadId)
       .then(() => {
         this.subscription = createThreadSubscription(
           threadId,
           receiveNewMessage,
+          receiveMessage,
           removeMessage
         );
       })
   }
 
   componentDidUpdate(prevProps) {
-    const { threadId, receiveNewMessage, removeMessage, fetchThread } = this.props;
+    const { 
+      threadId, 
+      receiveNewMessage, 
+      receiveMessage, 
+      removeMessage, 
+      fetchThread 
+    } = this.props;
 
     if (!threadId) 
       return;
@@ -56,7 +69,12 @@ class Chat extends React.Component {
           if (this.subscription) {
             this.subscription.unsubscribe();
           } 
-          this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
+          this.subscription = createThreadSubscription(
+            threadId,
+            receiveNewMessage,
+            receiveMessage,
+            removeMessage
+          );
         })
     }
   }
@@ -188,6 +206,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   return {
     receiveNewMessage: (message) => dispatch(receiveNewMessage(message)),
+    receiveMessage: (message) => dispatch(receiveMessage(message)),
     removeMessage: (message) => dispatch(removeMessage(message)),
     deleteMessage: (messageId) => dispatch(deleteMessage(messageId)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
