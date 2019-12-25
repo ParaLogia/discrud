@@ -56,7 +56,7 @@ class ChannelShow extends React.Component {
           submitMessage={createChannelMessage}
           receiveNewMessage={receiveNewMessage}
           removeMessage={removeMessage}
-          currentServer={currentServer} 
+          isOwner={currentServer && currentServer.ownerId === currentUser.id} 
           currentUser={currentUser} />
       </div>
     )

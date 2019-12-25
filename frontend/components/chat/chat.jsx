@@ -119,7 +119,7 @@ class Chat extends React.Component {
       messages, 
       threadId, 
       submitMessage,
-      currentServer,
+      isOwner,
       currentUser,
       deleteMessage,
       updateMessage,
@@ -143,7 +143,7 @@ class Chat extends React.Component {
       <MessageGroup 
         key={idx} 
         messages={messages}
-        currentServer={currentServer}
+        isOwner={isOwner}
         currentUser={currentUser} 
         deleteMessage={deleteMessage}
         updateMessage={updateMessage}

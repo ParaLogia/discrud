@@ -16,7 +16,7 @@ class MessageGroup extends React.Component {
     const { 
       messages, 
       author, 
-      currentServer, 
+      isOwner, 
       currentUser, 
       deleteMessage,
       updateMessage,
@@ -24,9 +24,8 @@ class MessageGroup extends React.Component {
       setEditing
     } = this.props;
 
-    // TODO factor out currentServer/user logic
     const canEdit = author && (author.id === currentUser.id);
-    const canDelete = canEdit || (currentUser.id === currentServer.ownerId);
+    const canDelete = isOwner || canEdit;
 
     const firstMessage = messages[0];
     const date = new Date(firstMessage.createdAt)
