@@ -1,6 +1,14 @@
 import { RECEIVE_NEW_MESSAGE, RECEIVE_MESSAGE, REMOVE_MESSAGE } from '../actions/message_actions';
 
-export const createThreadSubscription = (threadId, receiveNewMessage, receiveMessage, removeMessage) => {
+const _dummyFunc = () => {};
+
+export const createThreadSubscription = (threadId, callbacks) => {
+  const { 
+    receiveNewMessage = _dummyFunc, 
+    receiveMessage = _dummyFunc, 
+    removeMessage = _dummyFunc 
+  } = callbacks;
+
   const received = (data) => {
     const message = JSON.parse(data.message);
 

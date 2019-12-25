@@ -24,33 +24,16 @@ class Chat extends React.Component {
   componentDidMount() {
     this.scrollToBottom();
 
-    const { 
-      threadId, 
-      receiveNewMessage, 
-      receiveMessage, 
-      removeMessage, 
-      fetchThread 
-    } = this.props;
+    const { threadId, fetchThread, createThreadSubscription } = this.props;
 
     fetchThread(threadId)
       .then(() => {
-        this.subscription = createThreadSubscription(
-          threadId,
-          receiveNewMessage,
-          receiveMessage,
-          removeMessage
-        );
+        this.subscription = createThreadSubscription(threadId);
       })
   }
 
   componentDidUpdate(prevProps) {
-    const { 
-      threadId, 
-      receiveNewMessage, 
-      receiveMessage, 
-      removeMessage, 
-      fetchThread 
-    } = this.props;
+    const { threadId, fetchThread, createThreadSubscription } = this.props;
 
     if (!threadId) 
       return;
@@ -69,12 +52,7 @@ class Chat extends React.Component {
           if (this.subscription) {
             this.subscription.unsubscribe();
           } 
-          this.subscription = createThreadSubscription(
-            threadId,
-            receiveNewMessage,
-            receiveMessage,
-            removeMessage
-          );
+          this.subscription = createThreadSubscription(threadId);
         })
     }
   }
@@ -204,10 +182,14 @@ const msp = (state, ownProps) => {
 }
 
 const mdp = (dispatch) => {
-  return {
+  const subscriptionOptions = {
     receiveNewMessage: (message) => dispatch(receiveNewMessage(message)),
     receiveMessage: (message) => dispatch(receiveMessage(message)),
     removeMessage: (message) => dispatch(removeMessage(message)),
+  }
+
+  return {
+    createThreadSubscription: (threadId) => createThreadSubscription(threadId, subscriptionOptions),
     deleteMessage: (messageId) => dispatch(deleteMessage(messageId)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
     updateMessage: (message) => dispatch(updateMessage(message)) 
