@@ -37,6 +37,7 @@ class MessageShow extends React.Component {
       canEdit, 
       canDelete,
       isEditing,
+      deleteMessage,
       updateMessage,
       setEditing
     } = this.props;
@@ -46,6 +47,7 @@ class MessageShow extends React.Component {
         <div className="chat-message">
           <EditMessageForm 
             message={message}
+            deleteMessage={deleteMessage}
             updateMessage={updateMessage} 
             setEditing={setEditing}/>
         </div>

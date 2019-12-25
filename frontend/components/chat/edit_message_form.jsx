@@ -27,13 +27,18 @@ class EditMessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { updateMessage, setEditing } = this.props;
-    const message = { 
-      id: this.props.message.id,
-      body: this.state.body
-    };
+    const { updateMessage, deleteMessage, setEditing, message } = this.props;
+    if (this.state.body === '') {
+      deleteMessage(message.id);
+    }
+    else if (this.state.body !== message.body) {
+      const newMessage = { 
+        id: message.id,
+        body: this.state.body
+      };
+      updateMessage(newMessage);
+    } 
     setEditing(null);
-    updateMessage(message);
   }
 
   handleCancel() {
