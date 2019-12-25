@@ -1,10 +1,14 @@
 import React from 'react';
+import EditMessageForm from './edit_message_form';
 
 class MessageShow extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { dropdown: false };
+
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   toggleDropdown() {
@@ -15,23 +19,49 @@ class MessageShow extends React.Component {
     this.setState({ dropdown: false });
   }
 
-  render() {
-    const { message, canEdit, canDelete, deleteMessage } = this.props;
+  handleDelete(e) {
+    e.preventDefault();
+    const { message, deleteMessage } = this.props;
+    deleteMessage(message.id);
+  }
 
-    const handleDelete = (e) => {
-      e.preventDefault();
-      deleteMessage(message.id);
+  handleEdit(e) {
+    e.preventDefault();
+    const { message, setEditing } = this.props;
+    setEditing(message.id);
+  }
+
+  render() {
+    const { 
+      message, 
+      canEdit, 
+      canDelete,
+      isEditing,
+      updateMessage,
+      setEditing
+    } = this.props;
+
+    if (isEditing) {
+      return (
+        <div className="chat-message">
+          <EditMessageForm 
+            message={message}
+            updateMessage={updateMessage} 
+            setEditing={setEditing}/>
+        </div>
+      )
     }
 
     const editOption = canEdit ? (
-      <div className="message-dropdown-option">
+      <div className="message-dropdown-option"
+           onClick={this.handleEdit}>
         Edit
       </div>
     ) : null;
 
     const deleteOption = canDelete ? (
       <div className="message-dropdown-option"
-           onClick={handleDelete}>
+           onClick={this.handleDelete}>
         Delete
       </div>
     ) : null;

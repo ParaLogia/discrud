@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ChatForm from './chat_form';
 import MessageGroup from './message_group';
-import { receiveNewMessage, removeMessage, deleteMessage } from '../../actions/message_actions';
+import { receiveNewMessage, removeMessage, deleteMessage, updateMessage } from '../../actions/message_actions';
 import { fetchUser } from "../../actions/user_actions";
 import { createThreadSubscription } from '../../util/chat_util';
 
@@ -13,6 +13,12 @@ class Chat extends React.Component {
 
     this.bottom = React.createRef();
     this.subscription = null;
+
+    this.state = {
+      editing: null
+    };
+
+    this.setEditing = this.setEditing.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +47,10 @@ class Chat extends React.Component {
     }
 
     if (!prevProps.threadId || prevProps.threadId !== threadId) {
+      if (this.state.editing) {
+        this.setEditing(null);
+      }
+
       fetchThread(threadId)
         .then(() => {
           if (this.subscription) {
@@ -49,6 +59,12 @@ class Chat extends React.Component {
           this.subscription = createThreadSubscription(threadId, receiveNewMessage, removeMessage);
         })
     }
+  }
+
+  setEditing(messageId) {
+    this.setState({
+      editing: messageId
+    });
   }
 
   componentWillUnmount() {
@@ -110,6 +126,7 @@ class Chat extends React.Component {
       currentServer,
       currentUser,
       deleteMessage,
+      updateMessage,
       fetchUser
     } = this.props;
     
@@ -133,7 +150,10 @@ class Chat extends React.Component {
         currentServer={currentServer}
         currentUser={currentUser} 
         deleteMessage={deleteMessage}
-        fetchUser={fetchUser} />
+        updateMessage={updateMessage}
+        fetchUser={fetchUser} 
+        editing={this.state.editing}
+        setEditing={this.setEditing} />
     ));
 
     return (
@@ -170,7 +190,8 @@ const mdp = (dispatch) => {
     receiveNewMessage: (message) => dispatch(receiveNewMessage(message)),
     removeMessage: (message) => dispatch(removeMessage(message)),
     deleteMessage: (messageId) => dispatch(deleteMessage(messageId)),
-    fetchUser: (userId) => dispatch(fetchUser(userId))
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
+    updateMessage: (message) => dispatch(updateMessage(message)) 
   }
 }
 

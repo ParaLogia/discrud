@@ -13,7 +13,18 @@ class MessageGroup extends React.Component {
   }
 
   render() {
-    const { messages, author, currentServer, currentUser, deleteMessage } = this.props;
+    const { 
+      messages, 
+      author, 
+      currentServer, 
+      currentUser, 
+      deleteMessage,
+      updateMessage,
+      editing,
+      setEditing
+    } = this.props;
+
+    // TODO factor out currentServer/user logic
     const canEdit = author && (author.id === currentUser.id);
     const canDelete = canEdit || (currentUser.id === currentServer.ownerId);
 
@@ -27,7 +38,10 @@ class MessageGroup extends React.Component {
         message={message} 
         canEdit={canEdit}
         canDelete={canDelete}
-        deleteMessage={deleteMessage} />
+        deleteMessage={deleteMessage} 
+        updateMessage={updateMessage} 
+        isEditing={message.id === editing}
+        setEditing={setEditing} />
     ));
 
     return (

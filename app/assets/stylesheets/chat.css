@@ -93,6 +93,13 @@
   margin-left: 80px;
 }
 
+.edit-message-hints {
+  color: #ffffff4d;
+  font-size: 12px;
+  padding: 7px 0px;
+  text-align: right;
+}
+
 .chat-form {
   height: 95px;
   border-top: 1px solid rgba(255, 255, 255, 0.059);
@@ -101,12 +108,13 @@
 
 .chat-input-container {
   position: relative;
+  margin: 12px 0px 30px;
 }
 
 .chat-input-placeholder {
   color: #72767d;
   position: absolute;
-  top: 35px;
+  top: 23px;
   left: 11px;
   pointer-events: none;
   white-space: nowrap;
@@ -122,7 +130,7 @@
   font-size: 16px;
   color: #dcddde;
   border-radius: 8px;
-  margin: 20px 0px 30px;
+  margin-top: 8px;
   width: 100%;
 }
 
