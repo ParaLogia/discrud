@@ -36,10 +36,17 @@ class SessionForm extends React.Component {
   handleDemoLogin(e) {
     e.preventDefault();
     this.setState(DEMO_USER);
+    if (!this.timer) {
+      this.timer = setTimeout(() => {
+        const formValues = Object.assign({}, this.state);
+        this.props.submitForm(formValues);
+      }, 1000)
+    }
   }
 
   componentWillUnmount() {
     this.props.clearErrors();
+    clearTimeout(this.timer);
   }
 
   render() {
@@ -69,8 +76,7 @@ class SessionForm extends React.Component {
           </span>
           <input type={field} 
                 onChange={this.handleUpdate(field)} 
-                value={this.state[field]}
-                required />
+                value={this.state[field]} />
         </label>
       )
     });
@@ -92,21 +98,29 @@ class SessionForm extends React.Component {
       </span>
     )
 
+    const demoing = formType === 'login'
+      && this.state.email === DEMO_USER.email
+      && this.state.password === DEMO_USER.password;
+
     return (
-      <form className="session-form" onSubmit={this.handleSubmit}>
-        <header className="session-form-header">
-          {formHeader}
-        </header>
+      <div className="session-background" style={{ backgroundImage: `url(${window.session_bg})` }}>
+        <form className="session-form" onSubmit={this.handleSubmit}>
+          <header className="session-form-header">
+            {formHeader}
+          </header>
 
-        {inputs}
+          {inputs}
 
-        {demoBlurb}
+          {demoBlurb}
 
-        <button>{this.props.formType}</button>
+          <button className={demoing ? 'demo-login' : ''}>
+            {this.props.formType}
+          </button>
 
-        {altLink}
+          {altLink}
 
-      </form>
+        </form>
+      </div>
     )
   }
 }

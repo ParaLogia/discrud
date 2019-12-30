@@ -1,3 +1,9 @@
+.session-background {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center fixed;
+}
+
 .session-form {
   box-sizing: border-box;
   width: 480px;
@@ -77,6 +83,10 @@
   transition: background-color 0.2s;
 }
 
+.session-form button:active {
+  background-color: #5b6eae;
+}
+
 .alt-link, .demo-blurb {
   margin-top: 12px;
 }
@@ -109,6 +119,21 @@ label.session-error {
   text-transform: uppercase;
 }
 
+.demo-blurb {
+  perspective: 100px;
+}
+
+.demo-blurb a {
+  display: inline-block;
+  animation: jiggle 0.2s ease-in-out 2.5s 3;
+}
+
+button.demo-login {
+  background-color: #5b6eae;
+  transition: background-color 0.2s;
+  transition-delay: 0.8s;
+}
+
 @keyframes bounce-in {
   0%   {
     transform: translateX(-50%) translateY(-90%);
@@ -128,5 +153,19 @@ label.session-error {
   100% {
     transform: translateX(-50%) translateY(-50%);
     opacity: 100%;
+  }
+}
+
+@keyframes jiggle {
+  0%, 50%, 100% {
+    transform: none;
+  }
+  25% {
+    transform-origin: center;
+    transform: rotate(-1.5deg);
+  }
+  75% {
+    transform-origin: center;
+    transform: rotate(1.5deg);
   }
 }
