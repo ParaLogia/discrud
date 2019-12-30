@@ -129,9 +129,11 @@ label.session-error {
 }
 
 button.demo-login {
-  background-color: #5b6eae;
-  transition: background-color 0.2s;
-  transition-delay: 0.8s;
+  /* background-color: #5b6eae;
+  transform: scale(0.96, 0.96);
+  transition: background-color 0.15s, transform 0.15s;
+  transition-delay: 0.85s; */
+  animation: click-button 0.15s ease-out 0.85s;
 }
 
 @keyframes bounce-in {
@@ -167,5 +169,12 @@ button.demo-login {
   75% {
     transform-origin: center;
     transform: rotate(1.5deg);
+  }
+}
+
+@keyframes click-button {
+  85% {
+    background-color: #5b6eae;
+    transform: scale(0.97, 0.97) translateY(4px);
   }
 }

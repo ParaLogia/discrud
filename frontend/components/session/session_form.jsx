@@ -35,6 +35,7 @@ class SessionForm extends React.Component {
 
   handleDemoLogin(e) {
     e.preventDefault();
+    this.demoing = true;
     this.setState(DEMO_USER);
     if (!this.timer) {
       this.timer = setTimeout(() => {
@@ -98,10 +99,6 @@ class SessionForm extends React.Component {
       </span>
     )
 
-    const demoing = formType === 'login'
-      && this.state.email === DEMO_USER.email
-      && this.state.password === DEMO_USER.password;
-
     return (
       <div className="session-background" style={{ backgroundImage: `url(${window.session_bg})` }}>
         <form className="session-form" onSubmit={this.handleSubmit}>
@@ -113,7 +110,7 @@ class SessionForm extends React.Component {
 
           {demoBlurb}
 
-          <button className={demoing ? 'demo-login' : ''}>
+          <button className={this.demoing ? 'demo-login' : ''}>
             {this.props.formType}
           </button>
 
