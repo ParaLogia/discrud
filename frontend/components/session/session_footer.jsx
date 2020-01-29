@@ -6,8 +6,11 @@ const UserFooter = ({ currentUser, logout }) => {
     logout();
   }
 
+  const colors = ['red', 'yellow', 'green', 'blue'];
+  const color = colors[currentUser.id % 4];
+
   const avatarIcon = (
-    <div className="avatar-mini">
+    <div className={`avatar-mini ${color}`}>
       {currentUser.username[0]}
     </div>
   )

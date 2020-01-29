@@ -54,3 +54,19 @@ a:hover {
   visibility: hidden;
   display: none;
 }
+
+.red {
+  background-color: #f04647;
+}
+
+.yellow {
+  background-color: #faa51a;
+}
+
+.green {
+  background-color: #42b481;
+}
+
+.blue {
+  background-color: #7289da;
+}

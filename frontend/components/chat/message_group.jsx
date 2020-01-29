@@ -32,6 +32,8 @@ class MessageGroup extends React.Component {
     const time = date.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' });
 
     const username = author ? author.username : `User#${firstMessage.authorId}`;
+    const colors = ['red', 'yellow', 'green', 'blue'];
+    const color = colors[firstMessage.authorId % 4];
 
     const messageShows = messages.map(message => (
       <MessageShow 
@@ -49,7 +51,7 @@ class MessageGroup extends React.Component {
       <>
         <hr className="chat-message-group-divider"></hr>
         <div className="chat-message-group">
-          <div className="chat-avatar">
+          <div className={`chat-avatar ${color}`}>
             {username[0]}
           </div>
           <h3 className="chat-message-header">
