@@ -138,6 +138,7 @@
 }
 
 .chat-input {
+  display: inline-block;
   background-color: #40444b;
   padding: 11px;
   height: 44px;
