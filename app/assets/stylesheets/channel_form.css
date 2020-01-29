@@ -17,6 +17,7 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
+  user-select: none;
 }
 
 .channel-form h2 {

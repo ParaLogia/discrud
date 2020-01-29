@@ -5,6 +5,7 @@
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
   cursor: pointer;
   position: relative;
+  user-select: none;
 }
 
 .server-title-container {

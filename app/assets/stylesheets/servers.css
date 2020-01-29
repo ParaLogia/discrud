@@ -10,6 +10,7 @@
   background-color: #202225;
   overflow: scroll;
   overflow: -moz-scrollbars-none;
+  user-select: none;
 }
 
 .servers-nav::-webkit-scrollbar { 
