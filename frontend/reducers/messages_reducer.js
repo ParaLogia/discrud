@@ -9,6 +9,9 @@ const messagesReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_MESSAGE:
     case RECEIVE_NEW_MESSAGE:
+      if (!(action.message.createdAt instanceof Date)) {
+        action.message.createdAt = new Date(action.message.createdAt);
+      }
       return Object.assign({}, state, {
         [action.message.id]: action.message
       })
@@ -19,6 +22,11 @@ const messagesReducer = (state = {}, action) => {
       return newState;
 
     case RECEIVE_CHANNEL:
+      Object.values(action.messages).forEach(message => {
+        if (!(message.createdAt instanceof Date)) {
+          message.createdAt = new Date(message.createdAt);
+        }
+      })
       return Object.assign({}, state, action.messages);
 
     // case RECEIVE_SERVER:

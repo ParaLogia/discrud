@@ -21,15 +21,26 @@ class MessageGroup extends React.Component {
       deleteMessage,
       updateMessage,
       editing,
-      setEditing
+      setEditing,
+      newDay
     } = this.props;
 
     const canEdit = author && (author.id === currentUser.id);
     const canDelete = isOwner || canEdit;
 
     const firstMessage = messages[0];
-    const date = new Date(firstMessage.createdAt)
-    const time = date.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' });
+
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = firstMessage.createdAt.toLocaleDateString([], dateOptions);
+    
+    const timeOptions = { hour: 'numeric', minute: 'numeric' };
+    const time = firstMessage.createdAt.toLocaleTimeString([], timeOptions);
+
+    const dayMarker = newDay ? (
+      <span className="day-marker">
+        {date}
+      </span>
+    ) : null;
 
     const username = author ? author.username : `User#${firstMessage.authorId}`;
     const colors = ['red', 'yellow', 'green', 'blue'];
@@ -51,6 +62,7 @@ class MessageGroup extends React.Component {
       <>
         <hr className="chat-message-group-divider"></hr>
         <div className="chat-message-group">
+          {dayMarker}
           <div className={`chat-avatar ${color}`}>
             {username[0]}
           </div>

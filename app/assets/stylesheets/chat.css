@@ -66,6 +66,18 @@
   color: #dcddde;
   padding: 20px 0px 20px;
   line-height: 1.375;
+  position: relative;
+}
+
+.day-marker {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0px 12px;
+  background-color: #36393f;
+  font-size: 14px;
+  color: #72767d;
 }
 
 .chat-avatar {

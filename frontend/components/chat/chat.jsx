@@ -106,12 +106,22 @@ class Chat extends React.Component {
     if (currMsg.authorId !== prevMsg.authorId) {
       return false;
     }
-    const currMsgDate = new Date(currMsg.createdAt);
-    const prevMsgDate = new Date(prevMsg.createdAt);
-    const timeDiff = currMsgDate.getTime() - prevMsgDate.getTime();
+    const currMsgDate = currMsg.createdAt;
+    const prevMsgDate = prevMsg.createdAt;
     
-    // Five minutes
-    return timeDiff < (5 * 60 * 1000);
+    const timeDiff = currMsgDate.getTime() - prevMsgDate.getTime();
+    const fiveMinutes = 5 * 60 * 1000;
+    
+    return timeDiff < fiveMinutes;
+  }
+
+  sameDay(prevMsg, currMsg) {
+    const currMsgDate = currMsg.createdAt;
+    const prevMsgDate = prevMsg.createdAt;
+    
+    return (currMsgDate.getDate() === prevMsgDate.getDate())
+      && (currMsgDate.getMonth() === prevMsgDate.getMonth())
+      && (currMsgDate.getFullYear() === prevMsgDate.getFullYear())
   }
 
   render() {
@@ -128,9 +138,14 @@ class Chat extends React.Component {
     
     let messageGroups = [];
 
-    let prevMsg = { createdAt: 0 };
+    let prevMsg = { createdAt: new Date(0) };
     messages.forEach((msg) => {
-      if (this.shouldGroupMessages(prevMsg, msg)) {
+      if (!this.sameDay(prevMsg, msg)) {
+        const newGroup = [msg];
+        newGroup.newDay = true;
+        messageGroups.push(newGroup);
+      }
+      else if (this.shouldGroupMessages(prevMsg, msg)) {
         const lastGroup = messageGroups[messageGroups.length-1];
         lastGroup.push(msg);
       } else {
@@ -149,7 +164,8 @@ class Chat extends React.Component {
         updateMessage={updateMessage}
         fetchUser={fetchUser} 
         editing={this.state.editing}
-        setEditing={this.setEditing} />
+        setEditing={this.setEditing}
+        newDay={Boolean(messages.newDay)} />
     ));
 
     return (
