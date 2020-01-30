@@ -96,7 +96,7 @@ class Chat extends React.Component {
     const { current } = this.bottom;
     if (current) {
       current.scrollIntoView({
-        behavior: 'smooth',
+        behavior: 'auto',
         block: "end"
       });
     }
