@@ -55,6 +55,24 @@
   flex-direction: column;
 }
 
+.chat-header {
+  width: 100%;
+  min-height: 95px;
+  padding: 0px 20px 15px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  background-position: 0 100%, 100% 100%;
+  background-size: 192px 80px, 216px 64px;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.chat-header h2 {
+  font-size: 16px;
+}
+
 .chat-message-group-divider {
   min-height: 1px;
   width: calc(100% - 40px);
@@ -96,7 +114,6 @@
 }
 
 .chat-message-header {
-  font-weight: bold;
   margin-left: 80px;
   line-height: 1.375;
   white-space: nowrap;
@@ -106,6 +123,8 @@
   font-size: 16px;
   line-height: 1.375;
   margin-right: 8px;
+  font-weight: 500;
+  color: white;
 }
 
 .chat-timestamp {

@@ -135,14 +135,22 @@ class Chat extends React.Component {
       updateMessage,
       fetchUser
     } = this.props;
+
+    const header = threadId ? (
+      <div className="chat-header" style={{
+        backgroundImage: `url(${window.chat_header_bg1}), url(${window.chat_header_bg2})`
+      }}>
+        <h2>This is it . . . the beginning of (chat) history</h2>
+      </div>
+    ) : null;
     
     let messageGroups = [];
 
     let prevMsg = { createdAt: new Date(0) };
-    messages.forEach((msg) => {
+    messages.forEach((msg, idx) => {
       if (!this.sameDay(prevMsg, msg)) {
         const newGroup = [msg];
-        newGroup.newDay = true;
+        newGroup.newDay = idx > 0;
         messageGroups.push(newGroup);
       }
       else if (this.shouldGroupMessages(prevMsg, msg)) {
@@ -174,6 +182,7 @@ class Chat extends React.Component {
           <section className="messages-container">
             <div className="scroller-wrapper">
               <div className="scroller">
+                {header}
 
                 {messageGroups}
 
