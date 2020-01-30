@@ -60,7 +60,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 72px;
+  font-size: 56px;
+  line-height: 1.3em;
 }
 
 .server-photo-preview:hover {
