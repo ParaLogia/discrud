@@ -15,8 +15,9 @@ const AddServerForm = ({ createServerModal, joinServerModal }) => {
           <p>
             Create a new server and invite your friends. It&apos;s free!
           </p>
-          <div className="create-server-image">
-
+          <div 
+            className="add-server-image create-server-image" 
+            style={{ backgroundImage: `url(${window.create_server_icon})` }}>
           </div>
           <button>
             Create a server
@@ -28,8 +29,9 @@ const AddServerForm = ({ createServerModal, joinServerModal }) => {
           <p>
             Enter an invite and join your friend&apos;s server.
           </p>
-          <div className="join-server-image">
-
+          <div
+            className="add-server-image join-server-image"
+            style={{ backgroundImage: `url(${window.join_server_icon})` }}>
           </div>
           <button>
             Join a server

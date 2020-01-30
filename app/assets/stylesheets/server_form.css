@@ -238,6 +238,16 @@
   color: #3ca374;
 }
 
-.create-server-image, .join-server-image {
+.add-server-image {
   flex-grow: 1;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.create-server-image {
+  background-size: 112px;
+} 
+
+.join-server-image {
+  background-size: 178.5px;
 }
