@@ -141,6 +141,7 @@
   width: 100%;
   min-height: 638px;
   position: relative;
+  margin-bottom: 72px;
 }
 
 .splash-art-container img {
