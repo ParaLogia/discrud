@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SplashArt from './splash_art';
 
 const Splash = ({ loggedIn }) => {
   const appLink = loggedIn ? (
@@ -71,6 +72,7 @@ const Splash = ({ loggedIn }) => {
           </div>
         </div>
       </section>
+      <SplashArt />
     </div>
   )
 }

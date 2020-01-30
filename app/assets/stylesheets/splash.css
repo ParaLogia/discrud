@@ -1,6 +1,6 @@
 .splash {
-  height: 100vh;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .splash-nav {
@@ -41,7 +41,6 @@
   }
 }
 
-
 .splash-nav li {
   padding: 15px 10px;
   margin-right: 8px;
@@ -75,7 +74,8 @@
 .splash-content {
   margin: 0 auto;
   box-sizing: border-box;
-  width: 810px;
+  width: 100%;
+  max-width: 810px;
   padding: 72px 50px 0px;
   color: #737f8d;
   text-align: center;
@@ -89,7 +89,7 @@
 }
 
 .splash-content p {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   line-height: 24px;
 }
 
@@ -101,19 +101,17 @@
 }
 
 .splash-button-container {
-  position: relative;
   width: 250px;
   height: 45px;
+  margin-top: 20px;
 }
 
 .splash-content a {
   width: 250px;
   height: 45px;
   padding: 10px;
+  margin-top: 1px;
   font-size: 15px;
-  position: absolute;
-  left: 0;
-  top: 0;
   padding: 5px 16px;
   border-radius: 3px;
   box-sizing: border-box;
@@ -121,13 +119,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: top 0.2s;
+  transition: transform 0.25s;
 }
 
 .splash-content a:hover {
-  top: 2px;
   text-decoration: none;
-  transition: top 0.2s;
+  transform: translateY(2px);
 }
 
 .download-button {
@@ -138,4 +135,216 @@
 .open-app-button {
   background-color: #7289da;
   color: white;
+}
+
+.splash-art-container {
+  width: 100%;
+  min-height: 638px;
+  position: relative;
+}
+
+.splash-art-container img {
+  position: absolute;
+  left: 50%;
+  transition: all 0.5s ease-in-out;
+}
+
+.splash-bg {
+  opacity: 0.3;
+}
+
+.grounded {
+  bottom: 10px;
+}
+
+.floating {
+  animation: floating 1.5s ease-in-out 0s infinite alternate;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+#triangle-1 {
+  margin-left: 31px;
+  bottom: 550px;
+}
+
+#triangle-2 {
+  margin-left: -289px;
+  bottom: 448px;
+}
+
+#triangle-3 {
+  margin-left: -579px;
+  bottom: 300px;
+}
+
+#dot-1 {
+  margin-left: -319px;
+  bottom: 600px;
+}
+
+#dot-2 {
+  margin-left: 531px;
+  bottom: 600px;
+}
+
+#dot-3 {
+  margin-left: 181px;
+  bottom: 500px;
+}
+
+#dot-4 {
+  margin-left: -599px;
+  bottom: 200px;
+}
+
+#circle-1 {
+  margin-left: -359px;
+  bottom: 530px;
+}
+
+#circle-2 {
+  margin-left: 576px;
+  bottom: 280px;
+}
+
+#circle-3 {
+  margin-left: -199px;
+  bottom: 88px;
+}
+
+#square-1 {
+  margin-left: 331px;
+  bottom: 600px;
+}
+
+#square-2 {
+  margin-left: 431px;
+  bottom: 400px;
+}
+
+#square-3 {
+  margin-left: 17px;
+  bottom: 92px;
+}
+
+#cross-1 {
+  margin-left: -579px;
+  bottom: 510px;
+}
+
+#cross-2 {
+  margin-left: 101px;
+  bottom: 440px;
+}
+
+#cross-3 {
+  margin-left: 541px;
+  bottom: 220px;
+}
+
+#potion {
+  margin-left: -609px;
+}
+
+#bomb {  
+  margin-left: -481px;
+  bottom: 335px;
+  animation-delay: 0.4s;
+}
+
+#coin-1 {
+  margin-left: 80px;
+  bottom: 530px;
+}
+
+#coin-2 {
+  margin-left: -428px;
+  bottom: 300px;
+}
+
+#cartridge {
+  margin-left: 250px;
+  bottom: 392px;
+}
+
+#shield {
+  margin-left: 423px;
+}
+
+#box {
+  margin-left: -239px;
+  bottom: 462px;
+}
+
+#desktop {
+  margin-left: -289.5px;
+}
+
+#android {
+  margin-left: -548px;
+}
+
+#iphone {
+  margin-left: -401.5px;
+}
+
+#controller {
+  margin-left: -255px;
+}
+
+#laptop {
+  margin-left: -4px;
+}
+
+#headphones {
+  transform: scale(.75);
+  margin-left: 270px;
+  bottom: 142px;
+}
+
+#splash-art-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1300px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: rgba(0,0,0,0.1);
+}
+
+@media screen and (max-width: 848px) {
+  .splash-art-container img {
+    display: none;
+  }
+
+  #android, #iphone, #laptop, #headphones {
+    display: block;
+  }
+
+  .splash-buttons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #android {
+    margin-left: -384px;
+  }
+
+  #iphone {
+    margin-left: -229.5px;
+  }
+
+  #laptop {
+    margin-left: -124px;
+  }
 }
