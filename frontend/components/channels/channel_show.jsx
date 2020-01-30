@@ -12,6 +12,22 @@ class ChannelShow extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    const { channel } = this.props;
+    if (channel) {
+      document.title = channel.name;
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { channel } = this.props;
+    const prevChannel = prevProps.channel;
+    if (channel && (!prevChannel || channel.id !== prevChannel.id)) {
+      document.title = `#${channel.name}`;
+    }
+
+  }
+
   render() {
     let { channel } = this.props;
     const { 
