@@ -92,6 +92,10 @@ class SessionForm extends React.Component {
       <span className="alt-link">
         Need an account?&nbsp;
         <Link to="/register">Register</Link>
+        &nbsp;or&nbsp;
+        <span onClick={this.handleDemoLogin}>
+          <a>Try the Demo User</a>
+        </span>
       </span>
     ) : (
       <span className="alt-link">
