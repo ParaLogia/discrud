@@ -44,10 +44,12 @@
 .splash-nav li {
   padding: 15px 10px;
   margin-right: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .splash-nav li i {
-  font-size: 10px;
+  font-size: 24px;
 }
 
 .splash-nav li a {
@@ -69,6 +71,9 @@
   border-radius: 20px;
   padding: 3px 17px;
   margin-right: 18px;
+  height: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .splash-content {

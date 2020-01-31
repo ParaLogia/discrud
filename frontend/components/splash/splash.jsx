@@ -30,25 +30,37 @@ const Splash = ({ loggedIn }) => {
             </div>
           </Link>
           <li>
-            <Link to="/">Download</Link>
+            <a href="https://paralogia.github.io/" target="_blank" rel="noopener noreferrer">
+              by Phillip Huang
+            </a>
           </li>
           <li>
-            <Link to="/">Nitro</Link>
+            <a href="https://paralogia.github.io/dessin" target="_blank" rel="noopener noreferrer">
+              Dessin
+            </a>
           </li>
           <li>
-            <Link to="/">Jobs</Link>
-          </li>
-          <li>
-            <Link to="/">Developers <i className="fas fa-angle-down"></i></Link>
-          </li>
-          <li>
-            <Link to="/">Community <i className="fas fa-angle-down"></i></Link>
-          </li>
-          <li>
-            <Link to="/">Support <i className="fas fa-angle-down"></i></Link>
+            <a href="https://splat-music.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+              Splat
+            </a>
           </li>
         </ul>
         <ul>
+          <li>
+            <a href="https://github.com/ParaLogia/discrud" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/phillip96huang/" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://angel.co/phillip-huang-1" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-angellist"></i>
+            </a>
+          </li>
           <li>
             {appLink}
           </li>
