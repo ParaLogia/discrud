@@ -7,6 +7,7 @@ class MessageShow extends React.Component {
 
     this.state = { dropdown: false };
 
+    this.handleCopyID = this.handleCopyID.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
   }
@@ -17,6 +18,12 @@ class MessageShow extends React.Component {
 
   hideDropdown() {
     this.setState({ dropdown: false });
+  }
+
+  handleCopyID(e) {
+    e.preventDefault();
+    const { message } = this.props;
+    navigator.clipboard.writeText(message.id);
   }
 
   handleDelete(e) {
@@ -77,11 +84,11 @@ class MessageShow extends React.Component {
           <i className="fas fa-ellipsis-v"></i>
 
           <div className={`message-dropdown ${this.state.dropdown ? 'active' : 'hidden'}`}>
-            <div className="message-dropdown-option">
-              ID: {message.id}
-            </div>
-
             {editOption}
+
+            <div className="message-dropdown-option" onClick={this.handleCopyID}>
+              Copy ID
+            </div>
 
             {deleteOption}
 
