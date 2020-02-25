@@ -11,6 +11,13 @@ export const selectServer = (state, serverId) => {
   return state.entities.servers[serverId];
 }
 
+export const selectMembersOfServer = (state, serverId) => {
+  const server = state.entities.servers[serverId];
+  return server && server.userIds ? server.userIds.map((userId) => (
+    selectUser(state, userId)
+  )) : []
+}
+
 export const selectChannelsOfServer = (state, serverId) => {
   const server = state.entities.servers[serverId];
   if (!server || !server.channelIds) return [];

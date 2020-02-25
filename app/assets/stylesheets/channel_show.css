@@ -53,3 +53,11 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.channel-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  position: relative;
+}

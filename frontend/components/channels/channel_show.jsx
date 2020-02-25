@@ -6,6 +6,7 @@ import { fetchChannel } from '../../actions/channel_actions';
 import { createChannelMessage } from '../../actions/message_actions';
 import ChannelHeader from './channel_header';
 import Chat from '../chat/chat';
+import MemberList from './member_list';
 
 class ChannelShow extends React.Component {
   constructor(props) {
@@ -65,15 +66,19 @@ class ChannelShow extends React.Component {
       <div className="channel-show">
         <ChannelHeader channel={channel} />
 
-        <Chat 
-          threadId={channel.id}
-          fetchThread={fetchChannel}
-          messages={messages}
-          submitMessage={createChannelMessage}
-          receiveNewMessage={receiveNewMessage}
-          removeMessage={removeMessage}
-          isOwner={currentServer && currentServer.ownerId === currentUser.id} 
-          currentUser={currentUser} />
+        <div className="channel-main">
+          <Chat 
+            threadId={channel.id}
+            fetchThread={fetchChannel}
+            messages={messages}
+            submitMessage={createChannelMessage}
+            receiveNewMessage={receiveNewMessage}
+            removeMessage={removeMessage}
+            isOwner={currentServer && currentServer.ownerId === currentUser.id} 
+            currentUser={currentUser} />
+
+          <MemberList server={currentServer} />
+        </div>
       </div>
     )
   }

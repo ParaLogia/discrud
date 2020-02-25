@@ -1,0 +1,47 @@
+.member-list {
+  background-color: #2f3136;
+  width: 240px;
+  display: flex;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.member-list-header {
+  color: #8e9297;
+  padding: 24px 8px 0 16px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.member-list-item {
+  display: flex;
+  margin-left: 8px;
+  padding: 0px 8px;
+  max-width: 224px;
+  height: 44px;
+  box-sizing: border-box;
+  align-items: center;
+  color: #8e9297;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.member-list-item:hover {
+  background-color: rgba(79, 84, 92, 0.16);
+  color: #dcddde;
+}
+
+.member-list .scroller::-webkit-scrollbar-thumb {
+  border-color: transparent;
+  visibility: hidden;
+}
+
+.member-list:hover .scroller::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.member-list .scroller::-webkit-scrollbar-track-piece {
+  border-color: transparent;
+}

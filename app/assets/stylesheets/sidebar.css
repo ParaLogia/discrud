@@ -47,6 +47,8 @@
 .avatar-mini {
   height: 32px;
   width: 32px;
+  min-width: 32px;
+  min-height: 32px;
   border-radius: 50%;
   margin-right: 8px;
   display: flex;
@@ -57,11 +59,11 @@
   color: white;
   background-color: #202225;
   user-select: none;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .avatar-mini:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .logout-button {
