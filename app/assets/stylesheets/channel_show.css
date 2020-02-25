@@ -8,8 +8,6 @@
 }
 
 .channel-header {
-  display: flex;
-  justify-content: space-between;
   height: 48px;
   width: 100%;
   box-sizing: border-box;
@@ -17,11 +15,17 @@
   background-color: #36393f;
   color: white;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0px 20px;
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
   z-index: 2;
   user-select: none;
+}
+
+.channel-header > div {
+  display: flex;
+  align-items: center;
 }
 
 .channel-title {
