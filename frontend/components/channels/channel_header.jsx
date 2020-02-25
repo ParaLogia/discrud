@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ChannelHeader = ({ channel }) => {
+const ChannelHeader = ({ channel, toggleMemberList }) => {
   if (!channel) return null;
 
   const channelTopic = (channel.topic) ? (
@@ -14,12 +14,18 @@ const ChannelHeader = ({ channel }) => {
 
   return (
     <header className="channel-header">
-      <h3 className="channel-title">
-        <i className="fas fa-hashtag"></i>
-        {channel.name}
-      </h3>
+      <div>
+        <h3 className="channel-title">
+          <i className="fas fa-hashtag"></i>
+          {channel.name}
+        </h3>
 
-      {channelTopic}
+        {channelTopic}
+      </div>
+
+      <div onClick={toggleMemberList} className="members-icon">
+        <i className="fas fa-user-friends"></i>
+      </div>
     </header>
   )
 }

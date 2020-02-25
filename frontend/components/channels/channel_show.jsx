@@ -11,6 +11,12 @@ import MemberList from './member_list';
 class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      showMemberList: true
+    }
+
+    this.toggleMemberList = this.toggleMemberList.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +33,12 @@ class ChannelShow extends React.Component {
       document.title = `#${channel.name}`;
     }
 
+  }
+
+  toggleMemberList() {
+    this.setState(({ showMemberList }) => ({
+      showMemberList: !showMemberList
+    }))
   }
 
   render() {
@@ -62,9 +74,13 @@ class ChannelShow extends React.Component {
 
     }
 
+    const memberList = (this.state.showMemberList) ? (
+      <MemberList server={currentServer} />
+    ) : null;
+
     return (
       <div className="channel-show">
-        <ChannelHeader channel={channel} />
+        <ChannelHeader channel={channel} toggleMemberList={this.toggleMemberList} />
 
         <div className="channel-main">
           <Chat 
@@ -77,7 +93,7 @@ class ChannelShow extends React.Component {
             isOwner={currentServer && currentServer.ownerId === currentUser.id} 
             currentUser={currentUser} />
 
-          <MemberList server={currentServer} />
+            {memberList}
         </div>
       </div>
     )
