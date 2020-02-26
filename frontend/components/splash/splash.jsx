@@ -67,9 +67,11 @@ const Splash = ({ loggedIn }) => {
         </ul>
       </nav>
       <section className="splash-content">
-        <h1>It&apos;s time to ditch Skype and Teamspeak.</h1>
+        <h1>Welcome to Discrud</h1>
         <p>
-          All-in-one voice and text chat for gamers that&apos;s free, secure, and works on both your desktop and phone. Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.
+          Create and share community servers to chat with your friends! 
+          <br/>
+          Managing multiple text channels is simple and easy. 
         </p>
         <div className="splash-buttons-container">
           <div className="splash-button-container">
