@@ -142,6 +142,11 @@ class Chat extends React.Component {
       }}>
         <h2>This is it . . . the beginning of (chat) history</h2>
       </div>
+    ) : (this.props.match.url === '/channels/@me') ? (
+      <div className="dm-placeholder">
+        <div className="dm-placeholder-image" style={{ backgroundImage: `url(${window.dm_bg})` }}>
+        </div>
+      </div>
     ) : null;
     
     let messageGroups = [];
