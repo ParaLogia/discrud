@@ -6,10 +6,6 @@
 - [Features Breakdown](#features-breakdown)
 - [Future Directions](#future-directions)
 
-## Live Site
-
-[https://discrud.herokuapp.com/](https://discrud.herokuapp.com/)
-
 ## Introduction
 
 Discrud is a full stack single-page clone of the [Discord](https://www.discordapp.com) web app. The app allows users to create servers with multiple chat rooms, called channels. Registered users can choose to join existing servers with a unique invitation code, or create and manage their own server.
