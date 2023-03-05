@@ -1,7 +1,6 @@
 # Discrud
 
 ## Table of Contents
-- [Live Site](#live-site)
 - [Introduction](#introduction)
 - [Features Breakdown](#features-breakdown)
 - [Future Directions](#future-directions)
